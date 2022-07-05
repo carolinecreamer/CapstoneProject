@@ -57,8 +57,7 @@ Data Model
   - Rent_listings: Array of objects, table of listings for rent in the city
   - Sale_listings: Array of objects, table of listings for sale in the city
 
-Wireframes
-Red pins are the user's saved places and people are the user's friends
+Wireframes -> red pins are the user's saved places and people are the user's friends
 <img width="594" alt="Screen Shot 2022-07-05 at 2 42 44 PM" src="https://user-images.githubusercontent.com/35511922/177421737-9747f24c-4550-42ff-b0a5-518f74a7f57b.png">
 <img width="597" alt="Screen Shot 2022-07-05 at 2 43 38 PM" src="https://user-images.githubusercontent.com/35511922/177421808-ec2f30ce-e2a1-4166-b867-e383de4fecbd.png">
 <img width="595" alt="Screen Shot 2022-07-05 at 2 43 56 PM" src="https://user-images.githubusercontent.com/35511922/177421852-b2391920-5dab-44eb-b200-ec70de1eb8e4.png">
