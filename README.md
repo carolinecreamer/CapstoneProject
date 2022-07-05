@@ -21,3 +21,36 @@ User Stories
 - As a buyer, I want to view listings in the area that I am moving to in order to find a place to live.
 - As a renter, I want to see the number of rentals available to see how many options I would have in each location I am looking at.
 - As a renter/buyer, I want to see the average rent or sale price in the area to see if I can afford to live in a given location.
+- As a renter/buyer, I want to "favorite" places that I would like to live.
+
+Endpoints
+- POST: cities, add a city to the user's collection
+- DELETE: cities/id, remove a city from the user's collection
+- GET: cities, fetch the list of cities in a user's collection
+- POST: users, create a new user account
+- PUT: users/id, update a user's profile data
+- GET: cities, fetch the list of cities visible on the map
+- GET: users, fetch the list of "friends" available to the user
+
+Data Model
+- User table:
+  - ID: integer, primary key
+  - Name: text, name of the user
+  - Friend_ids: Array of integers, table of foreign keys to connected friend users
+  - Favorited_city_ids: Array of integers, table of foreign keys to a city table
+  - Rent_or_buy: boolean, if the user is looking at properties for sale or for rent
+  - Min_price: integer, minimum rent/sale price
+  - Max_price: integer, maximum rent/sale price
+
+- City table:
+  - ID: integer, primary key
+  - Name: text, name of the city
+  - Average_rent: integer, average rent price in the city
+  - Average_sale: integer, average sale price in the city
+  - Min_rent: integer, minimum rent price in the city
+  - Max_rent: integer, maximum rent price in the city
+  - Min_sale: integer, minimum sale price in the city
+  - Max_sale: integer, maximum sale price in the city
+  - Rent_listings: Array of objects, table of listings for rent in the city
+  - Sale_listings: Array of objects, table of listings for sale in the city
+
