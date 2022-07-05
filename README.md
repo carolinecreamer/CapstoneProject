@@ -1,6 +1,6 @@
 # Capstone Project
 
-Summary
+Summary:
 Users view a map of the United States and can click on cities to view cost of living and quality of life metrics on the city in order to help determine if they should move there. Additionally, users can see "friends" on a map to help aid in their decision making.
 
 User Roles
