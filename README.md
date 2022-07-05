@@ -1,4 +1,4 @@
-# CapstoneProject
+# Capstone Project
 
 User Roles
 - A person looking to move to a new city and identify where they would like to live
@@ -14,5 +14,10 @@ User Stories
 - As a homeowner, I want to be able to filter rent prices by number of bedrooms to see how I should market my home, so that I can find renters and make a living.
 - As a renter, I want to be able to view multiple different cities to compare my options, so that I can easily compare different locations to find the location that works best for me.
 - As a renter, I want to see cities near potential job locations, so that I can minimize my commute.
-- As a renter, I want to determine the city that will give me the best quality of life, so that my family can grow up with ample space to play & learn.
-- As a renter, I want to see a user feed of people I have connected with, so that I can see where people that are similar to me are located. 
+- As a buyer, I want to determine the city that will give me the best quality of life, so that my family can grow up with ample space to play & learn.
+- As a buyer, I want to see a user feed of people I have connected with, so that I can see where people that are similar to me are located. 
+- As a renter, I want to have the ability to see what typical rent prices are in the area that I'm moving to in order to make sure that I am paying a reasonable amount.
+- As a homeowner, I want to view properties comparable to mine to see if the rent price I have set for renters is reasonable.
+- As a buyer, I want to view listings in the area that I am moving to in order to find a place to live.
+- As a renter, I want to see the number of rentals available to see how many options I would have in each location I am looking at.
+- As a renter/buyer, I want to see the average rent or sale price in the area to see if I can afford to live in a given location.
