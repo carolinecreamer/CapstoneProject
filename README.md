@@ -1,5 +1,8 @@
 # Capstone Project
 
+Summary
+Users view a map of the United States and can click on cities to view cost of living and quality of life metrics on the city in order to help determine if they should move there. Additionally, users can see "friends" on a map to help aid in their decision making.
+
 User Roles
 - A person looking to move to a new city and identify where they would like to live
 - A homeowner looking to decide on a cost of rent for their home based on average prices in their area
@@ -53,4 +56,11 @@ Data Model
   - Max_sale: integer, maximum sale price in the city
   - Rent_listings: Array of objects, table of listings for rent in the city
   - Sale_listings: Array of objects, table of listings for sale in the city
+
+Wireframes
+Red pins are the user's saved places and people are the user's friends
+<img width="594" alt="Screen Shot 2022-07-05 at 2 42 44 PM" src="https://user-images.githubusercontent.com/35511922/177421737-9747f24c-4550-42ff-b0a5-518f74a7f57b.png">
+<img width="597" alt="Screen Shot 2022-07-05 at 2 43 38 PM" src="https://user-images.githubusercontent.com/35511922/177421808-ec2f30ce-e2a1-4166-b867-e383de4fecbd.png">
+<img width="595" alt="Screen Shot 2022-07-05 at 2 43 56 PM" src="https://user-images.githubusercontent.com/35511922/177421852-b2391920-5dab-44eb-b200-ec70de1eb8e4.png">
+<img width="593" alt="Screen Shot 2022-07-05 at 2 44 15 PM" src="https://user-images.githubusercontent.com/35511922/177421888-b3d21c1c-50d1-4f84-8679-857f6c6a3228.png">
 
