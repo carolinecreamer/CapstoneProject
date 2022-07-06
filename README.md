@@ -62,6 +62,8 @@ Data Model
 - User table:
   - ID: integer, primary key
   - Name: text, name of the user
+  - Username: text, unique key
+  - Password: text, private key
   - Friend_ids: Array of integers, table of foreign keys to connected friend users
   - Favorited_city_ids: Array of integers, table of foreign keys to a city table
   - Rent_or_buy: boolean, if the user is looking at properties for sale or for rent
