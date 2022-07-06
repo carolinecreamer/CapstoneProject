@@ -3,6 +3,29 @@
 Summary:
 Users view a map of the United States and can click on cities to view cost of living and quality of life metrics on the city in order to help determine if they should move there. Additionally, users can see "friends" on a map to help aid in their decision making.
 
+Core Features
+[ ] User Authentication
+[ ] API call to RealtyMole to view rent prices
+[ ] User Profile
+   [ ] Favorites
+   [ ] Friends
+[ ] Homepage
+   [ ] Interactive map
+      [ ] Cities information displays on click
+      [ ] View friends on map
+      [ ] View saved places on map   
+[ ] At least 2 cities per state
+
+Stretch Features
+[ ] API call to RealtyMole to view sale prices
+[ ] More cities
+[ ] Zoom in on states on click
+[ ] API call to Zomato
+[ ] API call to BandsInTown
+[ ] API call to Walkscore
+[ ] Share information with friends
+
+
 User Roles
 - A person looking to move to a new city and identify where they would like to live
 - A homeowner looking to decide on a cost of rent for their home based on average prices in their area
