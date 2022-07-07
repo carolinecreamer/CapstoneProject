@@ -24,6 +24,7 @@ Stretch Features
 - [ ] API call to BandsInTown
 - [ ] API call to Walkscore
 - [ ] Share information with friends
+- [ ] Pinpoint ideal neighborhood to live in
 
 
 User Roles
