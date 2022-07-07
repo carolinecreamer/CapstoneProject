@@ -4,6 +4,9 @@ import axios from "axios"
 import * as config from "../../config"
 
 export default function LoginForm({handleLogin}) {
+  // Creates the login form and creates an onSubmit function to send the inputted
+  // username and password to the database
+  // Sends the login infor to the handleLogin function in the App.jsx component
     const username = React.createRef();
     const password = React.createRef();
 
@@ -12,7 +15,6 @@ export default function LoginForm({handleLogin}) {
 
         const login = async () => {
             try {
-                console.log("Logging in")
                 const res = await axios.post(`${config.API_BASE_URL}/login`, {
                     "username" : username.current.value,
                     "password" : password.current.value

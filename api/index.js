@@ -12,12 +12,15 @@ app.use(express.json())
 app.use(morgan("tiny"))
 app.use(cors())
 
+
+// initalize Parse 
 Parse.initialize(PARSE_APP_ID, PARSE_JAVASCRIPT_KEY)
 Parse.serverURL = "https://parseapi.back4app.com"
 
+
+// Register route creates a user in the database, displays an error message
+// if the user cannot be created.
 app.post('/register', async (req, res) => {
-  console.log("here");
-  console.log(req);
   let user = new Parse.User(req.body)
 
   try {
@@ -30,6 +33,8 @@ app.post('/register', async (req, res) => {
   }
 })
 
+
+// Logs in user by accessing database, displays error message if log in fails
 app.post('/login', async (req, res) => {
   try {
     const user = await Parse.User.logIn(req.body.username, req.body.password)
@@ -40,6 +45,8 @@ app.post('/login', async (req, res) => {
   }
 })
 
+
+// gets messages from DB, this route will be replaced with info from RealtyMole
 app.get('/messages', async (req, res) => {
   try {
     const query = new Parse.Query("Messages")
@@ -56,6 +63,7 @@ app.get('/messages', async (req, res) => {
   }
 })
 
+// posts messages to webpage, this route will be replaced with info from RealtyMole
 app.post('/messages', async (req, res) => {
   try {
     const message = new Parse.Object("Messages", req.body)
@@ -75,10 +83,12 @@ app.post('/messages', async (req, res) => {
   }
 })
 
+// Gets the landing page for the website
 app.get('/', (req, res) => {
   res.send('Hello World!')
 })
 
+// Shows which port the webpage is connected to
 app.listen(port, () => {
   console.log(`Capstone project listening on port ${port}`)
 })

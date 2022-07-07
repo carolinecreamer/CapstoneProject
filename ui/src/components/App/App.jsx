@@ -24,12 +24,17 @@ function App() {
   }
   addAuthenticationHeader()
 
+  // Handles logic for logging out a user -> sets the header back to default
+  // and sets the isLoggedIn state to false
   const handleLogout = () => {
     localStorage.removeItem("current_user_id")
     axios.defaults.headers.common = {};
     setIsLoggedIn(false)
   }
 
+  // Handles logic for logging in a user -> sets the current user to the user
+  // object in the DB that has a username and password that matches  
+  // and sets the isLoggedIn state to false
   const handleLogin = (user) => {
     console.log(user)
     localStorage.setItem("current_user_id", user["objectId"])
@@ -38,6 +43,7 @@ function App() {
     setIsLoggedIn(true)
   }
 
+  // Toggles if NavBar shows that a user is signed in or not
   return (
     <div className="App">
       <NavBar isLoggedIn={isLoggedIn} handleLogout={handleLogout} />

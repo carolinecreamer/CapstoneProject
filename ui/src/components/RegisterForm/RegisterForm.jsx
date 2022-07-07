@@ -4,6 +4,11 @@ import axios from "axios"
 import * as config from '../../config'
 
 export default function RegisterForm({ handleLogin }) {
+    // Defines a handleSubmit function that creates a POST request containing
+    // the inputted username and password for a new user to add the user to the 
+    // database
+    // Calls the handleLogin function in the App.jsx component with the new
+    // user's information
     const username = React.createRef();
     const password = React.createRef();
 

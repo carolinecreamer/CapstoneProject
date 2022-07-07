@@ -4,6 +4,10 @@ import axios from "axios"
 import * as config from '../../config'
 
 export default function MessagesView() {
+    // View messages from database - this will be replaced with info from the API
+    // Creates an onChange function to update the message as a user inputs it
+    // When the user presses submit, the handleSubmit function is called and a 
+    // POST request is made containing the message so that it gets added to the DB
     const [newMessage, setNewMessage] = React.useState("")
     const [messages, setMessages] = React.useState([])
 
