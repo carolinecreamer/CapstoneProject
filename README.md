@@ -59,6 +59,7 @@ Endpoints
 - PUT: users/id, update a user's profile data
 - GET: cities, fetch the list of cities visible on the map
 - GET: users, fetch the list of "friends" available to the user
+- GET: property info, fetch the list of houses in the area by zip code
 
 Data Model
 - User table:
