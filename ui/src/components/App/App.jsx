@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import * as React from "react"
 import './App.css'
 import NavBar from '../NavBar/NavBar'
 import LoggedOutView from '../LoggedOutView/LoggedOutView'
@@ -44,14 +45,25 @@ export default function App() {
     setIsLoggedIn(true)
   }
 
-  // Toggles if NavBar shows that a user is signed in or not
- /* <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<main>
+  // Make GET request to RealtyMole
+  React.useEffect(() =>{
+    const options = {
+      method: 'GET',
+      url: 'https://realty-mole-property-api.p.rapidapi.com/zipCodes/29611',
+      headers: {
+        'X-RapidAPI-Key': '771f280f06mshacc707bbbbb16efp164b1cjsncaa3eb73700b',
+        'X-RapidAPI-Host': 'realty-mole-property-api.p.rapidapi.com'
+      }
+    };
+    
+    axios.request(options).then(function (response) {
+      console.log(response.data);
+    }).catch(function (error) {
+      console.error(error);
+    });
+  })
 
-          </main>}/>
-      </Routes>
-      </BrowserRouter>*/
+  // Toggles if NavBar shows that a user is signed in or not
   return (
     <div className="app">
       
