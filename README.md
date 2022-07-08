@@ -7,6 +7,7 @@ Core Features
 - [x] User Authentication
 - [ ] API call to RealtyMole to view rent prices
 - [ ] User Profile
+  - [ ] User Info
   - [ ] Favorites
   - [ ] Friends
 - [ ] Homepage
