@@ -38,7 +38,7 @@ router.post('/register', async (req, res) => {
       query.descending("createdAt")
       query.include("user")
   
-      messages = await query.find()
+      const messages = await query.find()
   
       res.send({"messages" : messages})
     } catch (error) {
