@@ -28,11 +28,11 @@ export default function App() {
   const [maxPrice, setMaxPrice]             = useState(0);
   // Number of properties within the user's price rance
   const [numProperties, setNumProperties]   = useState(0);
-  
+
   React.useEffect(() => {
     // Call functions in Utils.jsx to parse data
     setAverage(Utils.calculateAverage(listings));
-    setProperties(Utils.getProperties);
+    setProperties(Utils.getProperties(listings, minPrice, maxPrice));
     // will this work because setting state is asynchronous?
     setNumProperties(properties.length);
   }, [listings, minPrice, maxPrice]);

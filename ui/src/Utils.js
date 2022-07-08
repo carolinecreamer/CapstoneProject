@@ -10,13 +10,6 @@ export function calculateAverage(listings) {
     // calculate the average
     listings.forEach((listing) => {
         totalPrice += listing.price;
-
-        // If the given listing is within the user's price range, add the properties to
-        // the array of properties within the user's price range 
-        if (listing.price >= minPrice && listing.price <= maxPrice) {
-            ++totalProperties;
-            setProperties((prev) => [...prev, listing]);
-        }
     });
 
     totalPrice /= listings.length;
@@ -24,7 +17,7 @@ export function calculateAverage(listings) {
     return totalPrice;
 }
 
-export function calculateNumProperties(properties) {
+export function calculateNumProperties(listings, minPrice, maxPrice) {
     // Temp counter variable used to calculate the number of properties in the 
     // user's price range
     let totalProperties = 0;
@@ -32,7 +25,7 @@ export function calculateNumProperties(properties) {
     // Iterate over the array of listings. If the given listing is within the user's 
     // price range, increment the counter variable for the number of properties 
     // within the user's price range 
-    properties.forEach((listing) => {
+    listings.forEach((listing) => {
         if (listing.price >= minPrice && listing.price <= maxPrice) {
             ++totalProperties;
         }
@@ -41,7 +34,7 @@ export function calculateNumProperties(properties) {
     return totalProperties;
 }
 
-export function getProperties(listings) {
+export function getProperties(listings, minPrice, maxPrice) {
     let properties = [];
     // Iterate over the array of listings. If the given listing is within the user's 
     // price range, add the properties to the array of properties within the user's 
