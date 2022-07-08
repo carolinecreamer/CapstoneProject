@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import * as Utils from "../../Utils"
 import * as React from "react"
 import './App.css'
 import NavBar from '../NavBar/NavBar'
@@ -9,44 +10,31 @@ import {BrowserRouter,Routes,Route} from "react-router-dom"
 import * as config from '../../config'
 
 export default function App() { 
+  // Boolean for if the user is logged in or not
   const [isLoggedIn, setIsLoggedIn]         = useState(localStorage.getItem("current_user_id") !== null)
+  // City that the user has selected
   const [city, setCity]                     = useState("");
+  // State that the user has selected
   const [state, setState]                   = useState("");
+  // All listings in the given city
   const [listings, setListings]              = useState([]);
+  // Array of properties within the user's price range
   const [properties, setProperties]         = useState([]);
+  // Average rent in a city
   const [average, setAverage]               = useState(0);
+  // Minimum rent price that the user is willing to pay
   const [minPrice, setMinPrice]             = useState(0);
+  // Maximum rent price that the user is willing to pay
   const [maxPrice, setMaxPrice]             = useState(0);
+  // Number of properties within the user's price rance
   const [numProperties, setNumProperties]   = useState(0);
   
   React.useEffect(() => {
-    // Temp variables used to calculate the average rent price in a city and the
-    // number of properties in the user's price range
-     let totalPrice      = 0;
-     let totalProperties = 0;
-
-     // Iterate over all listings in the city, add the price of each listing to 
-     // calculate the average
-     listings.forEach((listing) => {
-      totalPrice += listing.price;
-
-      // If the given listing is within the user's price range, add the properties to
-      // the array of properties within the user's price range
-      // If the given listing is within the user's price range, increment the counter
-      // variable for the number of properties within the user's price range 
-      if (listing.price >= minPrice && listing.price <= maxPrice) {
-        ++totalProperties;
-        setProperties((prev) => [...prev, listing]);
-        console.log(properties);
-        console.log(listing);
-      }
-     });
-
-     totalPrice /= listings.length;
-
-     // Update state variables
-     setAverage(totalPrice);
-     setNumProperties(totalProperties);
+    // Call functions in Utils.jsx to parse data
+    setAverage(Utils.calculateAverage(listings));
+    setProperties(Utils.getProperties);
+    // will this work because setting state is asynchronous?
+    setNumProperties(properties.length);
   }, [listings, minPrice, maxPrice]);
 
 
@@ -101,10 +89,8 @@ export default function App() {
   // object in the DB that has a username and password that matches  
   // and sets the isLoggedIn state to false
   const handleLogin = (user) => {
-    console.log(user)
     localStorage.setItem("current_user_id", user["objectId"])
     addAuthenticationHeader()
-
     setIsLoggedIn(true)
   }
 
@@ -124,7 +110,6 @@ export default function App() {
       .get("./testData.json")
       .then((res) => {
         setListings(res.data);
-        console.log(res.data);
         setMinPrice(1000);
         setMaxPrice(2500);
       })
