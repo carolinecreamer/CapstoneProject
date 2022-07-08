@@ -20,7 +20,7 @@ export default function MessagesView() {
         setNewMessage("")
 
         const post = (async () => {
-            const res = await axios.post(`${config.API_BASE_URL}/messages`, {
+            const res = await axios.post(`${config.API_BASE_URL}/auth/messages`, {
                 "text" : newMessage,
                 })
             
@@ -31,7 +31,7 @@ export default function MessagesView() {
     React.useEffect(() => {
         const fetchMessages = (async () => {
           try {
-            const res = await axios.get(`${config.API_BASE_URL}/messages`)
+            const res = await axios.get(`${config.API_BASE_URL}/auth/messages`)
             setMessages(res.data.messages)
           } catch (err) {
             console.log(err)

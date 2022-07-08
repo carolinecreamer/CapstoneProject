@@ -4,8 +4,9 @@ import NavBar from '../NavBar/NavBar'
 import LoggedOutView from '../LoggedOutView/LoggedOutView'
 import MessagesView from '../MessagesView/MessagesView'
 import axios from "axios"
+import {BrowserRouter,Routes,Route} from "react-router-dom"
 
-function App() {
+export default function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem("current_user_id") !== null)
 
   // For every network request, add a custom header for the logged in user
@@ -44,15 +45,23 @@ function App() {
   }
 
   // Toggles if NavBar shows that a user is signed in or not
+ /* <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<main>
+
+          </main>}/>
+      </Routes>
+      </BrowserRouter>*/
   return (
-    <div className="App">
-      <NavBar isLoggedIn={isLoggedIn} handleLogout={handleLogout} />
-      {isLoggedIn
-        ? <MessagesView />
-        : <LoggedOutView handleLogin={handleLogin} />
-      }
+    <div className="app">
+      
+        <NavBar isLoggedIn={isLoggedIn} handleLogout={handleLogout} />
+          {isLoggedIn
+            ? <MessagesView />
+            : <LoggedOutView handleLogin={handleLogin} />
+          }
+        
+      
     </div>
   )
 }
-
-export default App

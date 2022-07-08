@@ -15,7 +15,7 @@ export default function LoginForm({handleLogin}) {
 
         const login = async () => {
             try {
-                const res = await axios.post(`${config.API_BASE_URL}/login`, {
+                const res = await axios.post(`${config.API_BASE_URL}/auth/login`, {
                     "username" : username.current.value,
                     "password" : password.current.value
                     })                
