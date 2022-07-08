@@ -6,6 +6,9 @@ Users view a map of the United States and can click on cities to view cost of li
 Core Features
 - [x] User Authentication
 - [x] API call to RealtyMole to view rent prices
+  - [x] Initial API call
+  - [x] Wrapper functions
+  - [x] Parse rent data
 - [ ] User Profile
   - [ ] User Info
   - [ ] Favorites
