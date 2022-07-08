@@ -6,9 +6,30 @@ import LoggedOutView from '../LoggedOutView/LoggedOutView'
 import MessagesView from '../MessagesView/MessagesView'
 import axios from "axios"
 import {BrowserRouter,Routes,Route} from "react-router-dom"
+import * as config from '../../config'
 
 export default function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem("current_user_id") !== null)
+  const [city, setCity]             = useState("");
+  const [state, setState]           = useState("");
+
+  const getListingsByCity = () => {
+    const options = {
+      method: 'GET',
+      url: 'https://realty-mole-property-api.p.rapidapi.com/rentalListings',
+      params: {city: city, state: state},
+      headers: {
+        'X-RapidAPI-Key': config.RAPID_API_KEY,
+        'X-RapidAPI-Host': config.RAPID_API_HOST
+      }
+    };
+    
+    axios.request(options).then(function (response) {
+      console.log(response.data);
+    }).catch(function (error) {
+      console.error(error);
+    });
+  }
 
   // For every network request, add a custom header for the logged in user
   // The backend API can check the header for the user id
@@ -45,23 +66,10 @@ export default function App() {
     setIsLoggedIn(true)
   }
 
-  // Make GET request to RealtyMole
+  // Make GET request to RealtyMole when city is change (city will be changed on click)
   React.useEffect(() =>{
-    const options = {
-      method: 'GET',
-      url: 'https://realty-mole-property-api.p.rapidapi.com/zipCodes/29611',
-      headers: {
-        'X-RapidAPI-Key': '771f280f06mshacc707bbbbb16efp164b1cjsncaa3eb73700b',
-        'X-RapidAPI-Host': 'realty-mole-property-api.p.rapidapi.com'
-      }
-    };
-    
-    axios.request(options).then(function (response) {
-      console.log(response.data);
-    }).catch(function (error) {
-      console.error(error);
-    });
-  })
+    getListingsByCity();
+  }, [city])
 
   // Toggles if NavBar shows that a user is signed in or not
   return (
