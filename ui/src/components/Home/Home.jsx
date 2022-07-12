@@ -10,8 +10,7 @@ export default function Home({ isLoggedIn, handleLogout, handleLogin }) {
         event.preventDefault();
         handleLogout()
     }
-    console.log("here")
-    console.log(isLoggedIn)
+    
     return (
         <div id="Home">
             {isLoggedIn
