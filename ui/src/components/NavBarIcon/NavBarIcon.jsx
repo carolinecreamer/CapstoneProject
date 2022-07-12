@@ -1,7 +1,6 @@
 import * as React from "react"
-import * as Icons from "react-icons/bs"
+import {BsFillHouseFill, BsPersonCircle} from "react-icons/bs"
 import { Link } from "react-router-dom";
-import Icon from "../Icon/Icon"
 import "./NavBarIcon.css"
 
 export default function NavBarIcon({ viewProfile, toggleViewProfile }) {
@@ -10,8 +9,8 @@ export default function NavBarIcon({ viewProfile, toggleViewProfile }) {
     return (
         <div>
         { viewProfile ? 
-            <Icon className="icon" route={`/`} icon={"BsFillHouseFill"} toggleViewProfile={toggleViewProfile}/> 
-            : <Icon className="icon" route={`/profile`} icon={"BsPersonCircle"} toggleViewProfile={toggleViewProfile}/>
+            <Link to={`/`}><BsFillHouseFill className="icon"  onClick={() => toggleViewProfile()}/> </Link>
+            : <Link to={`/profile`}><BsPersonCircle className="icon" onClick={() => toggleViewProfile()}/></Link>
         }
         </div>
     )
