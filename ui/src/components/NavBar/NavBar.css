@@ -1,5 +1,9 @@
+:root {
+    --slate-blue: #2A5678;
+}
+
 #NavBar {
-    background-color: #2A5678;
+    background-color: var(--slate-blue);
     padding: 10px;
     color: white;
 }

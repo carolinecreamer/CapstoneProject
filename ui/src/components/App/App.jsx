@@ -69,7 +69,7 @@ export default function App() {
   }*/
 
   const client = axios.create({
-    //baseURL: constants.api.url
+    //baseURL: constants.api.url -> going to uncomment when making real API requests!
     baseURL: null
   });
   
@@ -113,7 +113,6 @@ export default function App() {
   // the user id, in order to authenticate the request
   const addAuthenticationHeader = () => {
     const currentUserId = localStorage.getItem("current_user_id")
-   // setCurrentUser(localStorage.getItem("user"))
     if (currentUserId !== null) {
       axios.defaults.headers.common = {
         "current_user_id": currentUserId
@@ -140,7 +139,6 @@ export default function App() {
     localStorage.setItem("user", user)
     setCurrentUser(user)
     addAuthenticationHeader()
-   // getCurrentUser()
     setIsLoggedIn(true)  
   }
 
@@ -180,28 +178,7 @@ export default function App() {
       setViewProfile(true);
     }
   }
- /* useEffect(() => {
-    // Since the async method Parse.User.currentAsync is needed to
-    // retrieve the current user data, you need to declare an async
-    // function here and call it afterwards
-    async function getCurrentUser() {
-      // This condition ensures that username is updated only if needed
-      if (currentUser === null) {
-        
-        const user = await Parse.User.currentAsync();
-       
-        if (user !== null) {
-          setCurrentUser(user);
-          console.log("currentUser: ", user)
-        }
-      }
-    }
-    getCurrentUser();
-  }, [isLoggedIn]);
-*/
 
-
-  // Toggles if NavBar shows that a user is signed in or not
   return (
     <div className="app">
       <BrowserRouter>
