@@ -19,7 +19,7 @@ export default function NavBar({ isLoggedIn, handleLogout, viewProfile, setViewP
             <span>Parse Demo</span>
             
             {isLoggedIn &&
-                <a href="#" onClick={onClick}>Logout</a>
+                <Link to={`/login`}><a href="#" onClick={onClick}>Logout</a></Link>
             }
             {
                 isLoggedIn && !viewProfile ?
@@ -30,6 +30,8 @@ export default function NavBar({ isLoggedIn, handleLogout, viewProfile, setViewP
                 isLoggedIn && viewProfile ?
                 <Link to={`/`} className="icon" ><BsFillHouseFill onClick={() => setViewProfile(false)}/></Link> : null
             }
+
+
         </div>
     )
 }

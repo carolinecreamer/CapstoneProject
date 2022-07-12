@@ -29,7 +29,6 @@ router.post('/register', async (req, res) => {
     }
   })
   
-  
   // gets messages from DB, this route will be replaced with info from RealtyMole
   router.get('/messages', async (req, res) => {
     try {

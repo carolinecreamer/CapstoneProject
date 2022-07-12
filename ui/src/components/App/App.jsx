@@ -5,7 +5,7 @@ import './App.css'
 import NavBar from '../NavBar/NavBar'
 import Home from '../Home/Home'
 import axios from "axios"
-import {BrowserRouter,Routes,Route} from "react-router-dom"
+import {BrowserRouter,Routes,Route, useNavigate} from "react-router-dom"
 import * as config from '../../config'
 import UserProfile from '../UserProfile/UserProfile'
 import Parse from 'parse/react-native'
@@ -68,6 +68,44 @@ export default function App() {
     });
   }*/
 
+  const client = axios.create({
+    //baseURL: constants.api.url
+    baseURL: null
+  });
+  
+
+  const request = async function(options) {
+    const onSuccess = function(response) {
+      console.debug('Request Successful!', response);
+      return response.data;
+    }
+  
+    const onError = function(error) {
+      console.error('Request Failed:', error.config);
+  
+      if (error.response) {
+        // Request was made but server responded with something
+        // other than 2xx
+        console.error('Status:',  error.response.status);
+        console.error('Data:',    error.response.data);
+        console.error('Headers:', error.response.headers);
+  
+      } else {
+        // Something else happened while setting up the request
+        // triggered the error
+        console.error('Error Message:', error.message);
+      }
+  
+      return Promise.reject(error.response || error.message);
+    }
+  
+    return client(options)
+           .then(onSuccess)
+           .catch(onError);
+  }
+  
+
+
   // For every network request, add a custom header for the logged in user
   // The backend API can check the header for the user id
   //
@@ -117,17 +155,18 @@ export default function App() {
 
   // Gets info from test json file (JSON file containing real data that I copy
   // & pasted from the API)
-  React.useEffect(() => {
-    axios
-      .get("./testData.json")
-      .then((res) => {
+  function clickState () {
+    return request({
+      method: 'get',
+      url: "./testData.json"
+    }).then((res) => {
         setListings(res.data);
         setMinPrice(1000);
         setMaxPrice(2500);
       })
       .catch(err => console.error(err));
     
-  }, []);
+  }
 
  /* useEffect(() => {
     // Since the async method Parse.User.currentAsync is needed to
