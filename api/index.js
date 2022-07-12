@@ -28,4 +28,8 @@ app.listen(port, () => {
   console.log(`Capstone project listening on port ${port}`)
 })
 
+app.use(function(req, res, next){
+  res.locals.user = req.user;
+}) 
+
 module.exports = app;

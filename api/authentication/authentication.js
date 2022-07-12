@@ -67,4 +67,9 @@ router.post('/register', async (req, res) => {
     }
   })
 
+  router.get('/profile', async (req, res) => {
+    const user = req.user;
+    res.render('profile', {title: 'profile', user: user});
+  })
+
   module.exports = router;

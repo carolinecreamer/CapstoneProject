@@ -3,11 +3,14 @@ import * as Utils from "../../Utils"
 import * as React from "react"
 import './App.css'
 import NavBar from '../NavBar/NavBar'
-import LoggedOutView from '../LoggedOutView/LoggedOutView'
-import MessagesView from '../MessagesView/MessagesView'
+import Home from '../Home/Home'
 import axios from "axios"
 import {BrowserRouter,Routes,Route} from "react-router-dom"
 import * as config from '../../config'
+import UserProfile from '../UserProfile/UserProfile'
+import Parse from 'parse/react-native'
+import { BsEmojiNeutralFill } from 'react-icons/bs'
+
 
 export default function App() { 
   // Boolean for if the user is logged in or not
@@ -28,6 +31,9 @@ export default function App() {
   const [maxPrice, setMaxPrice]             = useState(0);
   // Number of properties within the user's price rance
   const [numProperties, setNumProperties]   = useState(0);
+  // If the user has selected to view their profile
+  const [viewProfile, setViewProfile]       = useState(false);
+  const [currentUser, setCurrentUser]       = useState(null);
 
   React.useEffect(() => {
     // Call functions in Utils.jsx to parse data
@@ -69,6 +75,7 @@ export default function App() {
   // the user id, in order to authenticate the request
   const addAuthenticationHeader = () => {
     const currentUserId = localStorage.getItem("current_user_id")
+   // setCurrentUser(localStorage.getItem("user"))
     if (currentUserId !== null) {
       axios.defaults.headers.common = {
         "current_user_id": currentUserId
@@ -81,6 +88,7 @@ export default function App() {
   // and sets the isLoggedIn state to false
   const handleLogout = () => {
     localStorage.removeItem("current_user_id")
+    setCurrentUser(null)
     axios.defaults.headers.common = {};
     setIsLoggedIn(false)
   }
@@ -90,7 +98,10 @@ export default function App() {
   // and sets the isLoggedIn state to false
   const handleLogin = (user) => {
     localStorage.setItem("current_user_id", user["objectId"])
+    localStorage.setItem("user", user)
+    setCurrentUser(user)
     addAuthenticationHeader()
+   // getCurrentUser()
     setIsLoggedIn(true)
   }
 
@@ -117,17 +128,48 @@ export default function App() {
     
   }, []);
 
+ /* useEffect(() => {
+    // Since the async method Parse.User.currentAsync is needed to
+    // retrieve the current user data, you need to declare an async
+    // function here and call it afterwards
+    async function getCurrentUser() {
+      // This condition ensures that username is updated only if needed
+      if (currentUser === null) {
+        
+        const user = await Parse.User.currentAsync();
+       
+        if (user !== null) {
+          setCurrentUser(user);
+          console.log("currentUser: ", user)
+        }
+      }
+    }
+    getCurrentUser();
+  }, [isLoggedIn]);
+*/
+
+
   // Toggles if NavBar shows that a user is signed in or not
   return (
     <div className="app">
-      
-        <NavBar isLoggedIn={isLoggedIn} handleLogout={handleLogout} />
-          {isLoggedIn
-            ? <MessagesView />
-            : <LoggedOutView handleLogin={handleLogin} />
-          }
-        
-      
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={
+            <div>
+              <NavBar isLoggedIn={isLoggedIn} handleLogout={handleLogout} 
+              viewProfile={viewProfile} setViewProfile={setViewProfile}/>
+              <Home isLoggedIn={isLoggedIn} handleLogout={handleLogout} handleLogin={handleLogin}/>
+            </div>
+          }/>
+          <Route path="/profile" element={
+            <div>
+              <NavBar isLoggedIn={isLoggedIn} handleLogout={handleLogout}
+              viewProfile={viewProfile} setViewProfile={setViewProfile}/>
+              <UserProfile user={currentUser} />
+            </div>
+          }/>
+        </Routes>
+      </BrowserRouter>
     </div>
   )
 }
