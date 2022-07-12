@@ -130,6 +130,7 @@ export default function App() {
     setCurrentUser(null)
     axios.defaults.headers.common = {};
     setIsLoggedIn(false)
+    setViewProfile(false)
   }
 
   // Handles logic for logging in a user -> sets the current user to the user
@@ -141,7 +142,7 @@ export default function App() {
     setCurrentUser(user)
     addAuthenticationHeader()
    // getCurrentUser()
-    setIsLoggedIn(true)
+    setIsLoggedIn(true)  
   }
 
   // Make GET request to RealtyMole when city is change (city will be changed on click)

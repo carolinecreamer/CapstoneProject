@@ -7,7 +7,6 @@ export default function NavBar({ isLoggedIn, handleLogout, viewProfile, setViewP
     // If the user is logged in and pressed the Log Out button, 
     // call the handleLogout function in the App.jsx component
     const onClick = event => {
-        event.preventDefault();
         handleLogout()
     }
 
@@ -19,7 +18,7 @@ export default function NavBar({ isLoggedIn, handleLogout, viewProfile, setViewP
             <span>Parse Demo</span>
             
             {isLoggedIn &&
-                <Link to={`/login`}><a href="#" onClick={onClick}>Logout</a></Link>
+                <Link to={`/`}><a href="#" onClick={onClick}>Logout</a></Link>
             }
             {
                 isLoggedIn && !viewProfile ?
