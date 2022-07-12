@@ -1,13 +1,18 @@
 import * as React from "react"
 import * as Icons from "react-icons/bs"
 import { Link } from "react-router-dom";
+import Icon from "../Icon/Icon"
 import "./NavBarIcon.css"
 
-export default function NavBarIcon({ route, icon, toggleViewProfile }) {
-    const Icon = Icons[icon];
-
-    // Dynamically creates a component depending on the name of the React icon
+export default function NavBarIcon({ viewProfile, toggleViewProfile }) {
+    // Conditonally render navigation bar icon based on if the user has selected to view
+    // their profile or not
     return (
-       <Link to={`${route}`} className="icon"onClick={() => toggleViewProfile()}>{React.createElement(Icon)}</Link>     
+        <div>
+        { viewProfile ? 
+            <Icon className="icon" route={`/`} icon={"BsFillHouseFill"} toggleViewProfile={toggleViewProfile}/> 
+            : <Icon className="icon" route={`/profile`} icon={"BsPersonCircle"} toggleViewProfile={toggleViewProfile}/>
+        }
+        </div>
     )
 }

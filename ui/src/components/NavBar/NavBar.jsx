@@ -16,21 +16,13 @@ export default function NavBar({ isLoggedIn, handleLogout, viewProfile, toggleVi
     return (
         <div id="NavBar">
             <span>Parse Demo</span>
+            <div className="icons">
+                {isLoggedIn &&
+                    <Link to={`/`}><a href="#" onClick={onClick}>Logout</a></Link>
+                }
             
-            {isLoggedIn &&
-                <Link to={`/`}><a href="#" onClick={onClick}>Logout</a></Link>
-            }
-            {
-                isLoggedIn && !viewProfile ?
-                <NavBarIcon route={`/profile`} icon={"BsPersonCircle"} toggleViewProfile={toggleViewProfile}/> : null
-            }
-
-            {
-                isLoggedIn && viewProfile ?
-                <NavBarIcon route={`/`} icon={"BsFillHouseFill"} toggleViewProfile={toggleViewProfile}/> : null
-            }
-
-
+                {isLoggedIn ? <NavBarIcon viewProfile={viewProfile} toggleViewProfile={toggleViewProfile}/> : null}
+            </div>
         </div>
     )
 }
