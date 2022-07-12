@@ -103,7 +103,6 @@ export default function App() {
            .then(onSuccess)
            .catch(onError);
   }
-  
 
 
   // For every network request, add a custom header for the logged in user
@@ -169,6 +168,18 @@ export default function App() {
     
   }
 
+
+  // Toggles between displaying an icon that links to the home page (displays if you 
+  // are in the user profile) and an icon that links to the user profile (displays if
+  // you are on the homepage). This function is sent in as a prop to the NavBar component
+  function toggleViewProfile() {
+    if (viewProfile) {
+      setViewProfile(false);
+    }
+    else {
+      setViewProfile(true);
+    }
+  }
  /* useEffect(() => {
     // Since the async method Parse.User.currentAsync is needed to
     // retrieve the current user data, you need to declare an async
@@ -198,14 +209,14 @@ export default function App() {
           <Route path="/" element={
             <div>
               <NavBar isLoggedIn={isLoggedIn} handleLogout={handleLogout} 
-              viewProfile={viewProfile} setViewProfile={setViewProfile}/>
+              viewProfile={viewProfile} toggleViewProfile={toggleViewProfile}/>
               <Home isLoggedIn={isLoggedIn} handleLogout={handleLogout} handleLogin={handleLogin}/>
             </div>
           }/>
           <Route path="/profile" element={
             <div>
               <NavBar isLoggedIn={isLoggedIn} handleLogout={handleLogout}
-              viewProfile={viewProfile} setViewProfile={setViewProfile}/>
+              viewProfile={viewProfile} toggleViewProfile={toggleViewProfile}/>
               <UserProfile user={currentUser} />
             </div>
           }/>
