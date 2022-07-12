@@ -1,6 +1,7 @@
 html {
     font-family: system-ui, sans-serif;
     font-size: 1.25rem;
+<<<<<<< HEAD
   }
   
   body {
@@ -13,3 +14,16 @@ html {
     vertical-align: middle;
   }
   
+=======
+}
+
+body {
+    margin: 0;
+    padding: 0 1.5rem;
+}
+
+svg {
+    display: inline-block;
+    vertical-align: middle;
+}
+>>>>>>> ce97652 (Map Layout)
