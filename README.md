@@ -15,6 +15,7 @@ Core Features
   - [ ] Friends
 - [ ] Homepage
 - [ ] Interactive map
+   - [ ] User can view map display
    - [ ] Cities information displays on click
    - [ ] View friends on map
    - [ ] View saved places on map
