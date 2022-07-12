@@ -11,9 +11,13 @@ export default function NavBar({ isLoggedIn, handleLogout, viewProfile, setViewP
         handleLogout()
     }
 
+    // Toggles between displaying an icon that links to the home page (displays if you 
+    // are in the user profile) and an icon that links to the user profile (displays if
+    // you are on the homepage)
     return (
         <div id="NavBar">
             <span>Parse Demo</span>
+            
             {isLoggedIn &&
                 <a href="#" onClick={onClick}>Logout</a>
             }

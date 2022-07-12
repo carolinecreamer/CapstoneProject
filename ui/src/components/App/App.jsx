@@ -33,6 +33,7 @@ export default function App() {
   const [numProperties, setNumProperties]   = useState(0);
   // If the user has selected to view their profile
   const [viewProfile, setViewProfile]       = useState(false);
+  // Updates who the current user is based on if a user is logged in
   const [currentUser, setCurrentUser]       = useState(null);
 
   React.useEffect(() => {

@@ -1,6 +1,7 @@
 #NavBar {
-    background-color: #1ebf73;
+    background-color: #2A5678;
     padding: 10px;
+    color: white;
 }
 
 #NavBar span {
@@ -9,9 +10,10 @@
 
 #NavBar a {
     float: right;
-    color: black;
+    color: white;
 }
 
 .icon {
-    margin: 5px;
+    margin-right: 10px;
 }
+
