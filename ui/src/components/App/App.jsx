@@ -3,11 +3,14 @@ import * as Utils from "../../Utils"
 import * as React from "react"
 import './App.css'
 import NavBar from '../NavBar/NavBar'
-import LoggedOutView from '../LoggedOutView/LoggedOutView'
-import MessagesView from '../MessagesView/MessagesView'
+import Home from '../Home/Home'
 import axios from "axios"
-import {BrowserRouter,Routes,Route} from "react-router-dom"
+import {BrowserRouter,Routes,Route, useNavigate} from "react-router-dom"
 import * as config from '../../config'
+import UserProfile from '../UserProfile/UserProfile'
+import Parse from 'parse/react-native'
+import { BsEmojiNeutralFill } from 'react-icons/bs'
+
 
 export default function App() { 
   // Boolean for if the user is logged in or not
@@ -28,6 +31,10 @@ export default function App() {
   const [maxPrice, setMaxPrice]             = useState(0);
   // Number of properties within the user's price rance
   const [numProperties, setNumProperties]   = useState(0);
+  // If the user has selected to view their profile
+  const [viewProfile, setViewProfile]       = useState(false);
+  // Updates who the current user is based on if a user is logged in
+  const [currentUser, setCurrentUser]       = useState(null);
 
   React.useEffect(() => {
     // Call functions in Utils.jsx to parse data
@@ -61,6 +68,43 @@ export default function App() {
     });
   }*/
 
+  const client = axios.create({
+    //baseURL: constants.api.url -> going to uncomment when making real API requests!
+    baseURL: null
+  });
+  
+
+  const request = async function(options) {
+    const onSuccess = function(response) {
+      console.debug('Request Successful!', response);
+      return response.data;
+    }
+  
+    const onError = function(error) {
+      console.error('Request Failed:', error.config);
+  
+      if (error.response) {
+        // Request was made but server responded with something
+        // other than 2xx
+        console.error('Status:',  error.response.status);
+        console.error('Data:',    error.response.data);
+        console.error('Headers:', error.response.headers);
+  
+      } else {
+        // Something else happened while setting up the request
+        // triggered the error
+        console.error('Error Message:', error.message);
+      }
+  
+      return Promise.reject(error.response || error.message);
+    }
+  
+    return client(options)
+           .then(onSuccess)
+           .catch(onError);
+  }
+
+
   // For every network request, add a custom header for the logged in user
   // The backend API can check the header for the user id
   //
@@ -81,8 +125,10 @@ export default function App() {
   // and sets the isLoggedIn state to false
   const handleLogout = () => {
     localStorage.removeItem("current_user_id")
+    setCurrentUser(null)
     axios.defaults.headers.common = {};
     setIsLoggedIn(false)
+    setViewProfile(false)
   }
 
   // Handles logic for logging in a user -> sets the current user to the user
@@ -90,8 +136,10 @@ export default function App() {
   // and sets the isLoggedIn state to false
   const handleLogin = (user) => {
     localStorage.setItem("current_user_id", user["objectId"])
+    localStorage.setItem("user", user)
+    setCurrentUser(user)
     addAuthenticationHeader()
-    setIsLoggedIn(true)
+    setIsLoggedIn(true)  
   }
 
   // Make GET request to RealtyMole when city is change (city will be changed on click)
@@ -105,29 +153,47 @@ export default function App() {
 
   // Gets info from test json file (JSON file containing real data that I copy
   // & pasted from the API)
-  React.useEffect(() => {
-    axios
-      .get("./testData.json")
-      .then((res) => {
+  function clickState () {
+    return request({
+      method: 'get',
+      url: "./testData.json"
+    }).then((res) => {
         setListings(res.data);
         setMinPrice(1000);
         setMaxPrice(2500);
       })
       .catch(err => console.error(err));
     
-  }, []);
+  }
 
-  // Toggles if NavBar shows that a user is signed in or not
+
+  // Toggles between displaying an icon that links to the home page (displays if you 
+  // are in the user profile) and an icon that links to the user profile (displays if
+  // you are on the homepage). This function is sent in as a prop to the NavBar component
+  function toggleViewProfile() {
+    setViewProfile(viewProfile => !viewProfile)
+  }
+
   return (
     <div className="app">
-      
-        <NavBar isLoggedIn={isLoggedIn} handleLogout={handleLogout} />
-          {isLoggedIn
-            ? <MessagesView />
-            : <LoggedOutView handleLogin={handleLogin} />
-          }
-        
-      
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={
+            <div>
+              <NavBar isLoggedIn={isLoggedIn} handleLogout={handleLogout} 
+              viewProfile={viewProfile} toggleViewProfile={toggleViewProfile} className="NavBar"/>
+              <Home isLoggedIn={isLoggedIn} handleLogout={handleLogout} handleLogin={handleLogin}/>
+            </div>
+          }/>
+          <Route path="/profile" element={
+            <div>
+              <NavBar isLoggedIn={isLoggedIn} handleLogout={handleLogout}
+              viewProfile={viewProfile} toggleViewProfile={toggleViewProfile} className="NavBar"/>
+              <UserProfile user={currentUser} />
+            </div>
+          }/>
+        </Routes>
+      </BrowserRouter>
     </div>
   )
 }

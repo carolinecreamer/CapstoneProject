@@ -1,0 +1,7 @@
+@import 'bootstrap/dist/css/bootstrap.min.css';
+
+.homepage {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px !important;
+}

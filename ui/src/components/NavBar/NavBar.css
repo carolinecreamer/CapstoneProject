@@ -1,13 +1,28 @@
-#NavBar {
-    background-color: #1ebf73;
-    padding: 10px;
+@import 'bootstrap/dist/css/bootstrap.min.css';
+:root {
+    --dark-blue: #0A154C;
 }
 
-#NavBar span {
+.navBarSection {
+    padding: 0rem;
+    background-color: var(--dark-blue) !important;
+    width: 100%;
+    display: flex !important;
+    min-height: 50px;
+    align-items: center;
+}
+.title {
+    color: white !important;
+    margin-left: 10px;
+    font-size: 30px;
     font-weight: bold;
 }
 
-#NavBar a {
-    float: right;
-    color: black;
+.me-auto {
+    font-size: 20px;
+    align-self: center;
+}
+
+.navbar {
+    padding: 0rem !important;  
 }

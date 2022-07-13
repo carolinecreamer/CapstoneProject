@@ -29,7 +29,6 @@ router.post('/register', async (req, res) => {
     }
   })
   
-  
   // gets messages from DB, this route will be replaced with info from RealtyMole
   router.get('/messages', async (req, res) => {
     try {
@@ -66,5 +65,13 @@ router.post('/register', async (req, res) => {
       res.send({"error" : "Create message failed: " + error })
     }
   })
+
+
+  // renders the profile page with the current user's info
+  router.get('/profile', async (req, res) => {
+    const user = req.user;
+    res.render('profile', {title: 'profile', user: user});
+  })
+
 
   module.exports = router;

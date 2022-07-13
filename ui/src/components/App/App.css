@@ -1,6 +1,1 @@
-.App {
-    width: 800px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 20px;
-}
+@import 'bootstrap/dist/css/bootstrap.min.css';

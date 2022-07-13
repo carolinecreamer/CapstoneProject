@@ -1,0 +1,18 @@
+
+:root {
+    --name-text-yellow: #ceaa4d;
+}
+
+.Card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: lightgrey !important;
+    background-clip: border-box;
+    border: 1px solid var(--dark-blue);
+    border-radius: 0.25rem;
+    margin-top: 100px;
+    color: var(--dark-blue)
+}

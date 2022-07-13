@@ -28,4 +28,9 @@ app.listen(port, () => {
   console.log(`Capstone project listening on port ${port}`)
 })
 
+// Sets the current user
+app.use(function(req, res, next){
+  res.locals.user = req.user;
+}) 
+
 module.exports = app;
