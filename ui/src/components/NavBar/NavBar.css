@@ -1,24 +1,28 @@
+@import 'bootstrap/dist/css/bootstrap.min.css';
 :root {
-    --slate-blue: #2A5678;
+    --dark-blue: #0A154C;
 }
 
-#NavBar {
-    background-color: var(--slate-blue);
-    padding: 10px;
-    color: white;
+.navBarSection {
+    padding: 0rem;
+    background-color: var(--dark-blue) !important;
+    width: 100%;
+    display: flex !important;
+    min-height: 50px;
+    align-items: center;
 }
-
-#NavBar span {
+.title {
+    color: white !important;
+    margin-left: 10px;
+    font-size: 30px;
     font-weight: bold;
 }
 
-#NavBar a {
-    float: right;
-    color: white;
+.me-auto {
+    font-size: 20px;
+    align-self: center;
 }
 
-.icons {
-    float: right;
-    display: flex;
-    flex-direction: row-reverse;
+.navbar {
+    padding: 0rem !important;  
 }

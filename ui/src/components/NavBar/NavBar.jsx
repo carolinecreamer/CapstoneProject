@@ -2,6 +2,10 @@ import * as React from "react"
 import { BsPersonCircle, BsFillHouseFill } from "react-icons/bs"
 import { Link } from "react-router-dom";
 import NavBarIcon from "../NavBarIcon/NavBarIcon";
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+import "bootstrap/dist/css/bootstrap.min.css";
 import "./NavBar.css"
 
 export default function NavBar({ isLoggedIn, handleLogout, viewProfile, toggleViewProfile }) {
@@ -10,19 +14,26 @@ export default function NavBar({ isLoggedIn, handleLogout, viewProfile, toggleVi
     const onClick = event => {
         handleLogout()
     }
-
-    // Creates the NavBar and calls the NavBarIcon component for each icon that is 
-    // created in the navigation bar
+    // If the user is not logged in, show a nav bar that only shows the title text. If the user clicks
+    // on the title text, nothing will happen. If the user is logged in, show either the user profile or
+    // the home icon. If the user clicks on the title or the home icon, the user will be rerouted back to
+    // home. If the user clicks on the user profile icon, the user will be routed to the user profile. 
     return (
-        <div id="NavBar">
-            <span>Parse Demo</span>
-            <div className="icons">
-                {isLoggedIn &&
-                    <Link to={`/`}><a href="#" onClick={onClick}>Logout</a></Link>
-                }
-            
-                {isLoggedIn ? <NavBarIcon viewProfile={viewProfile} toggleViewProfile={toggleViewProfile}/> : null}
-            </div>
-        </div>
+        <Navbar bg="light" className="navbar">
+            {
+                isLoggedIn ?
+                <section className="navBarSection">
+                    <Link to={`/`}><Navbar.Brand className="title">Capstone Project</Navbar.Brand></Link>
+                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                    <Navbar.Collapse id="basic-navbar-nav">
+                        <Nav className="me-auto">
+                            <NavBarIcon  viewProfile={viewProfile} toggleViewProfile={toggleViewProfile}/>
+                            <Link to={`/`} onClick={onClick}>Logout</Link>
+                        </Nav>
+                    </Navbar.Collapse>
+                </section> 
+                : <section className="navBarSection"><Navbar.Brand className="title">Capstone Project</Navbar.Brand></section>
+            }
+        </Navbar>
     )
 }

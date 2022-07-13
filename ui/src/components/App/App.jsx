@@ -171,12 +171,7 @@ export default function App() {
   // are in the user profile) and an icon that links to the user profile (displays if
   // you are on the homepage). This function is sent in as a prop to the NavBar component
   function toggleViewProfile() {
-    if (viewProfile) {
-      setViewProfile(false);
-    }
-    else {
-      setViewProfile(true);
-    }
+    setViewProfile(viewProfile => !viewProfile)
   }
 
   return (
@@ -186,14 +181,14 @@ export default function App() {
           <Route path="/" element={
             <div>
               <NavBar isLoggedIn={isLoggedIn} handleLogout={handleLogout} 
-              viewProfile={viewProfile} toggleViewProfile={toggleViewProfile}/>
+              viewProfile={viewProfile} toggleViewProfile={toggleViewProfile} className="NavBar"/>
               <Home isLoggedIn={isLoggedIn} handleLogout={handleLogout} handleLogin={handleLogin}/>
             </div>
           }/>
           <Route path="/profile" element={
             <div>
               <NavBar isLoggedIn={isLoggedIn} handleLogout={handleLogout}
-              viewProfile={viewProfile} toggleViewProfile={toggleViewProfile}/>
+              viewProfile={viewProfile} toggleViewProfile={toggleViewProfile} className="NavBar"/>
               <UserProfile user={currentUser} />
             </div>
           }/>
