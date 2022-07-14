@@ -12,6 +12,8 @@ import allStates from "../../../public/allstates.json";
 
 const geoUrl = "https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json";
 
+// Offsets are states that are too small to fit a label -- these coordinates determine where their label goes relative to the state so that
+// the map doesn't look too cluttered
 const offsets = {
   VT: [50, -8],
   NH: [34, 2],
@@ -23,6 +25,10 @@ const offsets = {
   MD: [47, 10],
   DC: [49, 21]
 };
+
+function handleMouseClick(key) {
+  console.log(key);
+}
 
 const Map = () => {
   return (
@@ -36,6 +42,9 @@ const Map = () => {
                 stroke="#FFF"
                 geography={geo}
                 fill="#DDD"
+                onMouseDown={() => {
+                  handleMouseClick(geo.properties.name);
+                }}
               />
             ))}
             {geographies.map(geo => {
