@@ -1,20 +1,6 @@
 html {
     font-family: system-ui, sans-serif;
     font-size: 1.25rem;
-<<<<<<< HEAD
-  }
-  
-  body {
-    margin: 0;
-    padding: 0 1.5rem;
-  }
-  
-  svg {
-    display: inline-block;
-    vertical-align: middle;
-  }
-  
-=======
 }
 
 body {
@@ -25,5 +11,6 @@ body {
 svg {
     display: inline-block;
     vertical-align: middle;
+    width: 60%;
+    height: 60%;
 }
->>>>>>> ce97652 (Map Layout)

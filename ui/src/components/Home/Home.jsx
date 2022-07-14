@@ -6,10 +6,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import "./Home.css"
 
 export default function Home({ isLoggedIn, handleLogout, handleLogin }) {
-<<<<<<< HEAD
-    // If the user is logged in, go to the home page, otherwise show the login screen
-=======
->>>>>>> ce97652 (Map Layout)
     return (
         <Bootstrap.Container className="homepage">
             {isLoggedIn
