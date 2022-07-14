@@ -10,7 +10,7 @@ Core Features
   - [x] Wrapper functions
   - [x] Parse rent data
 - [ ] User Profile
-  - [ ] User Info
+  - [x] User Info
   - [ ] Favorites
   - [ ] Friends
 - [ ] Homepage
