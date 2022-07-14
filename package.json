@@ -1,6 +1,5 @@
 {
   "dependencies": {
-    "react-simple-maps": "^2.3.0",
-    "react-tiny-popover": "^7.1.0"
+    "react-simple-maps": "^2.3.0"
   }
 }

@@ -1,7 +1,5 @@
 import React from "react";
 import { geoCentroid } from "d3-geo";
-import Popover from 'react-bootstrap/Popover';
-import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import {
   ComposableMap,
   Geographies,
@@ -28,15 +26,9 @@ const offsets = {
   DC: [49, 21]
 };
 
-function handleMouseClick(geo) {
-  console.log(geo.properties.name);
+function handleMouseClick(key) {
+  console.log(key);
 }
-
-const popover = (geo) => (
-  <Popover className="popover" id="popover-basic" key={geo.rsmKey}>
-    <Popover.Header as="h3">{geo.properties.name}</Popover.Header>
-  </Popover>
-)
 
 const Map = () => {
   return (
@@ -45,15 +37,15 @@ const Map = () => {
         {({ geographies }) => (
           <>
             {geographies.map(geo => (
-              <OverlayTrigger trigger="click" placement="left" overlay={() => popover(geo)} rootClose={true} onHide={() => {show = false}}>
-                <Geography
-                  key={geo.rsmKey}
-                  stroke="#FFF"
-                  geography={geo}
-                  fill="#DDD"
-                  className="state"
-                />
-              </OverlayTrigger>
+              <Geography
+                key={geo.rsmKey}
+                stroke="#FFF"
+                geography={geo}
+                fill="#DDD"
+                onMouseDown={() => {
+                  handleMouseClick(geo.properties.name);
+                }}
+              />
             ))}
             {geographies.map(geo => {
               const centroid = geoCentroid(geo);
