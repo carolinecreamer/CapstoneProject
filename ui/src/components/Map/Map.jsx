@@ -9,6 +9,7 @@ import {
   Marker,
   Annotation
 } from "react-simple-maps";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 import allStates from "../../../public/allstates.json";
 
@@ -28,12 +29,6 @@ const offsets = {
   DC: [49, 21]
 };
 
-function handleMouseClick(key) {
-  console.log(key);
-}
-
-
-
 const Map = () => {
   return (
     <ComposableMap projection="geoAlbersUsa">
@@ -41,43 +36,36 @@ const Map = () => {
         {({ geographies }) => (
           <>
             {geographies.map(geo => (
-              <OverlayTrigger
-              trigger="click"
-              key={geo.rsmKey}
-              placement="right"
-              overlay={
-                <Popover id={`popover-positioned-right`}>
-                  <Popover.Header as="h3">{`Popover right`}</Popover.Header>
-                  <Popover.Body>
-                    <strong>Holy guacamole!</strong> Check this info.
-                  </Popover.Body>
-                </Popover>
-              }
-              >
-                <Geography
-                  key={geo.rsmKey}
-                  stroke="#FFF"
-                  geography={geo}
-                  fill="#DDD"
-                  onMouseDown={() => {
-                    handleMouseClick(geo.properties.name);
-                  }}
-                />
-              </OverlayTrigger>
+              <Geography
+                key={geo.rsmKey}
+                stroke="#FFF"
+                geography={geo}
+                fill="#DDD"
+                className="state"
+              />
             ))}
             {geographies.map(geo => {
               const centroid = geoCentroid(geo);
               const cur = allStates.find(s => s.val === geo.id);
               return (
+
+
                 <g key={geo.rsmKey + "-name"}>
                   {cur &&
                     centroid[0] > -160 &&
                     centroid[0] < -67 &&
                     (Object.keys(offsets).indexOf(cur.id) === -1 ? (
                       <Marker coordinates={centroid}>
+                        <OverlayTrigger key={geo.rsmKey} rootClose trigger="click" placement="right" overlay={
+                            <Popover className="popover" id="popover-basic" key="state">
+                              <Popover.Header as="h3">{geo.properties.name}</Popover.Header>
+                            </Popover>
+                          }>
+
                         <text y="2" fontSize={14} textAnchor="middle">
                           {cur.id}
                         </text>
+                      </OverlayTrigger>
                       </Marker>
                     ) : (
                       <Annotation
@@ -85,9 +73,16 @@ const Map = () => {
                         dx={offsets[cur.id][0]}
                         dy={offsets[cur.id][1]}
                       >
+                        <OverlayTrigger key={geo.rsmKey} rootClose trigger="click" placement="right" overlay={
+                          <Popover className="popover" id="popover-basic" key="state">
+                            <Popover.Header as="h3">{geo.properties.name}</Popover.Header>
+                          </Popover>
+                        }>
+
                         <text x={4} fontSize={14} alignmentBaseline="middle">
                           {cur.id}
                         </text>
+                      </OverlayTrigger>
                       </Annotation>
                     ))}
                 </g>
