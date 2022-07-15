@@ -1,554 +1,842 @@
 [
     {
-       "Alabama": {
-        "Abbreviation": "AL",
-        "Huntsville": {
-            "markerOffset": 0,
-            "coordinates": [0, 0]
-        },
-        "Birmingham": {
-            "markerOffset": 0,
-            "coordinates": [0, 0]
-        }
-       },
-       "Alaska": {
-        "Abbreviation": "AK",
-        "Anchorage": {
-            "markerOffset": 0,
-            "coordinates": [0, 0]
-        },
-        "Juneau": {
-            "markerOffset": 0,
-            "coordinates": [0, 0]
-        }
-       },
-       "Arizona": {
-        "Abbreviation": "AZ",
-        "Phoenix": {
-            "markerOffset": 0,
-            "coordinates": [0, 0]
-        },
-        "Tucson": {
-            "markerOffset": 0,
-            "coordinates": [0, 0]
-        }
-       },
-       "Arkansas": {
-        "Abbreviation": "AR",
-        "Little Rock": {
-            "markerOffset": 0,
-            "coordinates": [0, 0]
-        },
-        "Fort Smith": {
-            "markerOffset": 0,
-            "coordinates": [0, 0]
-        }
-       },
-       "California": {
-        "Abbreviation": "CA",
-        "Los Angeles": {
-            "markerOffset": 0,
-            "coordinates": [0, 0]
-        },
-        "San Diego": {
-            "markerOffset": 0,
-            "coordinates": [0, 0]
-        }
-       },
-       "Colorado": {
-        "Abbreviation": "CO",
-        "Denver": {
-            "markerOffset": 0,
-            "coordinates": [0, 0]
-        },
-        "Colorado Springs": {
-            "markerOffset": 0,
-            "coordinates": [0, 0]
-        }
-       },
-       "Connecticut": {
-        "Abbreviation": "CT",
-        "Bridgeport": {
-            "markerOffset": 0,
-            "coordinates": [0, 0]
-        },
-        "New Haven": {
-            "markerOffset": 0,
-            "coordinates": [0, 0]
-        }
-       },
-       "Delaware": {
-        "Abbreviation": "DE",
-        "Wilmington": {
-            "markerOffset": 0,
-            "coordinates": [0, 0]
-        },
-        "Dover": {
-            "markerOffset": 0,
-            "coordinates": [0, 0]
-        }
-       },
-       "Florida": {
-        "Abbreviation": "FL",
-        "Jacksonville": {
-            "markerOffset": 0,
-            "coordinates": [0, 0]
-        },
-        "Miami": {
-            "markerOffset": 0,
-            "coordinates": [0, 0]
-        }
-       },
-       "Georgia": {
-        "Abbreviation": "GA",
-        "Atlanta": {
-            "markerOffset": 0,
-            "coordinates": [0, 0]
-        },
-        "Columbus": {
-            "markerOffset": 0,
-            "coordinates": [0, 0]
-        }
-       },
-       "Hawaii": {
-        "Abbreviation": "HI",
-        "Honolulu": {
-            "markerOffset": 0,
-            "coordinates": [0, 0]
-        },
-        "Pearl City": {
-            "markerOffset": 0,
-            "coordinates": [0, 0]
-        }
-       },
-       "Idaho": {
-        "Abbreviation": "ID",
-        "Boise": {
-            "markerOffset": 0,
-            "coordinates": [0, 0]
-        },
-        "Meridian": {
-            "markerOffset": 0,
-            "coordinates": [0, 0]
-        }
-       },
-       "Illinois": {
-        "Abbreviation": "IL",
-        "Chicago": {
-            "markerOffset": 0,
-            "coordinates": [0, 0]
-        },
-        "Aurora": {
-            "markerOffset": 0,
-            "coordinates": [0, 0]
-        }
-       },
-       "Indiana": {
-        "Abbreviation": "IN",
-        "Indianapolis": {
-            "markerOffset": 0,
-            "coordinates": [0, 0]
-        },
-        "Fort Worth": {
-            "markerOffset": 0,
-            "coordinates": [0, 0]
-        }
-       },
-       "Iowa": {
-        "Abbreviation": "IA",
-        "Des Moines": {
-            "markerOffset": 0,
-            "coordinates": [0, 0]
-        },
-        "Cedar Rapids": {
-            "markerOffset": 0,
-            "coordinates": [0, 0]
-        }
-       },
-       "Kansas": {
-        "Abbreviation": "KS",
-        "Wichita": {
-            "markerOffset": 0,
-            "coordinates": [0, 0]
-        },
-        "Overland Park": {
-            "markerOffset": 0,
-            "coordinates": [0, 0]
-        }
-       },
-       "Kentucky": {
-        "Abbreviation": "KY",
-        "Louisville": {
-            "markerOffset": 0,
-            "coordinates": [0, 0]
-        },
-        "Lexington": {
-            "markerOffset": 0,
-            "coordinates": [0, 0]
-        }
-       },
-       "Louisiana": {
-        "Abbreviation": "LA",
-        "New Orleans": {
-            "markerOffset": 0,
-            "coordinates": [0, 0]
-        },
-        "Baton Rouge": {
-            "markerOffset": 0,
-            "coordinates": [0, 0]
-        }
-       },
-       "Maine": {
-        "Abbreviation": "ME",
-        "Portland": {
-            "markerOffset": 0,
-            "coordinates": [0, 0]
-        },
-        "Lewiston": {
-            "markerOffset": 0,
-            "coordinates": [0, 0]
-        }
-       },
-       "Maryland": {
-        "Abbreviation": "MD",
-        "Baltimore": {
-            "markerOffset": 0,
-            "coordinates": [0, 0]
-        },
-        "Columbia": {
-            "markerOffset": 0,
-            "coordinates": [0, 0]
-        }
-       },
-       "Massachusetts": {
-        "Abbreviation": "MA",
-        "Boston": {
-            "markerOffset": 0,
-            "coordinates": [0, 0]
-        },
-        "Worcester": {
-            "markerOffset": 0,
-            "coordinates": [0, 0]
-        }
-       },
-       "Michigan": {
-        "Abbreviation": "MI",
-        "Detroit": {
-            "markerOffset": 0,
-            "coordinates": [0, 0]
-        },
-        "Grand Rapids": {
-            "markerOffset": 0,
-            "coordinates": [0, 0]
-        }
-       },
-       "Minnesota": {
-        "Abbreviation": "MN",
-        "Minneapolis": {
-            "markerOffset": 0,
-            "coordinates": [0, 0]
-        },
-        "Saint Paul": {
-            "markerOffset": 0,
-            "coordinates": [0, 0]
-        }
-       },
-       "Mississippi": {
-        "Abbreviation": "MS",
-        "Jackson": {
-            "markerOffset": 0,
-            "coordinates": [0, 0]
-        },
-        "Gulf Port": {
-            "markerOffset": 0,
-            "coordinates": [0, 0]
-        }
-       },
-       "Missouri": {
-        "Abbreviation": "MO",
-        "Kansas City": {
-            "markerOffset": 0,
-            "coordinates": [0, 0]
-        },
-        "Saint Louis": {
-            "markerOffset": 0,
-            "coordinates": [0, 0]
-        }
-       },
-       "Montana": {
-        "Abbreviation": "MT",
-        "Billings": {
-            "markerOffset": 0,
-            "coordinates": [0, 0]
-        },
-        "Missoula": {
-            "markerOffset": 0,
-            "coordinates": [0, 0]
-        }
-       },
-       "Nebraska": {
-        "Abbreviation": "NE",
-        "Omaha": {
-            "markerOffset": 0,
-            "coordinates": [0, 0]
-        },
-        "Lincoln": {
-            "markerOffset": 0,
-            "coordinates": [0, 0]
-        }
-       },
-       "Nevada": {
-        "Abbreviation": "NV",
-        "Las Vegas": {
-            "markerOffset": 0,
-            "coordinates": [0, 0]
-        },
-        "Henderson": {
-            "markerOffset": 0,
-            "coordinates": [0, 0]
-        }
-       },
-       "New Hampshire": {
-        "Abbreviation": "NH",
-        "Manchester": {
-            "markerOffset": 0,
-            "coordinates": [0, 0]
-        },
-        "Nashua": {
-            "markerOffset": 0,
-            "coordinates": [0, 0]
-        }
-       },
-       "New Jersey": {
-        "Abbreviation": "NJ",
-        "Newark": {
-            "markerOffset": 0,
-            "coordinates": [0, 0]
-        },
-        "Jersey City": {
-            "markerOffset": 0,
-            "coordinates": [0, 0]
-        }
-       },
-       "New Mexico": {
-        "Abbreviation": "NM",
-        "Alburquerque": {
-            "markerOffset": 0,
-            "coordinates": [0, 0]
-        },
-        "Las Cruces": {
-            "markerOffset": 0,
-            "coordinates": [0, 0]
-        }
-       },
-       "New York": {
-        "Abbreviation": "NY",
-        "New York City": {
-            "markerOffset": 0,
-            "coordinates": [0, 0]
-        },
-        "Hempstead": {
-            "markerOffset": 0,
-            "coordinates": [0, 0]
-        }
-       },
-       "North Carolina": {
-        "Abbreviation": "NC",
-        "Charlotte": {
-            "markerOffset": 0,
-            "coordinates": [0, 0]
-        },
-        "Raleigh": {
-            "markerOffset": 0,
-            "coordinates": [0, 0]
-        }
-       },
-       "North Dakota": {
-        "Abbreviation": "ND",
-        "Fargo": {
-            "markerOffset": 0,
-            "coordinates": [0, 0]
-        },
-        "Bismarck": {
-            "markerOffset": 0,
-            "coordinates": [0, 0]
-        }
-       },
-       "Ohio": {
-        "Abbreviation": "OH",
-        "Columbus": {
-            "markerOffset": 0,
-            "coordinates": [0, 0]
-        },
-        "Cleveland": {
-            "markerOffset": 0,
-            "coordinates": [0, 0]
-        }
-       },
-       "Oklahoma": {
-        "Abbreviation": "OK",
-        "Oklahoma City": {
-            "markerOffset": 0,
-            "coordinates": [0, 0]
-        },
-        "Tulsa": {
-            "markerOffset": 0,
-            "coordinates": [0, 0]
-        }
-       },
-       "Oregon": {
-        "Abbreviation": "OR",
-        "Portland": {
-            "markerOffset": 0,
-            "coordinates": [0, 0]
-        },
-        "Salem": {
-            "markerOffset": 0,
-            "coordinates": [0, 0]
-        }
-       },
-       "Pennsylvania": {
-        "Abbreviation": "PA",
-        "Philadelphia": {
-            "markerOffset": 0,
-            "coordinates": [0, 0]
-        },
-        "Pittsburgh": {
-            "markerOffset": 0,
-            "coordinates": [0, 0]
-        }
-       },
-       "Rhode Island": {
-        "Abbreviation": "RI",
-        "Providence": {
-            "markerOffset": 0,
-            "coordinates": [0, 0]
-        },
-        "Cranston": {
-            "markerOffset": 0,
-            "coordinates": [0, 0]
-        }
-       },
-       "South Carolina": {
-        "Abbreviation": "SC",
-        "Charleston": {
-            "markerOffset": 0,
-            "coordinates": [0, 0]
-        },
-        "Columbia": {
-            "markerOffset": 0,
-            "coordinates": [0, 0]
-        }
-       },
-       "South Dakota": {
-        "Abbreviation": "SD",
-        "Sioux Falls": {
-            "markerOffset": 0,
-            "coordinates": [0, 0]
-        },
-        "Rapid City": {
-            "markerOffset": 0,
-            "coordinates": [0, 0]
-        }
-       },
-       "Tennessee": {
-        "Abbreviation": "TN",
-        "Nashville": {
-            "markerOffset": 0,
-            "coordinates": [0, 0]
-        },
-        "Memphis": {
-            "markerOffset": 0,
-            "coordinates": [0, 0]
-        }
-       },
-       "Texas": {
-        "Abbreviation": "TX",
-        "Houston": {
-            "markerOffset": 0,
-            "coordinates": [0, 0]
-        },
-        "San Antonio": {
-            "markerOffset": 0,
-            "coordinates": [0, 0]
-        }
-       },
-       "Utah": {
-        "Abbreviation": "UT",
-        "Salt Lake City": {
-            "markerOffset": 0,
-            "coordinates": [0, 0]
-        },
-        "West Valley City": {
-            "markerOffset": 0,
-            "coordinates": [0, 0]
-        }
-       },
-       "Vermont": {
-        "Abbreviation": "VT",
-        "Burlington": {
-            "markerOffset": 0,
-            "coordinates": [0, 0]
-        },
-        "Essex": {
-            "markerOffset": 0,
-            "coordinates": [0, 0]
-        }
-       },
-       "Virginia": {
-        "Abbreviation": "VA",
-        "Virginia Beach": {
-            "markerOffset": 0,
-            "coordinates": [0, 0]
-        },
-        "Chesapeake": {
-            "markerOffset": 0,
-            "coordinates": [0, 0]
-        }
-       },
-       "Washington": {
-        "Abbreviation": "WA",
-        "Seattle": {
-            "markerOffset": 0,
-            "coordinates": [0, 0]
-        },
-        "Spokane": {
-            "markerOffset": 0,
-            "coordinates": [0, 0]
-        }
-       },
-       "West Virginia": {
-        "Abbreviation": "WV",
-        "Charleston": {
-            "markerOffset": 0,
-            "coordinates": [0, 0]
-        },
-        "Huntington": {
-            "markerOffset": 0,
-            "coordinates": [0, 0]
-        }
-       },
-       "Wisconsin": {
-        "Abbreviation": "WI",
-        "Milwaukee": {
-            "markerOffset": 0,
-            "coordinates": [0, 0]
-        },
-        "Madison": {
-            "markerOffset": 0,
-            "coordinates": [0, 0]
-        }
-       },
-       "Wyoming": {
-        "Abbreviation": "WY",
-        "Cheyenne": {
-            "markerOffset": 0,
-            "coordinates": [0, 0]
-        },
-        "Casper": {
-            "markerOffset": 0,
-            "coordinates": [0, 0]
-        }
-       }
+        "name": "Alabama",
+        "abbreviation": "AL",
+        "cities": [
+            {
+                "name": "Huntsville",
+                "markerOffset": 0,
+                "coordinates": [-86.59149169921875, 34.73089129142625]
+            },
+            {
+                "name": "Birmingham",
+                "markerOffset": 0,
+                "coordinates": [-86.80503845214844, 33.52136149810032]
+            }
+
+        ]
+
+    },
+    {
+        "name": "Alaska",
+        "abbreviation": "AK",
+        "cities": [
+            {
+                "name": "Anchorage",
+                "markerOffset": 0,
+                "coordinates": [-149.8809814453125, 61.21605691399013]
+            },
+            {
+                "name": "Juneau",
+                "markerOffset": 0,
+                "coordinates": [-134.417724609375, 58.306602995027966]
+            }
+        ]
+    },
+    {
+        "name": "Arizona",
+        "abbreviation": "AZ",
+        "cities": [
+            {
+                "name": "Phoenix",
+                "markerOffset": 0,
+                "coordinates": [-112.07565307617186, 33.44977658311846]
+            },
+            {
+                "name": "Tucson",
+                "markerOffset": 0,
+                "coordinates": [-110.97015380859375, 32.224419385153006]
+            }
+        ]
+    },
+    {
+        "name": "Arkansas",
+        "abbreviation": "AR",
+        "cities": [
+            {
+                "name": "Little Rock",
+                "markerOffset": 0,
+                "coordinates": [-92.28790283203125, 34.746408378097165]
+            },
+            {
+                "name": "Fort Smith",
+                "markerOffset": 0,
+                "coordinates": [-94.40139770507811, 35.377853592996836]
+            }
+        ]
+    },
+    {
+        "name": "California",
+        "abbreviation": "CA",
+        "cities": [
+            {
+                "name": "Los Angeles",
+                "markerOffset": 0,
+                "coordinates": [-118.2465362548828, 34.05379721731628]
+            },
+            {
+                "name": "San Diego",
+                "markerOffset": 0,
+                "coordinates": [-117.15270996093749, 32.71797709835758]
+            }
+        ]
+    },
+    {
+        "name": "Colorado",
+        "abbreviation": "CO",
+        "cities": [
+            {
+                "name": "Denver",
+                "markerOffset": 0,
+                "coordinates": [-104.98466491699219, 39.73887436009367]
+            },
+            {
+                "name": "Colorado Springs",
+                "markerOffset": 0,
+                "coordinates": [-104.82742309570312, 38.83649855755879]
+            }
+        ]
+    },
+    {
+        "name": "Connecticut",
+        "abbreviation": "CT",
+        "cities": [
+            {
+                "name": "Bridgeport",
+                "markerOffset": 0,
+                "coordinates": [-73.2044792175293, 41.167412373235805]
+            },
+            {
+                "name": "New Haven",
+                "markerOffset": 0,
+                "coordinates": [-72.92604446411133, 41.30798710333936]
+            }
+        ]
+    },
+    {
+        "name": "Delaware",
+        "abbreviation": "DE",
+        "cities": [
+            {
+                "name": "Wilmington",
+                "markerOffset": 0,
+                "coordinates": [-75.54817199707031, 39.74626606218367]
+            },
+            {
+                "name": "Dover",
+                "markerOffset": 0,
+                "coordinates": [-75.52448272705078, 39.157752153690964]
+            }
+        ]
+    },
+    {
+        "name": "Florida",
+        "abbreviation": "FL",
+        "cities": [
+            {
+                "name": "Jacksonville",
+                "markerOffset": 0,
+                "coordinates": [-81.6668701171875, 30.331398006092723]
+            },
+            {
+                "name": "Miami",
+                "markerOffset": 0,
+                "coordinates": [-80.13479232788086, 25.79247254505204]
+            }
+        ]
+    },
+    {
+        "name": "Georgia",
+        "abbreviation": "GA",
+        "cities": [
+            {
+                "name": "Atlanta",
+                "markerOffset": 0,
+                "coordinates": [-84.38941955566406, 33.75003511886674]
+            },
+            {
+                "name": "Columbus",
+                "markerOffset": 0,
+                "coordinates": [-84.98783111572266, 32.46110854261062]
+            }
+        ]
+    },
+    {
+        "name": "Hawaii",
+        "abbreviation": "HI",
+        "cities": [
+            {
+                "name": "Honolulu",
+                "markerOffset": 0,
+                "coordinates": [-157.8563690185547, 21.30376887750369]
+            },
+            {
+                "name": "Pearl City",
+                "markerOffset": 0,
+                "coordinates": [-157.96966552734375, 21.400015935143976]
+            }
+        ]
+    },
+    {
+        "name": "Idaho",
+        "abbreviation": "ID",
+        "cities": [
+            {
+                "name": "Boise",
+                "markerOffset": 0,
+                "coordinates": [-116.20239257812499, 43.618182252818265]
+            },
+            {
+                "name": "Meridian",
+                "markerOffset": 0,
+                "coordinates": [-116.39053344726561, 43.60923380393403]
+            }
+        ]
+    },
+    {
+        "name": "Illinois",
+        "abbreviation": "IL",
+        "cities": [
+            {
+                "name": "Chicago",
+                "markerOffset": 0,
+                "coordinates": [-87.62772560119629, 41.90569466294521]
+            },
+            {
+                "name": "Aurora",
+                "markerOffset": 0,
+                "coordinates": [-88.31325531005858, 41.757227195758944]
+            }
+        ]
+    },
+    {
+        "name": "Indiana",
+        "abbreviation": "IN",
+        "cities": [
+            {
+                "name": "Indianapolis",
+                "markerOffset": 0,
+                "coordinates": [-86.15684509277344, 39.79376521264885]
+            },
+            {
+                "name": "Fort Wayne",
+                "markerOffset": 0,
+                "coordinates": [-85.13580322265625, 41.08090391180386]
+            }
+        ]
+    },
+    {
+        "name": "Iowa",
+        "abbreviation": "IA",
+        "cities": [
+            {
+                "name": "Des Moines",
+                "markerOffset": 0,
+                "coordinates": [-93.60420227050781, 41.59105362325491]
+            },
+            {
+                "name": "Cedar Rapids",
+                "markerOffset": 0,
+                "coordinates": [-91.67472839355469, 41.97582726102573]
+            }
+        ]
+    },
+    {
+        "name": "Kansas",
+        "abbreviation": "KS",
+        "cities": [
+            {
+                "name": "Wichita",
+                "markerOffset": 0,
+                "coordinates": [-97.33406066894531, 37.69197100839692]
+            },
+            {
+                "name": "Overland Park",
+                "markerOffset": 0,
+                "coordinates": [-94.68360900878906, 38.973289606929875]
+            }
+        ]
+    },
+    {
+        "name": "Kentucky",
+        "abbreviation": "KY",
+        "cities": [
+            {
+                "name": "Louisville",
+                "markerOffset": 0,
+                "coordinates": [-85.75790405273438, 38.25381877635746]
+            },
+            {
+                "name": "Lexington",
+                "markerOffset": 0,
+                "coordinates": [-84.50065612792967, 38.04484662140698]
+            }
+        ]
+    },
+    {
+        "name": "Louisiana",
+        "abbreviation": "LA",
+        "cities": [
+            {
+                "name": "New Orleans",
+                "markerOffset": 0,
+                "coordinates": [-90.10093688964844, 29.967427133048833]
+            },
+            {
+                "name": "Baton Rouge",
+                "markerOffset": 0,
+                "coordinates": [-91.14669799804688, 30.452225289045764]
+            }
+        ]
+    },
+    {
+        "name": "Maine",
+        "abbreviation": "ME",
+        "cities": [
+            {
+                "name": "Portland",
+                "markerOffset": 0,
+                "coordinates": [-70.25482177734375,
+                    43.66104176052085]
+            },
+            {
+                "name": "Lewiston",
+                "markerOffset": 0,
+                "coordinates": [-70.21533966064453,
+                    44.100653430004805]
+            }
+        ]
+    },
+    {
+        "name": "Maryland",
+        "abbreviation": "MD",
+        "cities": [
+            {
+                "name": "Baltimore",
+                "markerOffset": 0,
+                "coordinates": [-76.61212921142578,
+                    39.29099991499243]
+            },
+            {
+                "name": "Columbia",
+                "markerOffset": 0,
+                "coordinates": [-76.85846328735352,
+                    39.21576330385492]
+            }
+        ]
+    },
+    {
+        "name": "Massachusetts",
+        "abbreviation": "MA",
+        "cities": [
+            {
+                "name": "Boston",
+                "markerOffset": 0,
+                "coordinates": [-71.05802536010742,
+                    42.360192919586375]
+            },
+            {
+                "name": "Worcester",
+                "markerOffset": 0,
+                "coordinates": [-71.80389404296875,
+                    42.26257367891544]
+            }
+        ]
+    },
+    {
+        "name": "Michigan",
+        "abbreviation": "MI",
+        "cities": [
+            {
+                "name": "Detroit",
+                "markerOffset": 0,
+                "coordinates": [-83.04428100585938,
+                    42.33266160181509]
+            },
+            {
+                "name": "Grand Rapids",
+                "markerOffset": 0,
+                "coordinates": [-85.66520690917969,
+                    42.96295514212548]
+            }
+        ]
+    },
+    {
+        "name": "Minnesota",
+        "abbreviation": "MN",
+        "cities": [
+            {
+                "name": "Minneapolis",
+                "markerOffset": 0,
+                "coordinates": [-93.26671600341797,
+                    44.9769423923136]
+            },
+            {
+                "name": "Saint Paul",
+                "markerOffset": 0,
+                "coordinates": [-93.09230804443358,
+                    44.95070713281388]
+            }
+        ]
+    },
+    {
+        "name": "Mississippi",
+        "abbreviation": "MS",
+        "cities": [
+            {
+                "name": "Jackson",
+                "markerOffset": 0,
+                "coordinates": [-90.19844055175781,
+                    32.30918809917144]
+            },
+            {
+                "name": "Gulfport",
+                "markerOffset": 0,
+                "coordinates": [-89.09431457519531,
+                    30.36724717325868]
+            }
+        ]
+    },
+    {
+        "name": "Missouri",
+        "abbreviation": "MO",
+        "cities": [
+            {
+                "name": "Kansas City",
+                "markerOffset": 0,
+                "coordinates": [-94.58816528320312,
+                    39.10022600175347]
+            },
+            {
+                "name": "Saint Louis",
+                "markerOffset": 0,
+                "coordinates": [-90.2471923828125,
+                    38.63457282385875]
+            }
+        ]
+    },
+    {
+        "name": "Montana",
+        "abbreviation": "MT",
+        "cities": [
+            {
+                "name": "Billings",
+                "markerOffset": 0,
+                "coordinates": [-108.49960327148438, 45.78859428734741]
+            },
+            {
+                "name": "Missoula",
+                "markerOffset": 0,
+                "coordinates": [-113.9996337890625, 46.87145819560722]
+            }
+        ]
+    },
+    {
+        "name": "Nebraska",
+        "abbreviation": "NE",
+        "cities": [
+            {
+                "name": "Omaha",
+                "markerOffset": 0,
+                "coordinates": [-95.93948364257812,
+                    41.25871065195757]
+            },
+            {
+                "name": "Lincoln",
+                "markerOffset": 0,
+                "coordinates": [-96.70509338378906,
+                    40.80861223601287]
+            }
+        ]
+    },
+    {
+        "name": "Nevada",
+        "abbreviation": "NV",
+        "cities": [
+            {
+                "name": "Las Vegas",
+                "markerOffset": 0,
+                "coordinates": [-115.12298583984375,
+                    36.20660692859011]
+            },
+            {
+                "name": "Henderson",
+                "markerOffset": 0,
+                "coordinates": [-114.99114990234375,
+                    36.033552893400376]
+            }
+        ]
+    },
+    {
+        "name": "New Hampshire",
+        "abbreviation": "NH",
+        "cities": [
+            {
+                "name": "Manchester",
+                "markerOffset": 0,
+                "coordinates": [-71.45439147949219,
+                    42.99636121369774]
+            },
+            {
+                "name": "Nashua",
+                "markerOffset": 0,
+                "coordinates": [-71.46829605102539,
+                    42.76591842249659]
+            }
+        ]
+    },
+    {
+        "name": "New Jersey",
+        "abbreviation": "NJ",
+        "cities": [
+            {
+                "name": "Newark",
+                "markerOffset": 0,
+                "coordinates": [-74.17247772216797,
+                    40.73581157695217]
+            },
+            {
+                "name": "Jersey City",
+                "markerOffset": 0,
+                "coordinates": [-74.04510498046875,
+                    40.721632175452626]
+            }
+        ]
+    },
+    {
+        "name": "New Mexico",
+        "abbreviation": "NM",
+        "cities": [
+            {
+                "name": "Alburquerque",
+                "markerOffset": 0,
+                "coordinates": [-106.64703369140625,
+                    35.08283179279934]
+            },
+            {
+                "name": "Las Cruces",
+                "markerOffset": 0,
+                "coordinates": [-106.77749633789062,
+                    32.314410976167025]
+            }
+        ]
+    },
+    {
+        "name": "New York",
+        "abbreviation": "NY",
+        "cities": [
+            {
+                "name": "New York",
+                "markerOffset": 0,
+                "coordinates": [-74.00321960449219,
+                    40.713955826286046]
+            },
+            {
+                "name": "Hempstead",
+                "markerOffset": 0,
+                "coordinates": [-73.61886978149414,
+                    40.70634365699408]
+            }
+        ]
+    },
+    {
+        "name": "North Carolina",
+        "abbreviation": "NC",
+        "cities": [
+            {
+                "name": "Charlotte",
+                "markerOffset": 0,
+                "coordinates": [-80.84495544433594,
+                    35.225989644552726]
+            },
+            {
+                "name": "Raleigh",
+                "markerOffset": 0,
+                "coordinates": [-78.64013671875,
+                    35.7804995708344]
+            }
+        ]
+    },
+    {
+        "name": "North Dakota",
+        "abbreviation": "ND",
+        "cities": [
+            {
+                "name": "Fargo",
+                "markerOffset": 0,
+                "coordinates": [-96.79023742675781,
+                    46.875682778386675]
+            },
+            {
+                "name": "Bismarck",
+                "markerOffset": 0,
+                "coordinates": [-100.78033447265625,
+                    46.80851951372979]
+            }
+        ]
+    },
+    {
+        "name": "Ohio",
+        "abbreviation": "OH",
+        "cities": [
+            {
+                "name": "Columbus",
+                "markerOffset": 0,
+                "coordinates": [-82.99964904785156,
+                    39.96238554917605]
+            },
+            {
+                "name": "Cleveland",
+                "markerOffset": 0,
+                "coordinates": [-81.69158935546875,
+                    41.50034959128928]
+            }
+        ]
+    },
+    {
+        "name": "Oklahoma",
+        "abbreviation": "OK",
+        "cities": [
+            {
+                "name": "Oklahoma City",
+                "markerOffset": 0,
+                "coordinates": [-97.51670837402344,
+                    35.47465079479573]
+            },
+            {
+                "name": "Tulsa",
+                "markerOffset": 0,
+                "coordinates": [-95.92437744140625,
+                    36.132883744079486]
+            }
+        ]
+    },
+    {
+        "name": "Oregon",
+        "abbreviation": "OR",
+        "cities": [
+            {
+                "name": "Portland",
+                "markerOffset": 0,
+                "coordinates": [-122.66647338867188, 45.51885728113613]
+            },
+            {
+                "name": "Salem",
+                "markerOffset": 0,
+                "coordinates": [-123.03451538085939,
+                    44.939043166353606]
+            }
+        ]
+    },
+    {
+        "name": "Pennsylvania",
+        "abbreviation": "PA",
+        "cities": [
+            {
+                "name": "Philadelphia",
+                "markerOffset": 0,
+                "coordinates": [-75.16090393066406,
+                    39.95291166179976]
+            },
+            {
+                "name": "Pittsburgh",
+                "markerOffset": 0,
+                "coordinates": [-79.98596191406249,
+                    40.44276659332215]
+            }
+        ]
+    },
+    {
+        "name": "Rhode Island",
+        "abbreviation": "RI",
+        "cities": [
+            {
+                "name": "Providence",
+                "markerOffset": 0,
+                "coordinates": [0, 0]
+            },
+            {
+                "name": "Cranston",
+                "markerOffset": 0,
+                "coordinates": [0, 0]
+            }
+        ]
+    },
+    {
+        "name": "South Carolina",
+        "abbreviation": "SC",
+        "cities": [
+            {
+                "name": "Charleston",
+                "markerOffset": 0,
+                "coordinates": [0, 0]
+            },
+            {
+                "name": "Columbia",
+                "markerOffset": 0,
+                "coordinates": [0, 0]
+            }
+        ]
+    },
+    {
+        "name": "South Dakota",
+        "abbreviation": "SD",
+        "cities": [
+            {
+                "name": "Sioux Falls",
+                "markerOffset": 0,
+                "coordinates": [0, 0]
+            },
+            {
+                "name": "Rapid City",
+                "markerOffset": 0,
+                "coordinates": [0, 0]
+            }
+        ]
+    },
+    {
+        "name": "Tennessee",
+        "abbreviation": "TN",
+        "cities": [
+            {
+                "name": "Nashville",
+                "markerOffset": 0,
+                "coordinates": [0, 0]
+            },
+            {
+                "name": "Memphis",
+                "markerOffset": 0,
+                "coordinates": [0, 0]
+            }
+        ]
+    },
+    {
+        "name": "Texas",
+        "abbreviation": "TX",
+        "cities": [
+            {
+                "name": "Houston",
+                "markerOffset": 0,
+                "coordinates": [29.7604, 95.3698]
+            },
+            {
+                "name": "San Antonio",
+                "markerOffset": 0,
+                "coordinates": [0, 0]
+            }
+        ]
+    },
+    {
+        "name": "Utah",
+        "abbreviation": "UT",
+        "cities": [
+            {
+                "name": "Salt Lake City",
+                "markerOffset": 0,
+                "coordinates": [0, 0]
+            },
+            {
+                "name": "West Valley City",
+                "markerOffset": 0,
+                "coordinates": [0, 0]
+            }
+        ]
+    },
+    {
+        "name": "Vermont",
+        "abbreviation": "VT",
+        "cities": [
+            {
+                "name": "Burlington",
+                "markerOffset": 0,
+                "coordinates": [0, 0]
+            },
+            {
+                "name": "Essex",
+                "markerOffset": 0,
+                "coordinates": [0, 0]
+            }
+        ]
+    },
+    {
+        "name": "Virginia",
+        "abbreviation": "VA",
+        "cities": [
+            {
+                "name": "Virginia Beach",
+                "markerOffset": 0,
+                "coordinates": [0, 0]
+            },
+            {
+                "name": "Chesapeake",
+                "markerOffset": 0,
+                "coordinates": [0, 0]
+            }
+        ]
+    },
+    {
+        "name": "Washington",
+        "abbreviation": "WA",
+        "cities": [
+            {
+                "name": "Seattle",
+                "markerOffset": 0,
+                "coordinates": [-122.32933044433592,
+                    47.60431120244565]
+            },
+            {
+                "name": "Spokane",
+                "markerOffset": 0,
+                "coordinates": [-117.42050170898436, 47.65891296651944]
+            }
+        ]
+    },
+    {
+        "name": "West Virginia",
+        "abbreviation": "WV",
+        "cities": [
+            {
+                "name": "Charleston",
+                "markerOffset": 0,
+                "coordinates": [0, 0]
+            },
+            {
+                "name": "Huntington",
+                "markerOffset": 0,
+                "coordinates": [0, 0]
+            }
+        ]
+    },
+    {
+        "name": "Wisconsin",
+        "abbreviation": "WI",
+        "cities": [
+            {
+                "name": "Milwaukee",
+                "markerOffset": 0,
+                "coordinates": [0, 0]
+            },
+            {
+                "name": "Madison",
+                "markerOffset": 0,
+                "coordinates": [0, 0]
+            }
+        ]
+    },
+    {
+        "name": "Wyoming",
+        "abbreviation": "WY",
+        "cities": [
+            {
+                "name": "Cheyenne",
+                "markerOffset": 0,
+                "coordinates": [0, 0]
+            },
+            {
+                "name": "Casper",
+                "markerOffset": 0,
+                "coordinates": [0, 0]
+            }
+        ]
     }
 ]

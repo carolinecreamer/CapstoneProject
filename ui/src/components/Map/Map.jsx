@@ -12,6 +12,7 @@ import {
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import allStates from "../../../public/allstates.json";
+import states from "../../../public/cityData.json";
 
 const geoUrl = "https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json";
 
@@ -29,12 +30,11 @@ const offsets = {
   DC: [49, 21]
 };
 
+console.log(states);
 
-// Iterates over each state and renders a "Geography" component (image of the state). Then iterates over each state and adds an abbreviation
-// label to each state. Abbreviations are enclosed in an overlay trigger component that renders a popover when the abbreviation is clicked on
 const Map = () => {
   return (
-    <ComposableMap projection="geoAlbersUsa">
+    <ComposableMap projection="geoAlbers">
       <Geographies geography={geoUrl}>
         {({ geographies }) => (
           <>
@@ -77,17 +77,12 @@ const Map = () => {
                         dx={offsets[cur.id][0]}
                         dy={offsets[cur.id][1]}
                       >
-                        <OverlayTrigger key={geo.rsmKey} rootClose trigger="click" placement="right" overlay={
-                          <Popover className="popover" id="popover-basic" key="state">
-                            <Popover.Header as="h3">{geo.properties.name}</Popover.Header>
-                            <Popover.Body>Api call using name as search param here</Popover.Body>
-                          </Popover>
-                        }>
+
 
                         <text x={4} fontSize={14} alignmentBaseline="middle">
                           {cur.id}
                         </text>
-                      </OverlayTrigger>
+
                       </Annotation>
                     ))}
                 </g>
@@ -96,6 +91,27 @@ const Map = () => {
           </>
         )}
       </Geographies>
+
+      {
+        states.map((state) => (
+          state.cities.map(({name, coordinates}) => {
+            console.log(name);
+            console.log(coordinates);
+
+            return (
+              <OverlayTrigger key={name} rootClose trigger="click" placement="right" overlay={
+                <Popover className="popover" id="popover-basic" key="state">
+                  <Popover.Header as="h3">{name}</Popover.Header>
+                  <Popover.Body>Api call using name as search param here</Popover.Body>
+                </Popover>
+              }>
+            <Marker key={name} coordinates={coordinates}>
+                <circle r={5} fill="#F00" stroke="#fff" strokeWidth={2} />
+            </Marker></OverlayTrigger>)
+          })
+        )
+        )
+      }
     </ComposableMap>
   );
 };
