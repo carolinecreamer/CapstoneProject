@@ -29,6 +29,9 @@ const offsets = {
   DC: [49, 21]
 };
 
+
+// Iterates over each state and renders a "Geography" component (image of the state). Then iterates over each state and adds an abbreviation
+// label to each state. Abbreviations are enclosed in an overlay trigger component that renders a popover when the abbreviation is clicked on
 const Map = () => {
   return (
     <ComposableMap projection="geoAlbersUsa">
@@ -59,6 +62,7 @@ const Map = () => {
                         <OverlayTrigger key={geo.rsmKey} rootClose trigger="click" placement="right" overlay={
                             <Popover className="popover" id="popover-basic" key="state">
                               <Popover.Header as="h3">{geo.properties.name}</Popover.Header>
+                              <Popover.Body>Api call using name as search param here</Popover.Body>
                             </Popover>
                           }>
 
@@ -76,6 +80,7 @@ const Map = () => {
                         <OverlayTrigger key={geo.rsmKey} rootClose trigger="click" placement="right" overlay={
                           <Popover className="popover" id="popover-basic" key="state">
                             <Popover.Header as="h3">{geo.properties.name}</Popover.Header>
+                            <Popover.Body>Api call using name as search param here</Popover.Body>
                           </Popover>
                         }>
 
