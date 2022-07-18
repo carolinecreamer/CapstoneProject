@@ -1,5 +1,8 @@
 import * as React from "react"
 import "./LoginForm.css"
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
+import Card from 'react-bootstrap/Card';
 import axios from "axios"
 import * as config from "../../config"
 
@@ -18,8 +21,8 @@ export default function LoginForm({handleLogin}) {
                 const res = await axios.post(`${config.API_BASE_URL}/auth/login`, {
                     "username" : username.current.value,
                     "password" : password.current.value
-                    })                
-                handleLogin(res.data.user)    
+                    })
+                handleLogin(res.data.user)
             } catch (err) {
                 alert(err)
                 console.log(err)
@@ -27,19 +30,23 @@ export default function LoginForm({handleLogin}) {
         }
         login()
     }
-  
+
     return (
-      <form onSubmit={handleSubmit}>
-        <div className="title">Login</div>
-        <label>
-          <span>Username</span>
-          <input ref={username}></input>
-        </label>
-        <label>
-          <span>Password</span>
-          <input type="password" ref={password}></input>
-        </label>
-        <button type="submit">Login</button>
-      </form>
+      <Card className="login-card">
+        <Card.Body>
+          <Card.Title className="form-title">Login</Card.Title>
+          <Form onSubmit={handleSubmit}>
+            <Form.Group>
+              <Form.Label>Username</Form.Label>
+              <Form.Control ref={username}></Form.Control>
+            </Form.Group>
+            <Form.Group>
+              <Form.Label>Password</Form.Label>
+              <Form.Control type="password" ref={password}></Form.Control>
+            </Form.Group>
+            <Button type="submit" className="login-button">Login</Button>
+          </Form>
+        </Card.Body>
+      </Card>
     )
 }
