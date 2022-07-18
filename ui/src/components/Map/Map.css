@@ -12,11 +12,3 @@ svg {
     display: inline-block;
     vertical-align: middle;
 }
-
-
-.popover-star {
-    position: fixed;
-    top: 0;
-    right: 0;
-    margin: 10px;
-}

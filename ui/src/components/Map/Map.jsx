@@ -31,6 +31,9 @@ const offsets = {
   DC: [49, 21]
 };
 
+const MIN_US_LONGITUDE = -160;
+const MAX_US_LONGITUDE = -67;
+
 const Map = () => {
   const [starred, setStarred] = useState(false);
   return (
@@ -55,8 +58,8 @@ const Map = () => {
               return (
                 <g key={geo.rsmKey + "-name"}>
                   {cur &&
-                    centroid[0] > -160 &&
-                    centroid[0] < -67 &&
+                    centroid[0] > MIN_US_LONGITUDE &&
+                    centroid[0] < MAX_US_LONGITUDE &&
                     (Object.keys(offsets).indexOf(cur.id) === -1 ? (
                       <Marker coordinates={centroid}>
                         <text y="2" fontSize={14} textAnchor="middle">
