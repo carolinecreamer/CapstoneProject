@@ -13,13 +13,13 @@ Core Features
   - [x] User Info
   - [ ] Favorites
   - [ ] Friends
-- [ ] Homepage
+- [x] Homepage
 - [ ] Interactive map
-   - [ ] User can view map display
+   - [x] User can view map display
    - [ ] Cities information displays on click
    - [ ] View friends on map
    - [ ] View saved places on map
-   - [ ] At least 2 cities per state
+   - [x] At least 2 cities per state
 
 Stretch Features
 - [ ] API call to RealtyMole to view sale prices
