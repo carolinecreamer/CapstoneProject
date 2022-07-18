@@ -1,4 +1,5 @@
 import React from "react";
+import { useState, useEffect } from 'react'
 import { geoCentroid } from "d3-geo";
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import { BsStar, BsStarFill } from "react-icons/bs";
@@ -33,6 +34,7 @@ const offsets = {
 };
 
 const Map = () => {
+  const [starred, setStarred] = useState(false);
   return (
     <ComposableMap projection="geoAlbers">
       <Geographies geography={geoUrl}>
@@ -93,7 +95,12 @@ const Map = () => {
             <Marker key={name} coordinates={coordinates}>
               <OverlayTrigger key={name} rootClose trigger="click" placement="right" overlay={
                 <Popover className="popover" id="popover-basic" key="state">
-                  <Popover.Header as="h4"><h4 className="popover-title">{name}</h4><BsStar className="popover-star"/></Popover.Header>
+                  <Popover.Header as="h4">
+                    <h4 className="popover-title">{name}</h4>
+                    { starred ?
+                    <BsStarFill className="popover-star" onClick={() => setStarred(!starred)}/> :
+                    <BsStar className="popover-star" onClick={() => setStarred(!starred)}/> }
+                  </Popover.Header>
 
                   <Popover.Body>Api call using name as search param here</Popover.Body>
                 </Popover>}>
