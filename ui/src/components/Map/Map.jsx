@@ -95,7 +95,7 @@ const Map = () => {
             <Marker key={name} coordinates={coordinates}>
               <OverlayTrigger key={name} rootClose trigger="click" placement="right" overlay={
                 <Popover className="popover" id="popover-basic" key="state">
-                  <Popover.Header as="h4">
+                  <Popover.Header >
                     <h4 className="popover-title">{name}</h4>
                     { starred ?
                     <BsStarFill className="popover-star" onClick={() => setStarred(!starred)}/> :
