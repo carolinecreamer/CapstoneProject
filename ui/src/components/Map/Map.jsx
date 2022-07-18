@@ -30,14 +30,13 @@ const offsets = {
   DC: [49, 21]
 };
 
-console.log(states);
-
 const Map = () => {
   return (
     <ComposableMap projection="geoAlbers">
       <Geographies geography={geoUrl}>
         {({ geographies }) => (
           <>
+          {/* Maps over each state to create a Geography object for each state -> Geography object is the state image on the map */}
             {geographies.map(geo => (
               <Geography
                 key={geo.rsmKey}
@@ -47,29 +46,20 @@ const Map = () => {
                 className="state"
               />
             ))}
+            {/* Maps over each state to add a label to each state*/}
             {geographies.map(geo => {
               const centroid = geoCentroid(geo);
               const cur = allStates.find(s => s.val === geo.id);
               return (
-
-
                 <g key={geo.rsmKey + "-name"}>
                   {cur &&
                     centroid[0] > -160 &&
                     centroid[0] < -67 &&
                     (Object.keys(offsets).indexOf(cur.id) === -1 ? (
                       <Marker coordinates={centroid}>
-                        <OverlayTrigger key={geo.rsmKey} rootClose trigger="click" placement="right" overlay={
-                            <Popover className="popover" id="popover-basic" key="state">
-                              <Popover.Header as="h3">{geo.properties.name}</Popover.Header>
-                              <Popover.Body>Api call using name as search param here</Popover.Body>
-                            </Popover>
-                          }>
-
                         <text y="2" fontSize={14} textAnchor="middle">
                           {cur.id}
                         </text>
-                      </OverlayTrigger>
                       </Marker>
                     ) : (
                       <Annotation
@@ -93,21 +83,19 @@ const Map = () => {
       </Geographies>
 
       {
+        // Maps over each city in each state to add a marker on its location. The markers are encapsulated by an Overlay Trigger so that a
+        // popup window appears with info about the city, when the marker is clicked on
         states.map((state) => (
           state.cities.map(({name, coordinates}) => {
-            console.log(name);
-            console.log(coordinates);
-
             return (
+            <Marker key={name} coordinates={coordinates}>
               <OverlayTrigger key={name} rootClose trigger="click" placement="right" overlay={
                 <Popover className="popover" id="popover-basic" key="state">
                   <Popover.Header as="h3">{name}</Popover.Header>
                   <Popover.Body>Api call using name as search param here</Popover.Body>
-                </Popover>
-              }>
-            <Marker key={name} coordinates={coordinates}>
-                <circle r={5} fill="#F00" stroke="#fff" strokeWidth={2} />
-            </Marker></OverlayTrigger>)
+                </Popover>}>
+                <circle r={5} fill="#F00" stroke="#fff" strokeWidth={2} /></OverlayTrigger>
+            </Marker>)
           })
         )
         )

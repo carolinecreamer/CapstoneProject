@@ -653,12 +653,14 @@
             {
                 "name": "Providence",
                 "markerOffset": 0,
-                "coordinates": [0, 0]
+                "coordinates": [-71.41336441040039,
+                    41.82403699620288]
             },
             {
                 "name": "Cranston",
                 "markerOffset": 0,
-                "coordinates": [0, 0]
+                "coordinates": [-71.43653869628906,
+                    41.78052894057897]
             }
         ]
     },
@@ -669,12 +671,14 @@
             {
                 "name": "Charleston",
                 "markerOffset": 0,
-                "coordinates": [0, 0]
+                "coordinates": [-79.94029998779297,
+                    32.7887176499516]
             },
             {
                 "name": "Columbia",
                 "markerOffset": 0,
-                "coordinates": [0, 0]
+                "coordinates": [-81.07086181640625,
+                    33.994042291874415]
             }
         ]
     },
@@ -685,12 +689,14 @@
             {
                 "name": "Sioux Falls",
                 "markerOffset": 0,
-                "coordinates": [0, 0]
+                "coordinates": [-96.73187255859375,
+                    43.5480504344763]
             },
             {
                 "name": "Rapid City",
                 "markerOffset": 0,
-                "coordinates": [0, 0]
+                "coordinates": [-103.22479248046875,
+                    44.08561218844469]
             }
         ]
     },
@@ -701,12 +707,14 @@
             {
                 "name": "Nashville",
                 "markerOffset": 0,
-                "coordinates": [0, 0]
+                "coordinates": [-86.77619934082031,
+                    36.161716102717776]
             },
             {
                 "name": "Memphis",
                 "markerOffset": 0,
-                "coordinates": [0, 0]
+                "coordinates": [-89.96841430664062,
+                    35.131140628613615]
             }
         ]
     },
@@ -722,7 +730,8 @@
             {
                 "name": "San Antonio",
                 "markerOffset": 0,
-                "coordinates": [0, 0]
+                "coordinates": [-95.36544799804688,
+                    29.760800955544514]
             }
         ]
     },
@@ -733,12 +742,14 @@
             {
                 "name": "Salt Lake City",
                 "markerOffset": 0,
-                "coordinates": [0, 0]
+                "coordinates": [-111.88613891601562,
+                    40.75974059207392]
             },
             {
                 "name": "West Valley City",
                 "markerOffset": 0,
-                "coordinates": [0, 0]
+                "coordinates": [-111.98570251464844,
+                    40.69469600456701]
             }
         ]
     },
@@ -749,12 +760,14 @@
             {
                 "name": "Burlington",
                 "markerOffset": 0,
-                "coordinates": [0, 0]
+                "coordinates": [-73.21151733398436,
+                    44.47237869809783]
             },
             {
                 "name": "Essex",
                 "markerOffset": 0,
-                "coordinates": [0, 0]
+                "coordinates": [-73.11332702636719,
+                    44.491607329696045]
             }
         ]
     },
@@ -765,12 +778,14 @@
             {
                 "name": "Virginia Beach",
                 "markerOffset": 0,
-                "coordinates": [0, 0]
+                "coordinates": [-76.01028442382811,
+                    36.848856608486905]
             },
             {
                 "name": "Chesapeake",
                 "markerOffset": 0,
-                "coordinates": [0, 0]
+                "coordinates": [-76.25885009765625,
+                    36.717971509608496]
             }
         ]
     },
@@ -781,13 +796,14 @@
             {
                 "name": "Seattle",
                 "markerOffset": 0,
-                "coordinates": [-122.32933044433592,
-                    47.60431120244565]
+                "coordinates": [-122.32864379882811,
+                    47.60338525714934]
             },
             {
                 "name": "Spokane",
                 "markerOffset": 0,
-                "coordinates": [-117.42050170898436, 47.65891296651944]
+                "coordinates": [-117.41981506347655,
+                    47.65660048985082]
             }
         ]
     },
@@ -798,12 +814,14 @@
             {
                 "name": "Charleston",
                 "markerOffset": 0,
-                "coordinates": [0, 0]
+                "coordinates": [-81.63528442382812,
+                    38.34973404669637]
             },
             {
                 "name": "Huntington",
                 "markerOffset": 0,
-                "coordinates": [0, 0]
+                "coordinates": [-82.44758605957031,
+                    38.41916639395372]
             }
         ]
     },
@@ -814,12 +832,14 @@
             {
                 "name": "Milwaukee",
                 "markerOffset": 0,
-                "coordinates": [0, 0]
+                "coordinates": [-87.91603088378906,
+                    43.03527019897949]
             },
             {
                 "name": "Madison",
                 "markerOffset": 0,
-                "coordinates": [0, 0]
+                "coordinates": [-89.384765625,
+                    43.07515767015552]
             }
         ]
     },
@@ -830,12 +850,14 @@
             {
                 "name": "Cheyenne",
                 "markerOffset": 0,
-                "coordinates": [0, 0]
+                "coordinates": [-104.82330322265625,
+                    41.14039880964585]
             },
             {
                 "name": "Casper",
                 "markerOffset": 0,
-                "coordinates": [0, 0]
+                "coordinates": [-106.32293701171874,
+                    42.84576511714769]
             }
         ]
     }
