@@ -15,6 +15,9 @@ import allStates from "../../../public/allstates.json";
 
 const geoUrl = "https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json";
 
+const MAX_US_LONGITUDE = -67;
+const MIN_US_LONGITUDE = -160;
+
 // Offsets are states that are too small to fit a label -- these coordinates determine where their label goes relative to the state so that
 // the map doesn't look too cluttered
 const offsets = {
@@ -55,8 +58,8 @@ const Map = () => {
 
                 <g key={geo.rsmKey + "-name"}>
                   {cur &&
-                    centroid[0] > -160 &&
-                    centroid[0] < -67 &&
+                    centroid[0] > MIN_US_LONGITUDE &&
+                    centroid[0] < MAX_US_LONGITUDE &&
                     (Object.keys(offsets).indexOf(cur.id) === -1 ? (
                       <Marker coordinates={centroid}>
                         <OverlayTrigger key={geo.rsmKey} rootClose trigger="click" placement="right" overlay={
