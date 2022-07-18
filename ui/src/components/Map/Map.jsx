@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 import { geoCentroid } from "d3-geo";
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import { BsStar, BsStarFill } from "react-icons/bs";
-import Popover from 'react-bootstrap/Popover';
+import Popover from "../Popover/Popover";
 import {
   ComposableMap,
   Geographies,
@@ -93,18 +93,7 @@ const Map = () => {
           state.cities.map(({ name, coordinates }) => {
             return (
               <Marker key={name} coordinates={coordinates}>
-                <OverlayTrigger key={name} rootClose trigger="click" placement="right" overlay={
-                  <Popover className="popover" id="popover-basic" key="state">
-                    <Popover.Header >
-                      <h4 className="popover-title">{name}</h4>
-                      {starred ?
-                        <BsStarFill className="popover-star" onClick={() => setStarred(!starred)} /> :
-                        <BsStar className="popover-star" onClick={() => setStarred(!starred)} />}
-                    </Popover.Header>
-
-                    <Popover.Body>Api call using name as search param here</Popover.Body>
-                  </Popover>}>
-                  <circle r={5} fill="#F00" stroke="#fff" strokeWidth={2} /></OverlayTrigger>
+                <Popover name={name}/>
               </Marker>)
           })
         )
