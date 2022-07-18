@@ -2,7 +2,6 @@ import * as React from "react"
 import { useState } from 'react'
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import { BsStar, BsStarFill } from "react-icons/bs";
-import Popover from 'react-bootstrap/Popover';
 import "./Popover.css"
 
 export default function Popover({ name }) {
