@@ -2,9 +2,10 @@ import * as React from "react"
 import { useState } from 'react'
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import { BsStar, BsStarFill } from "react-icons/bs";
-import "./Popover.css"
+import Popover from 'react-bootstrap/Popover';
+import "./PopoverTrigger.css"
 
-export default function Popover({ name }) {
+export default function PopoverTrigger({ name }) {
     const [starred, setStarred] = useState(false);
     return (
         <OverlayTrigger key={name} rootClose trigger="click" placement="right" overlay={

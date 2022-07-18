@@ -1,9 +1,7 @@
 import React from "react";
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { geoCentroid } from "d3-geo";
-import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
-import { BsStar, BsStarFill } from "react-icons/bs";
-import Popover from "../Popover/Popover";
+import PopoverTrigger from "../PopoverTrigger/PopoverTrigger";
 import {
   ComposableMap,
   Geographies,
@@ -93,7 +91,7 @@ const Map = () => {
           state.cities.map(({ name, coordinates }) => {
             return (
               <Marker key={name} coordinates={coordinates}>
-                <Popover name={name}/>
+                <PopoverTrigger name={name}/>
               </Marker>)
           })
         )
