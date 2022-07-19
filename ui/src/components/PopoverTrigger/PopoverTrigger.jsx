@@ -3,9 +3,9 @@ import { useState } from 'react'
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import { BsStar, BsStarFill } from "react-icons/bs";
 import Popover from 'react-bootstrap/Popover';
-import "./Popover.css"
+import "./PopoverTrigger.css"
 
-export default function Popover({ name }) {
+export default function PopoverTrigger({ name }) {
     const [starred, setStarred] = useState(false);
     return (
         <OverlayTrigger key={name} rootClose trigger="click" placement="right" overlay={
@@ -19,7 +19,7 @@ export default function Popover({ name }) {
 
                 <Popover.Body>Api call using name as search param here</Popover.Body>
             </Popover>}>
-            <circle r={5} fill="#F00" stroke="#fff" strokeWidth={2} />
+            <circle r={3.5} fill="#1266F1" stroke="#fff" strokeWidth={1} />
         </OverlayTrigger>
     )
 }

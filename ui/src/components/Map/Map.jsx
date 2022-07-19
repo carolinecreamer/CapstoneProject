@@ -1,22 +1,24 @@
 import React from "react";
+import { useState } from 'react'
 import { geoCentroid } from "d3-geo";
-import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
-import Popover from 'react-bootstrap/Popover';
+import PopoverTrigger from "../PopoverTrigger/PopoverTrigger";
 import {
   ComposableMap,
   Geographies,
   Geography,
   Marker,
-  Annotation
+  Annotation,
+  ZoomableGroup
 } from "react-simple-maps";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './Map.css'
 
 import allStates from "../../../public/allstates.json";
+import states from "../../../public/cityData.json";
 
 const geoUrl = "https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json";
 
-const MAX_US_LONGITUDE = -67;
-const MIN_US_LONGITUDE = -160;
+
 
 // Offsets are states that are too small to fit a label -- these coordinates determine where their label goes relative to the state so that
 // the map doesn't look too cluttered
@@ -32,73 +34,79 @@ const offsets = {
   DC: [49, 21]
 };
 
+// consts for US boundaries in longitude
+const MIN_US_LONGITUDE = -160;
+const MAX_US_LONGITUDE = -67;
 
-// Iterates over each state and renders a "Geography" component (image of the state). Then iterates over each state and adds an abbreviation
-// label to each state. Abbreviations are enclosed in an overlay trigger component that renders a popover when the abbreviation is clicked on
 const Map = () => {
+  const [starred, setStarred] = useState(false);
   return (
-    <ComposableMap projection="geoAlbersUsa">
-      <Geographies geography={geoUrl}>
-        {({ geographies }) => (
-          <>
-            {geographies.map(geo => (
-              <Geography
-                key={geo.rsmKey}
-                stroke="#FFF"
-                geography={geo}
-                fill="#DDD"
-                className="state"
-              />
-            ))}
-            {geographies.map(geo => {
-              const centroid = geoCentroid(geo);
-              const cur = allStates.find(s => s.val === geo.id);
+    <ComposableMap projection="geoAlbers">
+      <ZoomableGroup>
+        <Geographies geography={geoUrl}>
+          {({ geographies }) => (
+            <>
+              {/* Maps over each state to create a Geography object for each state -> Geography object is the state image on the map */}
+              {geographies.map(geo => (
+                <Geography
+                  key={geo.rsmKey}
+                  stroke="#FFF"
+                  geography={geo}
+                  fill="#DDD"
+                  className="state"
+                />
+              ))}
+              {/* Maps over each state to add a label to each state*/}
+              {geographies.map(geo => {
+                const centroid = geoCentroid(geo);
+                const cur = allStates.find(s => s.val === geo.id);
+                return (
+                  <g key={geo.rsmKey + "-name"}>
+                    {
+                      cur &&
+                      centroid[0] > MIN_US_LONGITUDE &&
+                      centroid[0] < MAX_US_LONGITUDE &&
+                      (cur.id in Object.keys(offsets) ? (
+                        <Annotation
+                          subject={centroid}
+                          dx={offsets[cur.id][0]}
+                          dy={offsets[cur.id][1]}
+                        >
+
+                          <text x={4} fontSize={14} alignmentBaseline="middle">
+                            {cur.id}
+                          </text>
+
+                        </Annotation>
+                      ) : (
+                        <Marker coordinates={centroid}>
+                          <text y="2" fontSize={14} textAnchor="middle">
+                            {cur.id}
+                          </text>
+                        </Marker>
+                      )
+                      )}
+                  </g>
+                );
+              })}
+            </>
+          )}
+        </Geographies>
+
+        {
+          // Maps over each city in each state to add a marker on its location. The markers are encapsulated by an Overlay Trigger so that a
+          // popup window appears with info about the city, when the marker is clicked on
+          states.map((state) => (
+            state.cities.map(({ name, coordinates }) => {
               return (
-
-
-                <g key={geo.rsmKey + "-name"}>
-                  {cur &&
-                    centroid[0] > MIN_US_LONGITUDE &&
-                    centroid[0] < MAX_US_LONGITUDE &&
-                    (Object.keys(offsets).indexOf(cur.id) === -1 ? (
-                      <Marker coordinates={centroid}>
-                        <OverlayTrigger key={geo.rsmKey} rootClose trigger="click" placement="right" overlay={
-                            <Popover className="popover" id="popover-basic" key="state">
-                              <Popover.Header as="h3">{geo.properties.name}</Popover.Header>
-                              <Popover.Body>Api call using name as search param here</Popover.Body>
-                            </Popover>
-                          }>
-
-                        <text y="2" fontSize={14} textAnchor="middle">
-                          {cur.id}
-                        </text>
-                      </OverlayTrigger>
-                      </Marker>
-                    ) : (
-                      <Annotation
-                        subject={centroid}
-                        dx={offsets[cur.id][0]}
-                        dy={offsets[cur.id][1]}
-                      >
-                        <OverlayTrigger key={geo.rsmKey} rootClose trigger="click" placement="right" overlay={
-                          <Popover className="popover" id="popover-basic" key="state">
-                            <Popover.Header as="h3">{geo.properties.name}</Popover.Header>
-                            <Popover.Body>Api call using name as search param here</Popover.Body>
-                          </Popover>
-                        }>
-
-                        <text x={4} fontSize={14} alignmentBaseline="middle">
-                          {cur.id}
-                        </text>
-                      </OverlayTrigger>
-                      </Annotation>
-                    ))}
-                </g>
-              );
-            })}
-          </>
-        )}
-      </Geographies>
+                <Marker key={name} coordinates={coordinates}>
+                  <PopoverTrigger name={name} />
+                </Marker>)
+            })
+          )
+          )
+        }
+      </ZoomableGroup>
     </ComposableMap>
   );
 };
