@@ -19,7 +19,7 @@ export default function PopoverTrigger({ name }) {
 
                 <Popover.Body>Api call using name as search param here</Popover.Body>
             </Popover>}>
-            <circle r={5} fill="#F00" stroke="#fff" strokeWidth={2} />
+            <circle r={3.5} fill="#F00" stroke="#fff" strokeWidth={1} />
         </OverlayTrigger>
     )
 }
