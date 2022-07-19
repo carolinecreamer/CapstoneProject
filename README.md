@@ -4,17 +4,22 @@ Summary:
 Users view a map of the United States and can click on cities to view cost of living and quality of life metrics on the city in order to help determine if they should move there. Additionally, users can see "friends" on a map to help aid in their decision making.
 
 Core Features
-- [ ] User Authentication
-- [ ] API call to RealtyMole to view rent prices
+- [x] User Authentication
+- [x] API call to RealtyMole to view rent prices
+  - [x] Initial API call
+  - [x] Wrapper functions
+  - [x] Parse rent data
 - [ ] User Profile
+  - [x] User Info
   - [ ] Favorites
   - [ ] Friends
-- [ ] Homepage
+- [x] Homepage
 - [ ] Interactive map
+   - [x] User can view map display
    - [ ] Cities information displays on click
    - [ ] View friends on map
    - [ ] View saved places on map
-   - [ ] At least 2 cities per state
+   - [x] At least 2 cities per state
 
 Stretch Features
 - [ ] API call to RealtyMole to view sale prices
@@ -24,6 +29,7 @@ Stretch Features
 - [ ] API call to BandsInTown
 - [ ] API call to Walkscore
 - [ ] Share information with friends
+- [ ] Pinpoint ideal neighborhood to live in
 
 
 User Roles
@@ -57,6 +63,7 @@ Endpoints
 - PUT: users/id, update a user's profile data
 - GET: cities, fetch the list of cities visible on the map
 - GET: users, fetch the list of "friends" available to the user
+- GET: property info, fetch the list of houses in the area by zip code
 
 Data Model
 - User table:

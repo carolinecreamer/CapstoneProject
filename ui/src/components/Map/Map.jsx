@@ -18,6 +18,9 @@ import states from "../../../public/cityData.json";
 
 const geoUrl = "https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json";
 
+const MAX_US_LONGITUDE = -67;
+const MIN_US_LONGITUDE = -160;
+
 // Offsets are states that are too small to fit a label -- these coordinates determine where their label goes relative to the state so that
 // the map doesn't look too cluttered
 const offsets = {
@@ -70,7 +73,6 @@ const Map = () => {
                           dx={offsets[cur.id][0]}
                           dy={offsets[cur.id][1]}
                         >
-
 
                           <text x={4} fontSize={14} alignmentBaseline="middle">
                             {cur.id}
