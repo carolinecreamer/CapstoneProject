@@ -32,6 +32,7 @@ const offsets = {
   DC: [49, 21]
 };
 
+// consts for US boundaries in longitude
 const MIN_US_LONGITUDE = -160;
 const MAX_US_LONGITUDE = -67;
 
