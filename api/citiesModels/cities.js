@@ -1,5 +1,7 @@
 const Parse = require('parse/node')
 
+
+// Get current user
 class Cities {
     static async getUser() {
         Parse.User.enableUnsafeCurrentUser()
