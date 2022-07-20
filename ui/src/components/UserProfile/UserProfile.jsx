@@ -16,7 +16,6 @@ export default function UserProfile({ user }) {
             const response = await axios.get(`http://localhost:3001/cities/`).catch((err)=>{
               console.error(err)
             })
-            console.log(response)
             setCities(response.data.cities);
           }
           setup();
@@ -29,7 +28,6 @@ export default function UserProfile({ user }) {
                     <Bootstrap.Card.Text className="favorites">Favorites</Bootstrap.Card.Text>
                     {
                     cities.map((city)=>{
-                        {console.log(city)}
                         return(<Bootstrap.Card.Text>{city}</Bootstrap.Card.Text>)
 
                     })}
