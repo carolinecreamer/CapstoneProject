@@ -3,7 +3,7 @@ const morgan = require('morgan')
 const cors = require('cors')
 const Parse = require('parse/node')
 const authRoute = require('./authentication/authentication')
-const citiesRoute = require('./cities/cities')
+const citiesRoute = require('./citiesRoutes/cities')
 //import Parse from 'parse/dist/parse.min.js';
 const {PARSE_APP_ID, PARSE_JAVASCRIPT_KEY} = require('./config')
 //const { default: App } = require('../ui/src/components/App/App')
