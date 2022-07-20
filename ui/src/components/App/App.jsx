@@ -10,7 +10,6 @@ import * as config from '../../config'
 import UserProfile from '../UserProfile/UserProfile'
 import Parse from 'parse/react-native'
 import { BsEmojiNeutralFill } from 'react-icons/bs'
-import Spinner from 'react-bootstrap/Spinner';
 
 
 export default function App() {
@@ -36,17 +35,14 @@ export default function App() {
   const [viewProfile, setViewProfile] = useState(false);
   // Updates who the current user is based on if a user is logged in
   const [currentUser, setCurrentUser] = useState(null);
-  // Toggles if the page is loading
-  const [loading, setLoading] = useState(false);
+  const [cities, setCities] = useState([])
 
   React.useEffect(() => {
-      setLoading(true);
-      // Call functions in Utils.jsx to parse data
-      setAverage(Utils.calculateAverage(listings));
-      setProperties(Utils.getProperties(listings, minPrice, maxPrice));
-      // will this work because setting state is asynchronous?
-      setNumProperties(properties.length);
-      setLoading(false)
+    // Call functions in Utils.jsx to parse data
+    setAverage(Utils.calculateAverage(listings));
+    setProperties(Utils.getProperties(listings, minPrice, maxPrice));
+    // will this work because setting state is asynchronous?
+    setNumProperties(properties.length);
   }, [listings, minPrice, maxPrice]);
 
 
@@ -80,7 +76,6 @@ export default function App() {
 
 
   const request = async function (options) {
-    setLoading(true);
     const onSuccess = function (response) {
       console.debug('Request Successful!', response);
       return response.data;
@@ -104,7 +99,7 @@ export default function App() {
 
       return Promise.reject(error.response || error.message);
     }
-    setLoading(false);
+
     return client(options)
       .then(onSuccess)
       .catch(onError);
@@ -118,40 +113,34 @@ export default function App() {
   // In production, you would add an access token instead of (or in addition to)
   // the user id, in order to authenticate the request
   const addAuthenticationHeader = () => {
-    setLoading(true)
     const currentUserId = localStorage.getItem("current_user_id")
     if (currentUserId !== null) {
       axios.defaults.headers.common = {
         "current_user_id": currentUserId
       };
     }
-    setLoading(false);
   }
   addAuthenticationHeader()
 
   // Handles logic for logging out a user -> sets the header back to default
   // and sets the isLoggedIn state to false
   const handleLogout = () => {
-    setLoading(true);
     localStorage.removeItem("current_user_id")
     setCurrentUser(null)
     axios.defaults.headers.common = {};
     setIsLoggedIn(false)
     setViewProfile(false)
-    setLoading(false);
   }
 
   // Handles logic for logging in a user -> sets the current user to the user
   // object in the DB that has a username and password that matches
   // and sets the isLoggedIn state to false
   const handleLogin = (user) => {
-    setLoading(true);
     localStorage.setItem("current_user_id", user["objectId"])
     localStorage.setItem("user", user)
     setCurrentUser(user)
     addAuthenticationHeader()
     setIsLoggedIn(true)
-    setLoading(false);
   }
 
   // Make GET request to RealtyMole when city is change (city will be changed on click)
@@ -185,12 +174,15 @@ export default function App() {
   function toggleViewProfile() {
     setViewProfile(viewProfile => !viewProfile)
   }
-  if (loading) {
-    return (
-      <Spinner animation="border" role="status">
-        <span className="visually-hidden">Loading...</span>
-      </Spinner>
-    )
+
+
+  async function getCities() {
+    setLoading(true)
+    const response = await axios.get(`http://localhost:3001/cities/`).catch((err)=>{
+      alert(err)
+    })
+    setCities(response.data.cities);
+    setLoading(false)
   }
 
   return (
@@ -201,14 +193,14 @@ export default function App() {
             <div>
               <NavBar isLoggedIn={isLoggedIn} handleLogout={handleLogout}
                 viewProfile={viewProfile} toggleViewProfile={toggleViewProfile} className="NavBar" />
-              <Home isLoggedIn={isLoggedIn} handleLogout={handleLogout} handleLogin={handleLogin} setLoading={setLoading}/>
+              <Home isLoggedIn={isLoggedIn} handleLogout={handleLogout} handleLogin={handleLogin} />
             </div>
           } />
           <Route path="/profile" element={
             <div>
               <NavBar isLoggedIn={isLoggedIn} handleLogout={handleLogout}
                 viewProfile={viewProfile} toggleViewProfile={toggleViewProfile} className="NavBar" />
-              <UserProfile user={currentUser} setLoading={setLoading}/>
+              <UserProfile user={currentUser} getCities={getCities} cities={cities}/>
             </div>
           } />
         </Routes>
