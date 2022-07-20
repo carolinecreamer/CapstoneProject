@@ -9,10 +9,10 @@ import axios from "axios"
 
 export default function PopoverTrigger({ name, setLoading }) {
     const [starred, setStarred] = useState(false);
-    const [loading, setLoading] = useState(true);
+    const [loadingCities, setLoadingCities] = useState(true);
 
     function handleStar() {
-        setLoading(false);
+        setLoadingCities(false);
         setStarred(!starred);
 
     }
@@ -27,14 +27,13 @@ export default function PopoverTrigger({ name, setLoading }) {
                     })
                 } catch (err) {
                     alert(err)
-                    console.error(err)
                     return Promise.reject(err.response)
                 }
             }
 
             addCity()
         }
-        if (!starred && !loading) {
+        if (!starred && !loadingCities) {
             const removeCity = async () => {
                 try {
                     const res = await axios.post(`${config.API_BASE_URL}/cities/remove`, {
@@ -42,7 +41,6 @@ export default function PopoverTrigger({ name, setLoading }) {
                     })
                 } catch (err) {
                     alert(err)
-                    console.log(err)
                     return Promise.reject(err.response)
                 }
             }

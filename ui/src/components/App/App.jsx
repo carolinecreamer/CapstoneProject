@@ -35,7 +35,8 @@ export default function App() {
   const [viewProfile, setViewProfile] = useState(false);
   // Updates who the current user is based on if a user is logged in
   const [currentUser, setCurrentUser] = useState(null);
-  const [cities, setCities] = useState([])
+  const [cities, setCities] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   React.useEffect(() => {
     // Call functions in Utils.jsx to parse data
@@ -193,14 +194,14 @@ export default function App() {
             <div>
               <NavBar isLoggedIn={isLoggedIn} handleLogout={handleLogout}
                 viewProfile={viewProfile} toggleViewProfile={toggleViewProfile} className="NavBar" />
-              <Home isLoggedIn={isLoggedIn} handleLogout={handleLogout} handleLogin={handleLogin} />
+              <Home isLoggedIn={isLoggedIn} handleLogout={handleLogout} handleLogin={handleLogin} setLoading={setLoading}/>
             </div>
           } />
           <Route path="/profile" element={
             <div>
               <NavBar isLoggedIn={isLoggedIn} handleLogout={handleLogout}
                 viewProfile={viewProfile} toggleViewProfile={toggleViewProfile} className="NavBar" />
-              <UserProfile user={currentUser} getCities={getCities} cities={cities}/>
+              <UserProfile user={currentUser} getCities={getCities} cities={cities} setLoading={setLoading}/>
             </div>
           } />
         </Routes>
