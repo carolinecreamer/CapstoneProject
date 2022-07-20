@@ -6,7 +6,7 @@ import Card from 'react-bootstrap/Card';
 import axios from "axios"
 import * as config from '../../config'
 
-export default function RegisterForm({ handleLogin }) {
+export default function RegisterForm({ handleLogin, setLoading }) {
     // Defines a handleSubmit function that creates a POST request containing
     // the inputted username and password for a new user to add the user to the
     // database
@@ -16,6 +16,7 @@ export default function RegisterForm({ handleLogin }) {
     const password = React.createRef();
 
     const handleSubmit = event => {
+        setLoading(true);
         event.preventDefault();
 
         const register = async () => {
@@ -31,7 +32,8 @@ export default function RegisterForm({ handleLogin }) {
             }
         }
         register()
-    }
+        setLoading(false)
+;    }
 
     return (
         <Card className="register-card">

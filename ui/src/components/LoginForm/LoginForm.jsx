@@ -6,7 +6,7 @@ import Card from 'react-bootstrap/Card';
 import axios from "axios"
 import * as config from "../../config"
 
-export default function LoginForm({ handleLogin }) {
+export default function LoginForm({ handleLogin, setLoading }) {
   // Creates the login form and creates an onSubmit function to send the inputted
   // username and password to the database
   // Sends the login infor to the handleLogin function in the App.jsx component
@@ -14,6 +14,7 @@ export default function LoginForm({ handleLogin }) {
   const password = React.createRef();
 
   const handleSubmit = event => {
+    setLoading(true);
     event.preventDefault();
 
     const login = async () => {
@@ -29,6 +30,7 @@ export default function LoginForm({ handleLogin }) {
       }
     }
     login()
+    setLoading(false);
   }
 
   return (

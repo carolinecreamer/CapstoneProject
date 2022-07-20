@@ -7,25 +7,30 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { useState, useEffect } from "react"
 
 
-export default function UserProfile({ user }) {
+export default function UserProfile({ user, setLoading }) {
     const [cities, setCities] = useState([])
 
-    // Contains the users information in a Bootstrap Card component
+    // Gets user's favorited cities from DB
     React.useEffect(() => {
+        setLoading(true)
         let setup = async()=>{
             const response = await axios.get(`http://localhost:3001/cities/`).catch((err)=>{
               console.error(err)
             })
-            console.log(response)
+
             setCities(response.data.cities);
           }
           setup();
+          setLoading(false)
     }, [])
+
+    // Contains the users information in a Bootstrap Card component
     return (
         <Bootstrap.Container>
             <Bootstrap.Card className="Card">
                <Bootstrap.Card.Body>
                     <Bootstrap.Card.Title >{user?.username}</Bootstrap.Card.Title>
+
                     <Bootstrap.Card.Text className="favorites">Favorites</Bootstrap.Card.Text>
                     {
                     cities.map((city)=>{

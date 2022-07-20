@@ -38,7 +38,7 @@ const offsets = {
 const MIN_US_LONGITUDE = -160;
 const MAX_US_LONGITUDE = -67;
 
-const Map = () => {
+const Map = ({setLoading}) => {
   const [starred, setStarred] = useState(false);
   return (
     <ComposableMap projection="geoAlbers">
@@ -100,7 +100,7 @@ const Map = () => {
             state.cities.map(({ name, coordinates }) => {
               return (
                 <Marker key={name} coordinates={coordinates}>
-                  <PopoverTrigger name={name} />
+                  <PopoverTrigger name={name} setLoading={setLoading}/>
                 </Marker>)
             })
           )

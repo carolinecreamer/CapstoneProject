@@ -7,7 +7,7 @@ import "./PopoverTrigger.css"
 import * as config from "../../config"
 import axios from "axios"
 
-export default function PopoverTrigger({ name }) {
+export default function PopoverTrigger({ name, setLoading }) {
     const [starred, setStarred] = useState(false);
     const [loading, setLoading] = useState(true);
 
@@ -18,6 +18,7 @@ export default function PopoverTrigger({ name }) {
     }
 
     React.useEffect(() => {
+        setLoading(true)
         if (starred) {
             const addCity = async () => {
                 try {
@@ -48,6 +49,7 @@ export default function PopoverTrigger({ name }) {
 
             removeCity()
         }
+        setLoading(false)
     }, [starred])
 
     return (
