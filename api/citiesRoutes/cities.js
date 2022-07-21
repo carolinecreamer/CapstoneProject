@@ -21,9 +21,9 @@ router.post('/add', async (req, res, next) => {
         if (user != null) {
             user.addUnique("cities", req.body.city)
             await user.save()
-            res.send(true)
+            res.sendStatus(200)
         }
-        res.send(false)
+        res.sendStatus(400)
     } catch(err) {
         next(err)
     }
@@ -38,9 +38,9 @@ router.post('/remove', async (req, res, next) => {
         if (user !== null) {
             user.remove("cities", req.body.city)
             await user.save()
-            res.send(true)
+            res.sendStatus(200)
         }
-        res.send(false)
+        res.sendStatus(400)
 
     } catch(err) {
         next(err)
