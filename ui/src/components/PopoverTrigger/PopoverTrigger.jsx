@@ -6,8 +6,9 @@ import Popover from 'react-bootstrap/Popover';
 import "./PopoverTrigger.css"
 import * as config from "../../config"
 import axios from "axios"
+import MarkerShape from "../MarkerShape/MarkerShape";
 
-export default function PopoverTrigger({ name, setLoading }) {
+export default function PopoverTrigger({ name, setLoading, marker }) {
     const [starred, setStarred] = useState(false);
     const [loadingCities, setLoadingCities] = useState(true);
 
@@ -18,9 +19,10 @@ export default function PopoverTrigger({ name, setLoading }) {
     }
 
     React.useEffect(() => {
-        setLoading(true)
-        if (starred) {
+
+        if (starred && !loadingCities) {
             const addCity = async () => {
+                setLoading(true)
                 try {
                     const res = await axios.post(`${config.API_BASE_URL}/cities/add`, {
                         city: name
@@ -32,9 +34,11 @@ export default function PopoverTrigger({ name, setLoading }) {
             }
 
             addCity()
+            setLoading(false)
         }
         if (!starred && !loadingCities) {
             const removeCity = async () => {
+                setLoading(true)
                 try {
                     const res = await axios.post(`${config.API_BASE_URL}/cities/remove`, {
                         city: name
@@ -46,23 +50,57 @@ export default function PopoverTrigger({ name, setLoading }) {
             }
 
             removeCity()
+            setLoading(false)
         }
-        setLoading(false)
+
     }, [starred])
 
-    return (
-        <OverlayTrigger key={name} rootClose trigger="click" placement="right" overlay={
-            <Popover className="popover" id="popover-basic" key="state">
-                <Popover.Header >
-                    <h4 className="popover-title">{name}</h4>
-                    {starred ?
-                        <BsStarFill className="popover-star" onClick={() => handleStar()} /> :
-                        <BsStar className="popover-star" onClick={() => handleStar()} />}
-                </Popover.Header>
+    if (marker === "saved") {
+        //setStarred(true)
+        return (
+            <OverlayTrigger key={name} rootClose trigger="click" placement="right" overlay={
+                <Popover className="popover" id="popover-basic" key="state">
+                    <Popover.Header >
+                        <h4 className="popover-title">{name}</h4>
+                        {starred ?
+                            <BsStarFill className="popover-star" onClick={() => handleStar()} /> :
+                            <BsStar className="popover-star" onClick={() => handleStar()} />}
+                    </Popover.Header>
 
-                <Popover.Body>Api call using name as search param here</Popover.Body>
-            </Popover>}>
-            <circle r={3.5} fill="#1266F1" stroke="#fff" strokeWidth={1} />
-        </OverlayTrigger>
-    )
+                    <Popover.Body>Api call using name as search param here</Popover.Body>
+                </Popover>}>
+            <g
+                fill="#1266F1"
+                stroke="#fff"
+                strokeWidth="1"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                transform="translate(-12, -24)"
+            >
+                <circle cx="12" cy="10" r="3" />
+                <path d="M12 21.7C17.3 17 20 13 20 10a8 8 0 1 0-16 0c0 3 2.7 6.9 8 11.7z" />
+            </g>
+            </OverlayTrigger>
+        )
+    }
+    else {
+        return (
+            <OverlayTrigger key={name} rootClose trigger="click" placement="right" overlay={
+                <Popover className="popover" id="popover-basic" key="state">
+                    <Popover.Header >
+                        <h4 className="popover-title">{name}</h4>
+                        {starred ?
+                            <BsStarFill className="popover-star" onClick={() => handleStar()} /> :
+                            <BsStar className="popover-star" onClick={() => handleStar()} />}
+                    </Popover.Header>
+
+                    <Popover.Body>Api call using name as search param here</Popover.Body>
+                </Popover>}>
+                <circle r={3.5} fill="#1266F1" stroke="#fff" strokeWidth={1} />
+            </OverlayTrigger>
+        )
+    }
+
+
+
 }

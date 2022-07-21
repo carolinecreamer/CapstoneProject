@@ -5,11 +5,12 @@ import * as Bootstrap from "react-bootstrap"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "./Home.css"
 
-export default function Home({ isLoggedIn, handleLogout, handleLogin, setLoading }) {
+export default function Home({ isLoggedIn, handleLogout, handleLogin, setLoading, cities, getCities, currentUser }) {
+
     return (
         <Bootstrap.Container className="homepage">
-            {isLoggedIn
-                ? <Map setLoading={setLoading}/>
+            {(isLoggedIn && currentUser!==null)
+                ? <Map setLoading={setLoading} cities={cities} getCities={getCities}/>
                 : <LoggedOutView handleLogin={handleLogin} setLoading={setLoading}/>
               }
         </Bootstrap.Container>

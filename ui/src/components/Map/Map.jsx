@@ -38,8 +38,13 @@ const offsets = {
 const MIN_US_LONGITUDE = -160;
 const MAX_US_LONGITUDE = -67;
 
-const Map = ({setLoading}) => {
-  const [starred, setStarred] = useState(false);
+const Map = ({setLoading, cities, getCities}) => {
+
+  React.useEffect(() => {
+    getCities();
+  }, [])
+
+
   return (
     <ComposableMap projection="geoAlbers">
       <ZoomableGroup>
@@ -98,10 +103,21 @@ const Map = ({setLoading}) => {
           // popup window appears with info about the city, when the marker is clicked on
           states.map((state) => (
             state.cities.map(({ name, coordinates }) => {
-              return (
-                <Marker key={name} coordinates={coordinates}>
-                  <PopoverTrigger name={name} setLoading={setLoading}/>
-                </Marker>)
+              if (cities.includes(name)) {
+
+                return (
+                  <Marker key={name} coordinates={coordinates}>
+                    <PopoverTrigger name={name} setLoading={setLoading} marker="saved"/>
+                  </Marker>
+                )
+              }
+              else {
+                return (
+                  <Marker key={name} coordinates={coordinates}>
+                    <PopoverTrigger name={name} setLoading={setLoading} marker="basic"/>
+                  </Marker>
+                )
+              }
             })
           )
           )

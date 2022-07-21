@@ -1,12 +1,12 @@
 const express = require("express");
 const router  = express.Router();
-const Cities  = require("../citiesModels/cities")
+const User  = require("../models/models")
 const Parse = require('parse/node')
 
 // Get list of favorited cities
 router.get("/", async (req, res, next) => {
     try {
-        const user = await Cities.getUser();
+        const user = await User.getUser();
         let cities = user.get("cities");
         res.status(200).json({ cities })
     } catch (err) {

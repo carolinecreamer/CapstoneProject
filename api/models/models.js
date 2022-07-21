@@ -11,4 +11,4 @@ class User {
 }
 
 
-module.exports = Cities;
+module.exports = User;
