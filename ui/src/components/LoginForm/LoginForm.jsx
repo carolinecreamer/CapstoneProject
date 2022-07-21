@@ -26,7 +26,6 @@ export default function LoginForm({ handleLogin, setLoading }) {
         handleLogin(res.data.user)
       } catch (err) {
         alert(err)
-        console.log(err)
       }
     }
     login()

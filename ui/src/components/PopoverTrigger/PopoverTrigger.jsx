@@ -8,63 +8,57 @@ import * as config from "../../config"
 import axios from "axios"
 import MarkerShape from "../MarkerShape/MarkerShape";
 
-export default function PopoverTrigger({ name, setLoading, marker }) {
-    const [starred, setStarred] = useState(false);
-    const [loadingCities, setLoadingCities] = useState(true);
 
-    function handleStar() {
-        setLoadingCities(false);
-        setStarred(!starred);
+export default function PopoverTrigger({ name, setLoading, saved }) {
+    const [starred, setStarred] = useState(saved);
 
+    async function handleStar() {
+        // Makes POST request to add city to DB and changes "starred" state variable to be true, causes page to re-render
+        setLoading(true);
+
+        const addCity = async () => {
+            try {
+                const res = await axios.post(`${config.API_BASE_URL}/cities/add`, {
+                    city: name
+                })
+            } catch (err) {
+                alert(err)
+                return Promise.reject(err.response)
+            }
+            setLoading(false);
+            setStarred(true);
+        }
+        addCity();
     }
 
-    React.useEffect(() => {
-
-        if (starred && !loadingCities) {
-            const addCity = async () => {
-                setLoading(true)
-                try {
-                    const res = await axios.post(`${config.API_BASE_URL}/cities/add`, {
-                        city: name
-                    })
-                } catch (err) {
-                    alert(err)
-                    return Promise.reject(err.response)
-                }
+    function handleUnstar() {
+        // Makes POST request to remove city from DB and changes "starred" state variable to be false, causes page to re-render
+        setLoading(true);
+        const removeCity = async () => {
+            try {
+                const res = await axios.post(`${config.API_BASE_URL}/cities/remove`, {
+                    city: name
+                })
+            } catch (err) {
+                alert(err)
+                return Promise.reject(err.response)
             }
 
-            addCity()
-            setLoading(false)
-        }
-        if (!starred && !loadingCities) {
-            const removeCity = async () => {
-                setLoading(true)
-                try {
-                    const res = await axios.post(`${config.API_BASE_URL}/cities/remove`, {
-                        city: name
-                    })
-                } catch (err) {
-                    alert(err)
-                    return Promise.reject(err.response)
-                }
-            }
-
-            removeCity()
-            setLoading(false)
+            setLoading(false);
+            setStarred(false);
         }
 
-    }, [starred])
+        removeCity();
+    }
 
-    if (marker === "saved") {
-        //setStarred(true)
+    if (starred) {
         return (
+
             <OverlayTrigger key={name} rootClose trigger="click" placement="right" overlay={
                 <Popover className="popover" id="popover-basic" key="state">
                     <Popover.Header >
                         <h4 className="popover-title">{name}</h4>
-                        {starred ?
-                            <BsStarFill className="popover-star" onClick={() => handleStar()} /> :
-                            <BsStar className="popover-star" onClick={() => handleStar()} />}
+                        <BsStarFill className="popover-star" onClick={() => handleUnstar()} />
                     </Popover.Header>
 
                     <Popover.Body>Api call using name as search param here</Popover.Body>
@@ -89,9 +83,7 @@ export default function PopoverTrigger({ name, setLoading, marker }) {
                 <Popover className="popover" id="popover-basic" key="state">
                     <Popover.Header >
                         <h4 className="popover-title">{name}</h4>
-                        {starred ?
-                            <BsStarFill className="popover-star" onClick={() => handleStar()} /> :
-                            <BsStar className="popover-star" onClick={() => handleStar()} />}
+                        <BsStar className="popover-star" onClick={() => handleStar()} />
                     </Popover.Header>
 
                     <Popover.Body>Api call using name as search param here</Popover.Body>

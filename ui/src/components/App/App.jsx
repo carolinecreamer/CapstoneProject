@@ -8,6 +8,7 @@ import axios from "axios"
 import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom"
 import * as config from '../../config'
 import UserProfile from '../UserProfile/UserProfile'
+import Feed from '../Feed/Feed'
 import Parse from 'parse/react-native'
 import { BsEmojiNeutralFill } from 'react-icons/bs'
 
@@ -17,6 +18,8 @@ export default function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem("current_user_id") !== null)
   // City that the user has selected
   const [city, setCity] = useState("");
+  // All users in the DB
+  const [users, setUsers] = useState([]);
   // State that the user has selected
   const [state, setState] = useState("");
   // All listings in the given city
@@ -186,6 +189,15 @@ export default function App() {
     setLoading(false)
   }
 
+  async function getUsers() {
+    setLoading(true)
+    const response = await axios.get(`http://localhost:3001/users/`).catch((err)=>{
+      alert(err)
+    })
+    setUsers(response);
+    setLoading(false)
+  }
+
   return (
     <div className="app">
       <BrowserRouter>
@@ -193,7 +205,7 @@ export default function App() {
           <Route path="/" element={
             <div>
               <NavBar isLoggedIn={isLoggedIn} handleLogout={handleLogout}
-                viewProfile={viewProfile} toggleViewProfile={toggleViewProfile} className="NavBar" />
+                viewProfile={viewProfile} toggleViewProfile={toggleViewProfile} className="NavBar" currentUser={currentUser}/>
               <Home isLoggedIn={isLoggedIn} handleLogout={handleLogout} handleLogin={handleLogin} setLoading={setLoading}
               cities={cities} getCities={getCities} currentUser={currentUser}/>
             </div>
@@ -201,8 +213,17 @@ export default function App() {
           <Route path="/profile" element={
             <div>
               <NavBar isLoggedIn={isLoggedIn} handleLogout={handleLogout}
-                viewProfile={viewProfile} toggleViewProfile={toggleViewProfile} className="NavBar" />
+                viewProfile={viewProfile} toggleViewProfile={toggleViewProfile} className="NavBar" currentUser={currentUser}/>
               <UserProfile user={currentUser} getCities={getCities} cities={cities} setLoading={setLoading}/>
+            </div>
+          } />
+
+          <Route path="/feed" element={
+            <div>
+
+              <NavBar isLoggedIn={isLoggedIn} handleLogout={handleLogout}
+                viewProfile={viewProfile} toggleViewProfile={toggleViewProfile} className="NavBar" currentUser={currentUser}/>
+              <Feed currentUser={currentUser}/>
             </div>
           } />
         </Routes>

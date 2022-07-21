@@ -4,6 +4,7 @@ const cors = require('cors')
 const Parse = require('parse/node')
 const authRoute = require('./authentication/authentication')
 const citiesRoute = require('./citiesRoutes/cities')
+const usersRoute = require('./userRoutes/users')
 //import Parse from 'parse/dist/parse.min.js';
 const {PARSE_APP_ID, PARSE_JAVASCRIPT_KEY} = require('./config')
 //const { default: App } = require('../ui/src/components/App/App')
@@ -16,6 +17,8 @@ app.use(morgan("tiny"))
 app.use(cors())
 app.use('/auth', authRoute)
 app.use('/cities', citiesRoute)
+app.use('/users', usersRoute)
+
 // initalize Parse
 Parse.initialize(PARSE_APP_ID, PARSE_JAVASCRIPT_KEY)
 Parse.serverURL = "https://parseapi.back4app.com"

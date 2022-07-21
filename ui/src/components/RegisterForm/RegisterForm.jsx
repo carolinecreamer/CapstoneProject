@@ -16,10 +16,10 @@ export default function RegisterForm({ handleLogin, setLoading }) {
     const password = React.createRef();
 
     const handleSubmit = event => {
-        setLoading(true);
         event.preventDefault();
 
         const register = async () => {
+          setLoading(true)
             try {
                 const res = await axios.post(`${config.API_BASE_URL}/auth/register`, {
                     "username" : username.current.value,
@@ -28,12 +28,11 @@ export default function RegisterForm({ handleLogin, setLoading }) {
                 handleLogin(res.data.user)
             } catch (err) {
                 alert(err)
-                console.log(err)
             }
+          setLoading(false)
         }
         register()
-        setLoading(false)
-;    }
+    }
 
     return (
         <Card className="register-card">

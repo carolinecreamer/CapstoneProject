@@ -42,8 +42,7 @@ const Map = ({setLoading, cities, getCities}) => {
 
   React.useEffect(() => {
     getCities();
-  }, [])
-
+}, [])
 
   return (
     <ComposableMap projection="geoAlbers">
@@ -103,21 +102,13 @@ const Map = ({setLoading, cities, getCities}) => {
           // popup window appears with info about the city, when the marker is clicked on
           states.map((state) => (
             state.cities.map(({ name, coordinates }) => {
-              if (cities.includes(name)) {
 
                 return (
                   <Marker key={name} coordinates={coordinates}>
-                    <PopoverTrigger name={name} setLoading={setLoading} marker="saved"/>
+                    <PopoverTrigger name={name} setLoading={setLoading} saved={cities.includes(name)}/>
                   </Marker>
                 )
-              }
-              else {
-                return (
-                  <Marker key={name} coordinates={coordinates}>
-                    <PopoverTrigger name={name} setLoading={setLoading} marker="basic"/>
-                  </Marker>
-                )
-              }
+
             })
           )
           )

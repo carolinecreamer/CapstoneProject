@@ -17,14 +17,13 @@ router.get("/", async (req, res, next) => {
 // Add route adds a city to the end of the "cities" array in the User object
 router.post('/add', async (req, res, next) => {
     try {
-        Parse.User.enableUnsafeCurrentUser()
-        const currentUser = await Parse.User.current();
-
-        if (currentUser !== null) {
-            currentUser.addUnique("cities", req.body.city)
-            return currentUser.save()
-          }
-
+        const user = await User.getUser();
+        if (user != null) {
+            user.addUnique("cities", req.body.city)
+            await user.save()
+            res.send(true)
+        }
+        res.send(false)
     } catch(err) {
         next(err)
     }
@@ -34,13 +33,14 @@ router.post('/add', async (req, res, next) => {
 // the User object
 router.post('/remove', async (req, res, next) => {
     try {
-        Parse.User.enableUnsafeCurrentUser()
-        const currentUser = await Parse.User.current();
+        const user = await User.getUser();
 
-        if (currentUser !== null) {
-            currentUser.remove("cities", req.body.city)
-            return currentUser.save()
-          }
+        if (user !== null) {
+            user.remove("cities", req.body.city)
+            await user.save()
+            res.send(true)
+        }
+        res.send(false)
 
     } catch(err) {
         next(err)
