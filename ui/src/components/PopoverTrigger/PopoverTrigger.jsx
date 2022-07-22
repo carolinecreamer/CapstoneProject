@@ -6,7 +6,7 @@ import Popover from 'react-bootstrap/Popover';
 import "./PopoverTrigger.css"
 import * as config from "../../config"
 import axios from "axios"
-import MarkerShape from "../MarkerShape/MarkerShape";
+
 
 
 export default function PopoverTrigger({ name, setLoading, saved }) {
