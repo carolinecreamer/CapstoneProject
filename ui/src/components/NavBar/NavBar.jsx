@@ -11,7 +11,7 @@ import "./NavBar.css"
 export default function NavBar({ isLoggedIn, handleLogout, viewProfile, toggleViewProfile, currentUser }) {
     // If the user is logged in and pressed the Log Out button,
     // call the handleLogout function in the App.jsx component
-    const onClick = event => {
+    const onLogoutClick = event => {
         handleLogout()
     }
     // If the user is not logged in, show a nav bar that only shows the title text. If the user clicks
@@ -28,8 +28,8 @@ export default function NavBar({ isLoggedIn, handleLogout, viewProfile, toggleVi
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="me-auto">
                             <NavBarIcon  viewProfile={viewProfile} toggleViewProfile={toggleViewProfile}/>
-                            <Link className="feed" to={`/feed`} onClick={onClick}>Feed</Link>
-                            <Link to={`/`} onClick={onClick}>Logout</Link>
+                            <Link className="feed" to={`/feed`}>Feed</Link>
+                            <Link to={`/`} onClick={onLogoutClick}>Logout</Link>
                         </Nav>
                     </Navbar.Collapse>
                 </section>

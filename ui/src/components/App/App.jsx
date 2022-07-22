@@ -182,7 +182,7 @@ export default function App() {
 
   async function getCities() {
     setLoading(true)
-    const response = await axios.get(`http://localhost:3001/cities/`).catch((err)=>{
+    const response = await axios.get(`http://localhost:3001/cities/getCities`).catch((err)=>{
       alert(err)
     })
     setCities(response.data.cities);

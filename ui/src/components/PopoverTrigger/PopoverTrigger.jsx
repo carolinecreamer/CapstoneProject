@@ -11,6 +11,7 @@ import MarkerShape from "../MarkerShape/MarkerShape";
 
 export default function PopoverTrigger({ name, setLoading, saved }) {
     const [starred, setStarred] = useState(saved);
+    const markerSVGOutline = "M12 21.7C17.3 17 20 13 20 10a8 8 0 1 0-16 0c0 3 2.7 6.9 8 11.7z" // Coordinate path drawing out marker shape in SVG format
 
     async function handleStar() {
         // Makes POST request to add city to DB and changes "starred" state variable to be true, causes page to re-render
@@ -72,7 +73,7 @@ export default function PopoverTrigger({ name, setLoading, saved }) {
                 transform="translate(-12, -24)"
             >
                 <circle cx="12" cy="10" r="3" />
-                <path d="M12 21.7C17.3 17 20 13 20 10a8 8 0 1 0-16 0c0 3 2.7 6.9 8 11.7z" />
+                <path d={markerSVGOutline} />
             </g>
             </OverlayTrigger>
         )
