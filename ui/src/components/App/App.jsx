@@ -182,7 +182,7 @@ export default function App() {
 
   async function getCities() {
     setLoading(true)
-    const response = await axios.get(`http://localhost:3001/cities/getCities`).catch((err)=>{
+    const response = await axios.get(`http://localhost:3001/cities/get-cities`).catch((err)=>{
       alert(err)
     })
     setCities(response.data.cities);
@@ -191,7 +191,7 @@ export default function App() {
 
   async function getUsers() {
     setLoading(true)
-    const response = await axios.get(`http://localhost:3001/users/`).catch((err)=>{
+    const response = await axios.get(`http://localhost:3001/users/get-users`).catch((err)=>{
       alert(err)
     })
     setUsers(response);

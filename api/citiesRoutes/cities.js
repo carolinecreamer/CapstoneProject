@@ -4,7 +4,7 @@ const User  = require("../models/models")
 const Parse = require('parse/node')
 
 // Get list of favorited cities
-router.get("/", async (req, res, next) => {
+router.get("/get-cities", async (req, res, next) => {
     try {
         const user = await User.getUser();
         let cities = user.get("cities");
