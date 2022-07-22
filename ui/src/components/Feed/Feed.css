@@ -1,0 +1,11 @@
+.userCities {
+    display: flex;
+}
+
+.feedCity {
+    margin-right: 15px;
+}
+
+.pin {
+    margin-bottom: 3px;
+}
