@@ -194,7 +194,7 @@ export default function App() {
     const response = await axios.get(`http://localhost:3001/users/get-users`).catch((err)=>{
       alert(err)
     })
-    setUsers(response);
+    setUsers(response.data.users);
     setLoading(false)
   }
 
@@ -223,7 +223,7 @@ export default function App() {
 
               <NavBar isLoggedIn={isLoggedIn} handleLogout={handleLogout}
                 viewProfile={viewProfile} toggleViewProfile={toggleViewProfile} className="NavBar" currentUser={currentUser}/>
-              <Feed currentUser={currentUser}/>
+              <Feed currentUser={currentUser} getUsers={getUsers} users={users}/>
             </div>
           } />
         </Routes>

@@ -100,12 +100,12 @@ const Map = ({setLoading, cities, getCities}) => {
         {
           // Maps over each city in each state to add a marker on its location. The markers are encapsulated by an Overlay Trigger so that a
           // popup window appears with info about the city, when the marker is clicked on
-          states.map((state) => (
-            state.cities.map(({ name, coordinates }) => {
+          states?.map((state) => (
+            state?.cities?.map(({ name, coordinates }) => {
 
                 return (
                   <Marker key={name} coordinates={coordinates}>
-                    <PopoverTrigger name={name} setLoading={setLoading} saved={cities.includes(name)}/>
+                    <PopoverTrigger name={name} setLoading={setLoading} saved={cities?.includes(name)}/>
                   </Marker>
                 )
 
