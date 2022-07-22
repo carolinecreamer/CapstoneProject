@@ -1,9 +1,10 @@
 import * as React from "react"
 import * as Bootstrap from "react-bootstrap"
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { BsPinFill } from "react-icons/bs"
 import "./Feed.css"
 
-export default function Feed({currentUser, getUsers, users}) {
+export default function Feed({ currentUser, getUsers, users }) {
     React.useEffect(() => {
         getUsers();
     }, [])
@@ -18,14 +19,18 @@ export default function Feed({currentUser, getUsers, users}) {
                         return (
                             <Bootstrap.ListGroupItem>
 
-                            {user?.username}
-                            {
-                                user?.cities?.map((city) => {
-                                    return(
-                                        <p>{city}</p>
-                                    )
-                                })
-                            }
+                                <h6>{user?.username}</h6>
+                                <div className="userCities">
+                                    {
+
+                                        user?.cities?.map((city) => {
+                                            return (
+                                                <p key={city} className="feedCity"> <BsPinFill className="pin"/> {city}</p>
+                                            )
+                                        })
+
+                                    }
+                                </div>
                             </Bootstrap.ListGroupItem>
                         )
                     }
