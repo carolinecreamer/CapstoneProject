@@ -1,12 +1,12 @@
 const express = require("express");
 const router  = express.Router();
-const Cities  = require("../citiesModels/cities")
+const User  = require("../models/models")
 const Parse = require('parse/node')
 
 // Get list of favorited cities
-router.get("/", async (req, res, next) => {
+router.get("/get-cities", async (req, res, next) => {
     try {
-        const user = await Cities.getUser();
+        const user = await User.getUser();
         let cities = user.get("cities");
         res.status(200).json({ cities })
     } catch (err) {
@@ -17,14 +17,13 @@ router.get("/", async (req, res, next) => {
 // Add route adds a city to the end of the "cities" array in the User object
 router.post('/add', async (req, res, next) => {
     try {
-        Parse.User.enableUnsafeCurrentUser()
-        const currentUser = await Parse.User.current();
-
-        if (currentUser !== null) {
-            currentUser.addUnique("cities", req.body.city)
-            return currentUser.save()
-          }
-
+        const user = await User.getUser();
+        if (user != null) {
+            user.addUnique("cities", req.body.city)
+            await user.save()
+            res.sendStatus(200)
+        }
+        res.sendStatus(400)
     } catch(err) {
         next(err)
     }
@@ -34,13 +33,14 @@ router.post('/add', async (req, res, next) => {
 // the User object
 router.post('/remove', async (req, res, next) => {
     try {
-        Parse.User.enableUnsafeCurrentUser()
-        const currentUser = await Parse.User.current();
+        const user = await User.getUser();
 
-        if (currentUser !== null) {
-            currentUser.remove("cities", req.body.city)
-            return currentUser.save()
-          }
+        if (user !== null) {
+            user.remove("cities", req.body.city)
+            await user.save()
+            res.sendStatus(200)
+        }
+        res.sendStatus(400)
 
     } catch(err) {
         next(err)

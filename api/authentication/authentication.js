@@ -37,5 +37,11 @@ router.post('/register', async (req, res) => {
     res.render('profile', {title: 'profile', user: user});
   })
 
+  // renders the feed page with the current user's info
+  router.get('/feed', async (req, res) => {
+    const user = req.user;
+    res.render('feed', {title: 'feed', user: user});
+  })
+
 
   module.exports = router;

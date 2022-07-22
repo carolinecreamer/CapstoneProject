@@ -7,19 +7,14 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { useState, useEffect } from "react"
 
 
-export default function UserProfile({ user }) {
-    const [cities, setCities] = useState([])
+export default function UserProfile({ user, getCities , cities}) {
 
     // Contains the users information in a Bootstrap Card component
     React.useEffect(() => {
-        let setup = async()=>{
-            const response = await axios.get(`http://localhost:3001/cities/`).catch((err)=>{
-              console.error(err)
-            })
-            setCities(response.data.cities);
-          }
-          setup();
+          getCities();
+
     }, [])
+
     return (
         <Bootstrap.Container>
             <Bootstrap.Card className="Card">

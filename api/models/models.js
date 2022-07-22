@@ -2,7 +2,7 @@ const Parse = require('parse/node')
 
 
 // Get current user
-class Cities {
+class User {
     static async getUser() {
         Parse.User.enableUnsafeCurrentUser()
         const currentUser = await Parse.User.current();
@@ -11,4 +11,4 @@ class Cities {
 }
 
 
-module.exports = Cities;
+module.exports = User;
