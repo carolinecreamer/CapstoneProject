@@ -12,6 +12,7 @@ export default function UserProfile({ user, getCities , cities}) {
     // Contains the users information in a Bootstrap Card component
     React.useEffect(() => {
           getCities();
+
     }, [])
 
     return (
