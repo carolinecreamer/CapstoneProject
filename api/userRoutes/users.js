@@ -26,7 +26,7 @@ router.get("/get-following", async (req, res, next) => {
     }
 })
 
-// Add route adds a city to the end of the "cities" array in the User object
+// Add route adds a user to the end of the "friends" array in the User object
 router.post('/add-friend', async (req, res, next) => {
     try {
         // create new Parse User object from the user passed in through the POST request
@@ -46,26 +46,6 @@ router.post('/add-friend', async (req, res, next) => {
         await user.save()
         res.sendStatus(200)
         return
-
-       // res.sendStatus(400)
-    } catch(err) {
-        next(err)
-    }
-});
-
-// Remove route removes a city from the end of the "cities" array in
-// the User object
-router.post('/remove-friend', async (req, res, next) => {
-    try {
-        const user = await User.getUser();
-
-        if (user !== null) {
-            user.remove("cities", req.body.city)
-            await user.save()
-            res.sendStatus(200)
-        }
-        res.sendStatus(400)
-
     } catch(err) {
         next(err)
     }
