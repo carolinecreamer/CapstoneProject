@@ -51,6 +51,31 @@ router.post('/add-friend', async (req, res, next) => {
     }
 });
 
+// Remove route removes a user from the end of the "friends" array in
+// the User object
+router.post('/remove-friend', async (req, res, next) => {
+    try {
+
+        const user = await User.getUser();
+        // create new Parse User object from the user passed in through the POST request
+        const friend = new Parse.User(req.body.user);
+        friend["className"] = "_User";
+
+        // if the current user is null or the friend user is null, throw an error
+        if (user === null || friend == null) {
+            res.sendStatus(400);
+            return
+        }
+
+        // remove the pointer of the friend user to the "friends" array in the current User object
+        user.remove("friends", friend.toPointer())
+            await user.save()
+            res.sendStatus(200)
+
+    } catch(err) {
+        next(err)
+    }
+});
 
 
 module.exports = router;
