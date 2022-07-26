@@ -5,10 +5,15 @@ import { BsPinFill } from "react-icons/bs"
 import Friends from "../Friends/Friends";
 import "./Feed.css"
 
-export default function Feed({ currentUser, getUsers, users, setLoading }) {
+export default function Feed({ currentUser, getUsers, users, setLoading, following, getFollowing }) {
     React.useEffect(() => {
+    //    setLoading(true);
         getUsers();
+        getFollowing();
+      //  setLoading(false);
     }, [])
+
+    console.log(following)
 
     // Display other users that use the web page
     return (
@@ -21,7 +26,7 @@ export default function Feed({ currentUser, getUsers, users, setLoading }) {
                             <Bootstrap.ListGroupItem>
 
                                 <h6>{user?.username}</h6>
-                                <Friends user={user} friends={false} setLoading={setLoading}/>
+                                <Friends user={user} friends={following?.includes(user?.username)} setLoading={setLoading}/>
                                 <div className="userCities">
                                     {
 

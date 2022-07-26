@@ -8,6 +8,7 @@ import axios from "axios"
 import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom"
 import UserProfile from '../UserProfile/UserProfile'
 import Feed from '../Feed/Feed'
+import Spinner from 'react-bootstrap/Spinner';
 
 
 export default function App() {
@@ -179,31 +180,35 @@ export default function App() {
 
 
   async function getCities() {
-    setLoading(true)
     const response = await axios.get(`http://localhost:3001/cities/get-cities`).catch((err)=>{
       alert(err)
     })
     setCities(response.data.cities);
-    setLoading(false)
   }
 
   async function getUsers() {
-    setLoading(true)
     const response = await axios.get(`http://localhost:3001/users/get-users`).catch((err)=>{
       alert(err)
     })
     setUsers(response.data.users);
-    setLoading(false)
   }
 
   async function getFollowing() {
-    setLoading(true)
     const response = await axios.get(`http://localhost:3001/users/get-following`).catch((err)=>{
       alert(err)
     })
 
     setFollowing(response.data.following);
-    setLoading(false)
+  }
+
+
+
+  if (loading) {
+    return (
+      <Spinner animation="border" role="status" className="loading">
+        <span className="visually-hidden">Loading...</span>
+      </Spinner>
+    )
   }
 
   return (
@@ -215,7 +220,7 @@ export default function App() {
               <NavBar isLoggedIn={isLoggedIn} handleLogout={handleLogout}
                 viewProfile={viewProfile} toggleViewProfile={toggleViewProfile} className="NavBar" currentUser={currentUser}/>
               <Home isLoggedIn={isLoggedIn} handleLogout={handleLogout} handleLogin={handleLogin} setLoading={setLoading}
-              cities={cities} getCities={getCities} currentUser={currentUser}/>
+              cities={cities} getCities={getCities} currentUser={currentUser} getFollowing={getFollowing}/>
             </div>
           } />
           <Route path="/profile" element={
@@ -232,7 +237,8 @@ export default function App() {
 
               <NavBar isLoggedIn={isLoggedIn} handleLogout={handleLogout}
                 viewProfile={viewProfile} toggleViewProfile={toggleViewProfile} className="NavBar" currentUser={currentUser}/>
-              <Feed currentUser={currentUser} getUsers={getUsers} users={users} setLoading={setLoading}/>
+              <Feed currentUser={currentUser} getUsers={getUsers} users={users} setLoading={setLoading} following={following}
+              getFollowing={getFollowing}/>
             </div>
           } />
         </Routes>

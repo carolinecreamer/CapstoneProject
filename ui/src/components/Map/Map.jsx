@@ -37,10 +37,13 @@ const offsets = {
 const MIN_US_LONGITUDE = -160;
 const MAX_US_LONGITUDE = -67;
 
-const Map = ({setLoading, cities, getCities}) => {
+const Map = ({setLoading, cities, getCities, getFollowing}) => {
 
   React.useEffect(() => {
+    setLoading(true);
     getCities();
+    getFollowing();
+    setLoading(false);
 }, [])
 
   return (
