@@ -17,11 +17,6 @@
     color: var(--dark-blue);
 }
 
-.favorites {
-    font-weight: bold;
-}
-
-
-.following {
+.favorites, .following {
     font-weight: bold;
 }

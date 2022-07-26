@@ -6,8 +6,8 @@ const Parse = require('parse/node')
 // Get list of favorited users
 router.get("/get-users", async (req, res, next) => {
     try {
-        const query = new Parse.Query(Parse.User);
-        const users = await query.find();
+        let query = new Parse.Query(Parse.User);
+        let users = await query.find();
         res.status(200).json({ users })
     } catch (err) {
         next(err);
@@ -16,7 +16,7 @@ router.get("/get-users", async (req, res, next) => {
 
 router.get("/get-following", async (req, res, next) => {
     try {
-        const currentUser = await User.getUser();
+        let currentUser = await User.getUser();
         let followingPointers = currentUser.get("friends");
 
         let following = await User.dereferencePointers(followingPointers)
@@ -30,10 +30,10 @@ router.get("/get-following", async (req, res, next) => {
 router.post('/add-friend', async (req, res, next) => {
     try {
         // create new Parse User object from the user passed in through the POST request
-        const friend = new Parse.User(req.body.user);
+        let friend = new Parse.User(req.body.user);
         friend["className"] = "_User";
 
-        const user = await User.getUser();
+        let user = await User.getUser();
 
         // if the current user is null or the friend user is null, throw an error
         if (user == null || friend == null) {
@@ -56,9 +56,9 @@ router.post('/add-friend', async (req, res, next) => {
 router.post('/remove-friend', async (req, res, next) => {
     try {
 
-        const user = await User.getUser();
+        let user = await User.getUser();
         // create new Parse User object from the user passed in through the POST request
-        const friend = new Parse.User(req.body.user);
+        let friend = new Parse.User(req.body.user);
         friend["className"] = "_User";
 
         // if the current user is null or the friend user is null, throw an error
