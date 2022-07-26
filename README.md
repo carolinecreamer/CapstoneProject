@@ -5,7 +5,8 @@ Users view a map of the United States and can click on cities to view cost of li
 
 Core Features
 - [x] User Authentication
-- [ ] Loading View
+- [x] Loading View
+- [ ] Road trip view
 - [x] API call to RealtyMole to view rent prices
   - [x] Initial API call
   - [x] Wrapper functions
@@ -13,7 +14,7 @@ Core Features
 - [ ] User Profile
   - [x] User Info
   - [x] Favorites
-  - [ ] Friends
+  - [x] Friends
 - [x] Homepage
 - [ ] Interactive map
    - [x] User can view map display
@@ -21,9 +22,13 @@ Core Features
    - [ ] View friends on map
    - [x] View saved places on map
    - [x] At least 2 cities per state
+ 
 
 Stretch Features
+- [ ] Persistent user authentication
+- [ ] Filtering feed
 - [ ] API call to RealtyMole to view sale prices
+- [ ] "See more..." on popover
 - [ ] More cities
 - [ ] Zoom in on states on click
 - [ ] API call to Zomato
