@@ -1,12 +1,10 @@
 import * as React from "react"
-import * as Bootstrap from "react-bootstrap"
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { BsPinFill, BsFillPersonPlusFill, BsFillPersonCheckFill } from "react-icons/bs"
+import { BsFillPersonPlusFill, BsFillPersonCheckFill } from "react-icons/bs"
 import "./Friends.css"
 import { useState } from "react";
 import axios from "axios"
 import * as config from "../../config"
-import Parse from 'parse/react-native'
 
 export default function Friends({ user, friends, setLoading }) {
     const [friended, setFriended] = useState(friends);

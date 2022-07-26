@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import * as Utils from "../../Utils"
 import * as React from "react"
 import './App.css'
@@ -6,11 +6,8 @@ import NavBar from '../NavBar/NavBar'
 import Home from '../Home/Home'
 import axios from "axios"
 import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom"
-import * as config from '../../config'
 import UserProfile from '../UserProfile/UserProfile'
 import Feed from '../Feed/Feed'
-import Parse from 'parse/react-native'
-import { BsEmojiNeutralFill } from 'react-icons/bs'
 
 
 export default function App() {
@@ -39,6 +36,7 @@ export default function App() {
   // Updates who the current user is based on if a user is logged in
   const [currentUser, setCurrentUser] = useState(null);
   const [cities, setCities] = useState([]);
+  const [following, setFollowing] = useState([]);
   const [loading, setLoading] = useState(false);
 
   React.useEffect(() => {
@@ -198,6 +196,16 @@ export default function App() {
     setLoading(false)
   }
 
+  async function getFollowing() {
+    setLoading(true)
+    const response = await axios.get(`http://localhost:3001/users/get-following`).catch((err)=>{
+      alert(err)
+    })
+
+    setFollowing(response.data.following);
+    setLoading(false)
+  }
+
   return (
     <div className="app">
       <BrowserRouter>
@@ -214,7 +222,8 @@ export default function App() {
             <div>
               <NavBar isLoggedIn={isLoggedIn} handleLogout={handleLogout}
                 viewProfile={viewProfile} toggleViewProfile={toggleViewProfile} className="NavBar" currentUser={currentUser}/>
-              <UserProfile user={currentUser} getCities={getCities} cities={cities} setLoading={setLoading}/>
+              <UserProfile user={currentUser} getCities={getCities} cities={cities} setLoading={setLoading} following={following}
+              getFollowing={getFollowing}/>
             </div>
           } />
 
