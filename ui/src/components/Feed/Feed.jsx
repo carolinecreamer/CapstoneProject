@@ -2,9 +2,10 @@ import * as React from "react"
 import * as Bootstrap from "react-bootstrap"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BsPinFill } from "react-icons/bs"
+import Friends from "../Friends/Friends";
 import "./Feed.css"
 
-export default function Feed({ currentUser, getUsers, users }) {
+export default function Feed({ currentUser, getUsers, users, setLoading }) {
     React.useEffect(() => {
         getUsers();
     }, [])
@@ -20,6 +21,7 @@ export default function Feed({ currentUser, getUsers, users }) {
                             <Bootstrap.ListGroupItem>
 
                                 <h6>{user?.username}</h6>
+                                <Friends user={user} friends={false} setLoading={setLoading}/>
                                 <div className="userCities">
                                     {
 

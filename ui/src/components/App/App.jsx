@@ -223,7 +223,7 @@ export default function App() {
 
               <NavBar isLoggedIn={isLoggedIn} handleLogout={handleLogout}
                 viewProfile={viewProfile} toggleViewProfile={toggleViewProfile} className="NavBar" currentUser={currentUser}/>
-              <Feed currentUser={currentUser} getUsers={getUsers} users={users}/>
+              <Feed currentUser={currentUser} getUsers={getUsers} users={users} setLoading={setLoading}/>
             </div>
           } />
         </Routes>

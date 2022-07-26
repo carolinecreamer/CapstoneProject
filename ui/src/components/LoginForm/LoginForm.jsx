@@ -21,7 +21,7 @@ export default function LoginForm({ handleLogin, setLoading }) {
       try {
         const res = await axios.post(`${config.API_BASE_URL}/auth/login`, {
           "username": username.current.value,
-          "password": password.current.value
+          "password": password.current.value,
         })
         handleLogin(res.data.user)
       } catch (err) {
