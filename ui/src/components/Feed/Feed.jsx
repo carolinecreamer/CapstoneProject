@@ -13,8 +13,6 @@ export default function Feed({ currentUser, getUsers, users, setLoading, followi
         setLoading(false);
     }, [])
 
-    console.log(following)
-
     // Display other users that use the web page
     // Iterate over users, if the user is not the current user, display the user in the feed, if the user is in the array of "followed" users, change the user's icon
     // Iterate over each saved city for the user being displayed and display the city next to the user's name
