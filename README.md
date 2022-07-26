@@ -11,7 +11,7 @@ Core Features
   - [x] Initial API call
   - [x] Wrapper functions
   - [x] Parse rent data
-- [ ] User Profile
+- [x] User Profile
   - [x] User Info
   - [x] Favorites
   - [x] Friends
