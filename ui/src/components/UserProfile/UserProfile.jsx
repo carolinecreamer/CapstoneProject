@@ -3,6 +3,7 @@ import "./UserProfile.css"
 import * as Bootstrap from "react-bootstrap"
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+
 export default function UserProfile({ user, getCities , cities, getFollowing, following, setLoading}) {
 
     // Contains the users information in a Bootstrap Card component
@@ -21,6 +22,7 @@ export default function UserProfile({ user, getCities , cities, getFollowing, fo
                     {
                     cities?.map((city)=>{
                         return(<Bootstrap.Card.Text key={city}>{city}</Bootstrap.Card.Text>)
+
 
                     })}
                     <Bootstrap.Card.Text className="following">Following</Bootstrap.Card.Text>

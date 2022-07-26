@@ -11,6 +11,7 @@ import Feed from '../Feed/Feed'
 import Spinner from 'react-bootstrap/Spinner';
 
 
+
 export default function App() {
   // Boolean for if the user is logged in or not
   const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem("current_user_id") !== null)
@@ -209,6 +210,16 @@ export default function App() {
         <span className="visually-hidden">Loading...</span>
       </Spinner>
     )
+  }
+
+  async function getFollowing() {
+    setLoading(true)
+    const response = await axios.get(`http://localhost:3001/users/get-following`).catch((err)=>{
+      alert(err)
+    })
+
+    setFollowing(response.data.following);
+    setLoading(false)
   }
 
   return (
