@@ -1,5 +1,4 @@
 import React from "react";
-import { useState } from 'react'
 import { geoCentroid } from "d3-geo";
 import PopoverTrigger from "../PopoverTrigger/PopoverTrigger";
 import {

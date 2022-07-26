@@ -16,11 +16,11 @@ router.get("/get-users", async (req, res, next) => {
 
 router.get("/get-following", async (req, res, next) => {
     try {
-        const user = await User.getUser();
-        const query = new Parse.Query("Follow");
-        query.equalTo("from", user);
-        const users = await query.find();
-        res.status(200).json({ users })
+        const currentUser = await User.getUser();
+        let followingPointers = currentUser.get("friends");
+
+        let following = await User.dereferencePointers(followingPointers)
+        res.status(200).json({  following })
     } catch (err) {
         next(err);
     }
