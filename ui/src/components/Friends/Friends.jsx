@@ -12,7 +12,7 @@ export default function Friends({ user, friends, setLoading }) {
     const [friended, setFriended] = useState(friends);
 
     async function handleFriend() {
-        // Makes POST request to add city to DB and changes "starred" state variable to be true, causes page to re-render
+        // Makes POST request to add friend to DB and changes "starred" state variable to be true, causes page to re-render
         setLoading(true);
 
         const addFriend = async () => {
@@ -34,7 +34,7 @@ export default function Friends({ user, friends, setLoading }) {
     }
 
     async function handleUnfriend() {
-        // Makes POST request to add city to DB and changes "starred" state variable to be true, causes page to re-render
+        // Makes POST request to remove friend from DB and changes "starred" state variable to be false, causes page to re-render
         setLoading(true);
 
         const removeFriend= async () => {

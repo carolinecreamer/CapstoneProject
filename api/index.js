@@ -28,23 +28,16 @@ app.get('/', (req, res) => {
   res.send('Hello World!')
 })
 
-/*app.use(function(req, res, next) {
+app.use(function(req, res, next) {
   res.header('Access-Control-Allow-Origin', 'http://localhost:3001');
   res.header(
     'Access-Control-Allow-Headers',
     'Origin, X-Requested-With, Content-Type, Accept'
   );
   next();
-});*/
+});
 
 
-
-/*app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  next();
-});*/
 // Shows which port the webpage is connected to
 app.listen(port, () => {
   console.log(`Capstone project listening on port ${port}`)
@@ -55,7 +48,7 @@ app.use(function(req, res, next){
   res.locals.user = req.user;
 })
 
-/*app.use((error, req, res, next) => {
+app.use((error, req, res, next) => {
   const { status, message } = error;
 
   const errorObject = {
@@ -64,5 +57,5 @@ app.use(function(req, res, next){
   };
 
   res.status(status).send({ error: errorObject });
-})*/
+})
 module.exports = app;
