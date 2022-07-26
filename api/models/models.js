@@ -11,7 +11,7 @@ class User {
 
     static async userQueryById(id) {
         const query = new Parse.Query(Parse.User);
-        query.equalTo("id", id);  // find all the women
+        query.equalTo("id", id);
         const user = await query.find();
         await user.fetch();
         return user;
