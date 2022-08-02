@@ -9,7 +9,12 @@ import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom"
 import UserProfile from '../UserProfile/UserProfile'
 import Feed from '../Feed/Feed'
 import Spinner from 'react-bootstrap/Spinner';
+<<<<<<< HEAD
 
+=======
+import * as config from "../../config"
+import states from "../../../public/states.json";
+>>>>>>> 14e0cb5 (Listings show in popover)
 
 
 export default function App() {
@@ -22,60 +27,99 @@ export default function App() {
   // State that the user has selected
   const [state, setState] = useState("");
   // All listings in the given city
-  const [listings, setListings] = useState([]);
+  const [listings, setListings] = useState(null);
   // Array of properties within the user's price range
-  const [properties, setProperties] = useState([]);
+  //const [properties, setProperties] = useState([]);
   // Average rent in a city
-  const [average, setAverage] = useState(0);
+  //const [average, setAverage] = useState(0);
   // Minimum rent price that the user is willing to pay
-  const [minPrice, setMinPrice] = useState(0);
+  //const [minPrice, setMinPrice] = useState(1000);
   // Maximum rent price that the user is willing to pay
-  const [maxPrice, setMaxPrice] = useState(0);
+  //const [maxPrice, setMaxPrice] = useState(2500);
   // Number of properties within the user's price rance
-  const [numProperties, setNumProperties] = useState(0);
+  //const [numProperties, setNumProperties] = useState(0);
   // If the user has selected to view their profile
   const [viewProfile, setViewProfile] = useState(false);
   // Updates who the current user is based on if a user is logged in
   const [currentUser, setCurrentUser] = useState(null);
-  const [cities, setCities] = useState([]);
-  const [following, setFollowing] = useState([]);
+  const [cities, setCities] = useState(null);
+  const [following, setFollowing] = useState(null);
   const [loading, setLoading] = useState(false);
+  const friendFavorites = new Map();
 
-  React.useEffect(() => {
-    // Call functions in Utils.jsx to parse data
-    setAverage(Utils.calculateAverage(listings));
-    setProperties(Utils.getProperties(listings, minPrice, maxPrice));
-    // will this work because setting state is asynchronous?
-    setNumProperties(properties.length);
-  }, [listings, minPrice, maxPrice]);
+  //console.log(num)
+
+  //console.log('-87.62772560119629,41.90569466294521'.split(','))
+
+ /* React.useEffect(() => {
+    if (listings != null) {
+      // Call functions in Utils.jsx to parse data
+      const average = Utils.calculateAverage(listings);
+      const properties = Utils.getProperties(listings, minPrice, maxPrice);
+      // will this work because setting state is asynchronous?
+      const numProperties = properties.length;
+
+      addNewCity(city, state, states[state]?.cities[city]['coordinates'], listings, average)
+    }
+   // addNewCity(city, state, states[state]?.cities[city]['coordinates'], listings, average, minPrice, maxPrice, numProperties, properties)
+  }, [listings, minPrice, maxPrice]);*/
+
+
+  function handleNewListings(state, city, listings) {
+    const average = Utils.calculateAverage(listings);
+   // const properties = Utils.getProperties(listings, minPrice, maxPrice);
+      // will this work because setting state is asynchronous?
+    //const numProperties = properties.length;
+    listings.map((listing) => {
+      delete listing["rawAddress"];
+      delete listing["county"];
+      delete listing["county"];
+      delete listing["addressLine1"];
+      delete listing["addressLine2"];
+      delete listing["city"];
+      delete listing["state"];
+      delete listing["zipCode"];
+      delete listing["lastSeen"];
+      delete listing["listedDate"];
+      delete listing["status"];
+      delete listing["removedDate"];
+      delete listing["daysOnMarket"];
+      delete listing["createdDate"];
+      delete listing["id"];
+      delete listing["latitude"];
+      delete listing["longitude"];
+    })
+    console.log(JSON.stringify(listings))
+    addNewCity(city, state, states[state]?.cities[city]['coordinates'], JSON.stringify(listings), average)
+  }
 
 
   // This is intentionally commented out but will be used later. The API only allows
   // 50 calls per month, so I created test data to test parsing functionality and will
   // only call the API when necessary for testing
 
-  /* const getListingsByCity = () => {
-     const options = {
-       method: 'GET',
-       url: 'https://realty-mole-property-api.p.rapidapi.com/rentalListings',
-       params: {city: city, state: state},
-       headers: {
-         'X-RapidAPI-Key': config.RAPID_API_KEY,
-         'X-RapidAPI-Host': config.RAPID_API_HOST
-       }
-     };
+   const getListingsByCity = (city, state) => {
+      const options = {
+        method: 'GET',
+        url: 'https://realty-mole-property-api.p.rapidapi.com/rentalListings',
+        params: {city: city, state: state.abbreviation, limit: '9'},
+        headers: {
+          'X-RapidAPI-Key': config.RAPID_API_KEY,
+          'X-RapidAPI-Host': config.RAPID_API_HOST
+        }
+      };
 
-     axios.request(options).then(function (response) {
-       setListings(response.data);
-       parseResults();
-     }).catch(function (error) {
-       console.error(error);
-     });
-   }*/
+      axios.request(options).then(function (response) {
+        console.log(response)
+        handleNewListings(state.abbreviation, city, response.data);
+        return response.data
+      }).catch(function (error) {
+        alert(error);
+      });
+   }
 
   const client = axios.create({
-    //baseURL: constants.api.url -> going to uncomment when making real API requests!
-    baseURL: null
+    baseURL: config.RAPID_API_HOST
   });
 
 
@@ -142,9 +186,10 @@ export default function App() {
   const handleLogin = (user) => {
     localStorage.setItem("current_user_id", user["objectId"])
     localStorage.setItem("user", user)
-    setCurrentUser(user)
+    setCurrentUser(user);
     addAuthenticationHeader()
     setIsLoggedIn(true)
+
   }
 
   // Make GET request to RealtyMole when city is change (city will be changed on click)
@@ -158,7 +203,7 @@ export default function App() {
 
   // Gets info from test json file (JSON file containing real data that I copy
   // & pasted from the API)
-  function clickState() {
+  /*function clickState() {
     return request({
       method: 'get',
       url: "./testData.json"
@@ -169,7 +214,7 @@ export default function App() {
     })
       .catch(err => console.error(err));
 
-  }
+  }*/
 
 
   // Toggles between displaying an icon that links to the home page (displays if you
@@ -180,7 +225,38 @@ export default function App() {
   }
 
 
+  async function addNewCity(city, state, coordinates, listings, avgprice) {
+    return request({
+      method: 'post',
+      url: `http://localhost:3001/cities/add-city?city=${city}&state=${state}&coordinates=${coordinates}&average_rent=${avgprice}&listings=${listings}`
+    }).then((res) => {
+      return res
+    })
+      .catch(err => console.error(err));
+  }
+
+  async function queryCityFromDB(city, state) {
+    return request({
+      method: 'get',
+      url: `http://localhost:3001/cities/get-city?city=${city}&state=${state.abbreviation}`,
+    }).then((res) => {
+      if ((res.city).length > 0) {
+        return res
+      }
+      else {
+        console.log(getListingsByCity(city, state))
+        return getListingsByCity(city, state);
+      }
+    }).catch((err) => {
+
+      alert(err);
+      });
+  }
+
+
+
   async function getCities() {
+<<<<<<< HEAD
     const response = await axios.get(`http://localhost:3001/cities/get-cities`).catch((err)=>{
       alert(err)
     })
@@ -210,16 +286,49 @@ export default function App() {
         <span className="visually-hidden">Loading...</span>
       </Spinner>
     )
+=======
+    return request({
+      method: 'get',
+      url: `http://localhost:3001/users/get-cities`
+    }).then((res) => {
+      setCities(res.cities);
+      setLoading(false)
+      return res
+    })
+      .catch(err => console.error(err));
+  }
+
+  async function getUsers() {
+    return request({
+      method: 'get',
+      url: `http://localhost:3001/users/get-users`
+    }).then((res) => {
+      setUsers(res.users);
+      setLoading(false)
+      return res
+    })
+      .catch(err => console.error(err));
+>>>>>>> 14e0cb5 (Listings show in popover)
   }
 
   async function getFollowing() {
-    setLoading(true)
-    const response = await axios.get(`http://localhost:3001/users/get-following`).catch((err)=>{
-      alert(err)
+    return request({
+      method: 'get',
+      url: `http://localhost:3001/users/get-following`
+    }).then((res) => {
+      setFollowing(res.following);
+      setLoading(false)
+      return res
     })
+      .catch(err => console.error(err));
+  }
 
-    setFollowing(response.data.following);
-    setLoading(false)
+  if (loading) {
+    return (
+      <Spinner animation="border" role="status" className="loading">
+      <span className="visually-hidden">Loading...</span>
+      </Spinner>
+    )
   }
 
   return (
@@ -230,16 +339,21 @@ export default function App() {
             <div>
               <NavBar isLoggedIn={isLoggedIn} handleLogout={handleLogout}
                 viewProfile={viewProfile} toggleViewProfile={toggleViewProfile} className="NavBar" currentUser={currentUser}/>
+<<<<<<< HEAD
               <Home isLoggedIn={isLoggedIn} handleLogout={handleLogout} handleLogin={handleLogin} setLoading={setLoading}
               cities={cities} getCities={getCities} currentUser={currentUser} getFollowing={getFollowing}/>
+=======
+              <Home isLoggedIn={isLoggedIn} handleLogout={handleLogout} handleLogin={handleLogin} cities={cities} getCities={getCities}
+              currentUser={currentUser} getFollowing={getFollowing} setLoading={setLoading} setCities={setCities} setFollowing={setFollowing}
+              friendFavorites={friendFavorites} following={following} queryCityFromDB={queryCityFromDB}/>
+>>>>>>> 14e0cb5 (Listings show in popover)
             </div>
           } />
           <Route path="/profile" element={
             <div>
               <NavBar isLoggedIn={isLoggedIn} handleLogout={handleLogout}
                 viewProfile={viewProfile} toggleViewProfile={toggleViewProfile} className="NavBar" currentUser={currentUser}/>
-              <UserProfile user={currentUser} getCities={getCities} cities={cities} setLoading={setLoading} following={following}
-              getFollowing={getFollowing}/>
+              <UserProfile user={currentUser} setCities={setCities} setFollowing={setFollowing} getCities={getCities} cities={cities} following={following} getFollowing={getFollowing}/>
             </div>
           } />
 
@@ -248,8 +362,12 @@ export default function App() {
 
               <NavBar isLoggedIn={isLoggedIn} handleLogout={handleLogout}
                 viewProfile={viewProfile} toggleViewProfile={toggleViewProfile} className="NavBar" currentUser={currentUser}/>
+<<<<<<< HEAD
               <Feed currentUser={currentUser} getUsers={getUsers} users={users} setLoading={setLoading} following={following}
               getFollowing={getFollowing}/>
+=======
+              <Feed setUsers={setUsers} setFollowing={setFollowing} currentUser={currentUser} getUsers={getUsers} users={users} following={following} getFollowing={getFollowing}/>
+>>>>>>> 14e0cb5 (Listings show in popover)
             </div>
           } />
         </Routes>

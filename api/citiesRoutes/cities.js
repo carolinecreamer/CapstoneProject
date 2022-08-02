@@ -1,51 +1,48 @@
 const express = require("express");
 const router  = express.Router();
 const User  = require("../models/models")
-const Parse = require('parse/node')
+const Parse = require('parse/node');
+const { URLSearchParams } = require("url");
 
-// Get list of favorited cities
-router.get("/get-cities", async (req, res, next) => {
+router.get("/get-city", async (req, res, next) => {
     try {
-        const user = await User.getUser();
-        let cities = user.get("cities");
-        res.status(200).json({ cities })
+        const splitArray = req.url.split('?')
+        const paramsString = splitArray[1]
+        const params = new URLSearchParams(paramsString)
+
+        const City = Parse.Object.extend("City");
+
+        const cityQuery = new Parse.Query(City);
+        cityQuery.equalTo("city", params?.get("city"));
+
+        const stateQuery = new Parse.Query(City);
+        stateQuery.equalTo("state", params?.get("state"));
+
+        const query = Parse.Query.and(cityQuery, stateQuery);
+        const city = await query.find();
+
+        res.status(200).json({ city })
     } catch (err) {
         next(err);
     }
 })
 
-// Add route adds a city to the end of the "cities" array in the User object
-router.post('/add', async (req, res, next) => {
-    try {
-        const user = await User.getUser();
-        if (user != null) {
-            user.addUnique("cities", req.body.city)
-            await user.save()
-            res.sendStatus(200)
-        }
-        res.sendStatus(400)
-    } catch(err) {
-        next(err)
-    }
-});
+router.post("/add-city", async (req, res, next) => {
+    const City = Parse.Object.extend("City");
+    const city = new City();
 
-// Remove route removes a city from the end of the "cities" array in
-// the User object
-router.post('/remove', async (req, res, next) => {
-    try {
-        const user = await User.getUser();
+    const splitArray = req.url.split('?')
+    const paramsString = splitArray[1]
+    const params = new URLSearchParams(paramsString)
 
-        if (user !== null) {
-            user.remove("cities", req.body.city)
-            await user.save()
-            res.sendStatus(200)
-        }
-        res.sendStatus(400)
+    city.set("city", params?.get("city"));
+    city.set("state", params?.get("state"));
+    city.set("average_rent", parseFloat(params?.get("average_rent")));
+    city.set("coordinates", params?.get("coordinates").split(','));
+    city.set("listings", params?.get("listings"));
 
-    } catch(err) {
-        next(err)
-    }
-});
-
+    city.save();
+    res.status(200);
+})
 
   module.exports = router;
