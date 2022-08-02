@@ -10,6 +10,7 @@ import UserProfile from '../UserProfile/UserProfile'
 import Feed from '../Feed/Feed'
 import Spinner from 'react-bootstrap/Spinner';
 import * as config from "../../config"
+import states from "../../../public/states.json";
 
 
 export default function App() {
@@ -25,7 +26,6 @@ export default function App() {
   const [currentUser, setCurrentUser] = useState(null);
   const [cities, setCities] = useState(null);
   const [following, setFollowing] = useState(null);
-
 
   // For every network request, add a custom header for the logged in user
   // The backend API can check the header for the user id

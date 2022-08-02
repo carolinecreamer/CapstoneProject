@@ -107,7 +107,6 @@ const Map = ({cities}) => {
           )
         }
 
-
       </ZoomableGroup>
     </ComposableMap>
   );

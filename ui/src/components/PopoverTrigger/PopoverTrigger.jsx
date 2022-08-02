@@ -65,7 +65,6 @@ export default function PopoverTrigger({ city, state, setLoading, saved}) {
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 transform={starred ? "translate(-12, -24)" : undefined}
-
             >
                 {starred ? <path d={MARKER_SVG_OUTLINE} />
                     : <circle r={3.5} fill="#1266F1" stroke="#fff" strokeWidth={1} />

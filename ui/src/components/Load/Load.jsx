@@ -41,14 +41,6 @@ export default function Load({ setCities, cities, getCities, getFollowing, setFo
         })
     }
 
-    if (cities == null || following == null) {
-        return (
-            <Spinner animation="border" role="status" className="loading">
-            <span className="visually-hidden">Loading...</span>
-            </Spinner>
-          )
-    }
-
   // if cities or following haven't loaded yet, show spinner
   if (cities == null || following == null) {
     return (
