@@ -1,0 +1,10 @@
+/* show friend icon in top right corner of list group item */
+.friend-icon {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-top: 10px;
+    margin-right: 10px;
+    left: auto;
+    bottom: auto;
+}

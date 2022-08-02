@@ -5,9 +5,18 @@ import { BsPinFill } from "react-icons/bs"
 import Friends from "../Friends/Friends";
 import "./Feed.css"
 
-export default function Feed({ currentUser, getUsers, users, setLoading }) {
+export default function Feed({ setUsers, setFollowing, currentUser, getUsers, users, getFollowing, following }) {
+
     React.useEffect(() => {
-        getUsers();
+        async function onLoad() {
+            const usersRes = await getUsers();
+            setUsers(usersRes.users);
+
+            const followingRes = await getFollowing();
+            setFollowing(followingRes.following)
+        }
+
+        onLoad()
     }, [])
 
     // Display other users that use the web page
@@ -18,16 +27,15 @@ export default function Feed({ currentUser, getUsers, users, setLoading }) {
                 {users.map((user) => {
                     if (user?.username != currentUser?.username) {
                         return (
-                            <Bootstrap.ListGroupItem>
-
-                                <h6>{user?.username}</h6>
-                                <Friends user={user} friends={false} setLoading={setLoading}/>
-                                <div className="userCities">
+                            <Bootstrap.ListGroupItem key={user.objectId} className="list-group-item">
+                                <h6 key={user.objectId}>{user?.username}</h6>
+                                <Friends className="friend" user={user} key={user?.username} friends={following?.includes(user?.username)}/>
+                                <div className="userCities" key={user.password}>
                                     {
 
                                         user?.cities?.map((city) => {
                                             return (
-                                                <p key={city} className="feedCity"> <BsPinFill className="pin"/> {city}</p>
+                                                <p key={city} className="feedCity"> <BsPinFill key={city} className="pin"/> {city}</p>
                                             )
                                         })
 

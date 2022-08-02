@@ -9,3 +9,11 @@
 .pin {
     margin-bottom: 3px;
 }
+
+.list-group-item{
+    position: relative;
+}
+
+.friend {
+    position: relative;
+}
