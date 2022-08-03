@@ -125,15 +125,6 @@ export default function App() {
     return res;
   }
 
-
-  if (loading) {
-    return (
-      <Spinner animation="border" role="status" className="loading">
-        <span className="visually-hidden">Loading...</span>
-      </Spinner>
-    )
-  }
-
   return (
     <div className="app">
       <BrowserRouter>
