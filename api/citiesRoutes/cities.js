@@ -1,6 +1,6 @@
 const express = require("express");
 const router  = express.Router();
-const User  = require("../models/models")
+const User  = require("../citiesModels/cities")
 const Parse = require('parse/node');
 const { URLSearchParams } = require("url");
 
@@ -42,7 +42,8 @@ router.post("/add-city", async (req, res, next) => {
     city.set("listings", params?.get("listings"));
 
     city.save();
-    res.status(200);
+
+    res.sendStatus(200);
 })
 
   module.exports = router;
