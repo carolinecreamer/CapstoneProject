@@ -46,20 +46,12 @@ export default function Friends({ user, friends}) {
     // if the user is followed by the current user, display  the icon that shows a check mark; otherwise, display the icon that shows an addition sign
     if (friended) {
         return (
-<<<<<<< HEAD
-            <BsFillPersonCheckFill className="friend-icon" onClick={() => handleUnfriend()}/>
-=======
             <BsFillPersonCheckFill key={user} className="friend-icon" onClick={() => handleUnfriend()}/>
->>>>>>> 14e0cb5 (Listings show in popover)
         )
     }
     else {
         return (
-<<<<<<< HEAD
-            <BsFillPersonPlusFill className="friend-icon" onClick={() => handleFriend()}/>
-=======
             <BsFillPersonPlusFill key={user} className="friend-icon" onClick={() => handleFriend()}/>
->>>>>>> 14e0cb5 (Listings show in popover)
         )
     }
 }

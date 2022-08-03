@@ -39,7 +39,6 @@ router.get("/get-following", async (req, res, next) => {
     try {
         let currentUser = await User.getUser();
         let followingPointers = currentUser.get("friends");
-
         let following = await User.dereferencePointers(followingPointers)
         res.status(200).json({  following })
     } catch (err) {

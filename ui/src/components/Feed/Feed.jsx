@@ -5,14 +5,6 @@ import { BsPinFill } from "react-icons/bs"
 import Friends from "../Friends/Friends";
 import "./Feed.css"
 
-<<<<<<< HEAD
-export default function Feed({ currentUser, getUsers, users, setLoading, following, getFollowing }) {
-    React.useEffect(() => {
-        setLoading(true);
-        getUsers();
-        getFollowing();
-        setLoading(false);
-=======
 export default function Feed({ setUsers, setFollowing, currentUser, getUsers, users, getFollowing, following }) {
 
     React.useEffect(() => {
@@ -25,7 +17,6 @@ export default function Feed({ setUsers, setFollowing, currentUser, getUsers, us
         }
 
         onLoad()
->>>>>>> 14e0cb5 (Listings show in popover)
     }, [])
 
     // Display other users that use the web page
@@ -38,18 +29,10 @@ export default function Feed({ setUsers, setFollowing, currentUser, getUsers, us
                 {users.map((user) => {
                     if (user?.username != currentUser?.username) {
                         return (
-<<<<<<< HEAD
-                            <Bootstrap.ListGroupItem className="list-group-item">
-
-                                <h6>{user?.username}</h6>
-                                <Friends className="friend" user={user} friends={following?.includes(user?.username)} setLoading={setLoading}/>
-                                <div className="userCities">
-=======
                             <Bootstrap.ListGroupItem key={user.objectId} className="list-group-item">
                                 <h6 key={user.objectId}>{user?.username}</h6>
                                 <Friends className="friend" user={user} key={user?.username} friends={following?.includes(user?.username)}/>
                                 <div className="userCities" key={user.password}>
->>>>>>> 14e0cb5 (Listings show in popover)
                                     {
 
                                         user?.cities?.map((city) => {
