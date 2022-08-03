@@ -11,36 +11,19 @@ import Spinner from 'react-bootstrap/Spinner';
 import "./Load.css"
 import { set } from "lodash";
 
-export default function Load({ queryCityFromDB, setCities, cities, getCities, getFollowing, setFollowing,friendFavorites, following }) {
-    //const [cities, setCities] = useState(null);
+export default function Load({ setCities, cities, getCities, getFollowing, setFollowing, following }) {
+    // Get user and city info by calling API wrapper functions in App.jsx, used to load the users saved cities and who the user is following
     React.useEffect(() => {
         async function onLoad() {
             const citiesRes = await getCities();
-            setCities(citiesRes.cities);
+            setCities(citiesRes.data.cities);
 
             const followingRes = await getFollowing();
-            setFollowing(followingRes.following)
-            addToFavMap();
+            setFollowing(followingRes.data.following)
         }
 
         onLoad()
       }, [])
-
-      function addToFavMap()  {
-
-        following?.map((friend) => {
-          friend?.cities?.map((city) => {
-            if (friendFavorites.has(city)) {
-              let currentFriends = friendFavorites.get(city);
-              currentFriends.push(friend);
-              friendFavorites.set(city, currentFriends);
-            }
-            else {
-              friendFavorites.set(city, [friend]);
-            }
-          })
-        })
-    }
 
     if (cities == null || following == null) {
         return (
@@ -51,6 +34,6 @@ export default function Load({ queryCityFromDB, setCities, cities, getCities, ge
     }
 
     return (
-        <Map cities={cities} friendFavorites={friendFavorites} following={following} queryCityFromDB={queryCityFromDB}/>
+        <Map cities={cities} following={following}/>
     )
 }
