@@ -25,13 +25,6 @@ export default function Load({ setCities, cities, getCities, getFollowing, setFo
         onLoad()
       }, [])
 
-    if (cities == null || following == null) {
-        return (
-            <Spinner animation="border" role="status" className="loading">
-            <span className="visually-hidden">Loading...</span>
-            </Spinner>
-          )
-    }
 
     return (
         <Map cities={cities} following={following}/>
