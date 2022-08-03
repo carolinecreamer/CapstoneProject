@@ -30,7 +30,6 @@ router.get("/get-users", async (req, res, next) => {
 
 router.get("/get-friends-cities", async (req, res, next) => {
     const friend = await User.userQueryByUsername(req.body.user);
-    console.log(friend.cities)
     const cities = friend.cities;
     res.status(200).json({ cities });
 })
@@ -106,7 +105,6 @@ router.post('/add-city', async (req, res, next) => {
             res.sendStatus(400)
         }
         user.addUnique("cities", req.body.city)
-        console.log(req.body.city)
         await user.save()
         res.sendStatus(200)
     } catch(err) {
