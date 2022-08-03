@@ -10,13 +10,18 @@ import UserProfile from '../UserProfile/UserProfile'
 import Feed from '../Feed/Feed'
 import Spinner from 'react-bootstrap/Spinner';
 import * as config from "../../config"
+import states from "../../../public/states.json";
 
 
 export default function App() {
   // Boolean for if the user is logged in or not
   const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem("current_user_id") !== null)
+  // City that the user has selected
+  const [city, setCity] = useState("");
   // All users in the DB
   const [users, setUsers] = useState([]);
+  // State that the user has selected
+  const [state, setState] = useState("");
   // All listings in the given city
   const [listings, setListings] = useState(null);
   // If the user has selected to view their profile
@@ -26,6 +31,88 @@ export default function App() {
   const [cities, setCities] = useState(null);
   const [following, setFollowing] = useState(null);
   const [loading, setLoading] = useState(false);
+
+  // Delete information from the listings that isn't needed and call function to add the city to the DB
+  function handleNewListings(state, city, listings) {
+    const average = Utils.calculateAverage(listings);
+    listings.map((listing) => {
+      delete listing["rawAddress"];
+      delete listing["county"];
+      delete listing["county"];
+      delete listing["addressLine1"];
+      delete listing["addressLine2"];
+      delete listing["city"];
+      delete listing["state"];
+      delete listing["zipCode"];
+      delete listing["lastSeen"];
+      delete listing["listedDate"];
+      delete listing["status"];
+      delete listing["removedDate"];
+      delete listing["daysOnMarket"];
+      delete listing["createdDate"];
+      delete listing["id"];
+      delete listing["latitude"];
+      delete listing["longitude"];
+    })
+    addNewCity(city, state, states[state]?.cities[city]['coordinates'], JSON.stringify(listings), average)
+  }
+
+
+  // Make a GET request to RealtyMole to get city information
+  const getListingsByCity = (city, state) => {
+    const options = {
+      method: 'GET',
+      url: 'https://realty-mole-property-api.p.rapidapi.com/rentalListings',
+      params: { city: city, state: state.abbreviation, limit: '9' },
+      headers: {
+        'X-RapidAPI-Key': config.RAPID_API_KEY,
+        'X-RapidAPI-Host': config.RAPID_API_HOST
+      }
+    };
+
+    const res = axios.request(options).then(function (response) {
+      handleNewListings(state.abbreviation, city, response.data);
+      return response.data
+    }).catch(function (error) {
+      alert(error);
+    });
+    return res
+  }
+
+  const client = axios.create({
+    baseURL: config.RAPID_API_HOST
+  });
+
+
+  const request = async function (options) {
+    const onSuccess = function (response) {
+      console.debug('Request Successful!', response);
+      return response.data;
+    }
+
+    const onError = function (error) {
+      console.error('Request Failed:', error.config);
+
+      if (error.response) {
+        // Request was made but server responded with something
+        // other than 2xx
+        console.error('Status:', error.response.status);
+        console.error('Data:', error.response.data);
+        console.error('Headers:', error.response.headers);
+
+      } else {
+        // Something else happened while setting up the request
+        // triggered the error
+        console.error('Error Message:', error.message);
+      }
+
+      return Promise.reject(error.response || error.message);
+    }
+
+    return client(options)
+      .then(onSuccess)
+      .catch(onError);
+  }
 
 
   // For every network request, add a custom header for the logged in user
@@ -66,7 +153,6 @@ export default function App() {
 
   }
 
-
   // Toggles between displaying an icon that links to the home page (displays if you
   // are in the user profile) and an icon that links to the user profile (displays if
   // you are on the homepage). This function is sent in as a prop to the NavBar component
@@ -74,6 +160,35 @@ export default function App() {
     setViewProfile(viewProfile => !viewProfile)
   }
 
+  // make a POST request to add the city info to the DB
+  async function addNewCity(city, state, coordinates, listings, avgprice) {
+    return request({
+      method: 'post',
+      url: `http://localhost:3001/cities/add-city?city=${city}&state=${state}&coordinates=${coordinates}&average_rent=${avgprice}&listings=${listings}`
+    }).then((res) => {
+      return res
+    })
+      .catch(err => console.error(err));
+  }
+
+  // GET request to database to get city information, if the request returns a city, return the city info; otherwise, call the
+  // getListingsByCity function to add the city to the DB
+  async function queryCityFromDB(city, state) {
+    return request({
+      method: 'get',
+      url: `http://localhost:3001/cities/get-city?city=${city}&state=${state.abbreviation}`,
+    }).then((res) => {
+      if ((res.city).length > 0) {
+        return JSON.parse(res.city[0].listings)
+      }
+      else {
+        return getListingsByCity(city, state);
+      }
+    }).catch((err) => {
+
+      alert(err);
+    });
+  }
 
   // Call get-cities route in users.js and return the result
   const getCities = () => {
@@ -129,7 +244,6 @@ export default function App() {
     return res;
   }
 
-
   if (loading) {
     return (
       <Spinner animation="border" role="status" className="loading">
@@ -148,7 +262,7 @@ export default function App() {
                 viewProfile={viewProfile} toggleViewProfile={toggleViewProfile} className="NavBar" currentUser={currentUser} />
               <Home isLoggedIn={isLoggedIn} handleLogout={handleLogout} handleLogin={handleLogin} cities={cities} getCities={getCities}
                 currentUser={currentUser} getFollowing={getFollowing} setLoading={setLoading} setCities={setCities} setFollowing={setFollowing}
-                following={following} />
+                following={following} queryCityFromDB={queryCityFromDB} />
             </div>
           } />
           <Route path="/profile" element={
