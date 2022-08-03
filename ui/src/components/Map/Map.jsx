@@ -10,6 +10,7 @@ import {
   ZoomableGroup
 } from "react-simple-maps";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import FriendPopover from "../FriendPopover/FriendPopover";
 import './Map.css'
 //import FriendPopover from "../FriendPopover/FriendPopover";
 import allStates from "../../../public/allstates.json";
@@ -38,7 +39,7 @@ const offsets = {
 const MIN_US_LONGITUDE = -160;
 const MAX_US_LONGITUDE = -67;
 
-const Map = ({ cities, following, queryCityFromDB }) => {
+const Map = ({ cities, following, friendFavorites, queryCityFromDB }) => {
   return (
     <ComposableMap projection="geoAlbers">
       <ZoomableGroup>
@@ -107,7 +108,7 @@ const Map = ({ cities, following, queryCityFromDB }) => {
           )
           )
         }
-
+      <FriendPopover friendFavorites={friendFavorites} following={following} cities={cities}/>
       </ZoomableGroup>
     </ComposableMap>
   );

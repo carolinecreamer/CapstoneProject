@@ -31,6 +31,7 @@ export default function App() {
   const [cities, setCities] = useState(null);
   const [following, setFollowing] = useState(null);
   const [loading, setLoading] = useState(false);
+  const friendFavorites = new Map();
 
   // Delete information from the listings that isn't needed and call function to add the city to the DB
   function handleNewListings(state, city, listings) {
@@ -262,7 +263,7 @@ export default function App() {
                 viewProfile={viewProfile} toggleViewProfile={toggleViewProfile} className="NavBar" currentUser={currentUser} />
               <Home isLoggedIn={isLoggedIn} handleLogout={handleLogout} handleLogin={handleLogin} cities={cities} getCities={getCities}
                 currentUser={currentUser} getFollowing={getFollowing} setLoading={setLoading} setCities={setCities} setFollowing={setFollowing}
-                following={following} queryCityFromDB={queryCityFromDB} />
+                following={following} queryCityFromDB={queryCityFromDB} friendFavorites={friendFavorites} />
             </div>
           } />
           <Route path="/profile" element={

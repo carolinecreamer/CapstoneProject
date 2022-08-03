@@ -9,7 +9,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { useState } from "react";
 import Spinner from 'react-bootstrap/Spinner';
 import "./Load.css"
-import { set } from "lodash";
 
 export default function Load({ queryCityFromDB, setCities, cities, getCities, getFollowing, setFollowing, following }) {
   React.useEffect(() => {
@@ -19,11 +18,27 @@ export default function Load({ queryCityFromDB, setCities, cities, getCities, ge
 
       const followingRes = await getFollowing();
       setFollowing(followingRes.data.following);
+      addToFavMap();
     }
 
     onLoad()
   }, [])
 
+  function addToFavMap()  {
+
+    following?.map((friend) => {
+      friend?.cities?.map((city) => {
+        if (friendFavorites.has(city)) {
+          let currentFriends = friendFavorites.get(city);
+          currentFriends.push(friend);
+          friendFavorites.set(city, currentFriends);
+        }
+        else {
+          friendFavorites.set(city, [friend]);
+        }
+      })
+    })
+  }
 
   if (cities == null || following == null) {
     return (
@@ -34,6 +49,6 @@ export default function Load({ queryCityFromDB, setCities, cities, getCities, ge
   }
 
   return (
-    <Map cities={cities} following={following} queryCityFromDB={queryCityFromDB} />
+    <Map cities={cities} friendFavorites={friendFavorites} following={following} queryCityFromDB={queryCityFromDB} />
   )
 }
