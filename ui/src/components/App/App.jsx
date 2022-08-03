@@ -10,7 +10,6 @@ import UserProfile from '../UserProfile/UserProfile'
 import Feed from '../Feed/Feed'
 import Spinner from 'react-bootstrap/Spinner';
 import * as config from "../../config"
-import states from "../../../public/states.json";
 
 
 export default function App() {
@@ -108,23 +107,32 @@ export default function App() {
     return res;
   }
 
-    // Call get-cities route in users.js and return the result
-    const getFollowing = () => {
-      const options = {
-        method: 'GET',
-        url: `http://localhost:3001/users/get-following`,
-      };
+  // Call get-following route in users.js and return the result
+  const getFollowing = () => {
+    const options = {
+      method: 'GET',
+      url: `http://localhost:3001/users/get-following`,
+    };
 
-      const res = axios.request(options).then(function (res) {
-        setFollowing(res.data.cities);
-        return res
-      }).catch(function (error) {
-        alert(error);
-      });
+    const res = axios.request(options).then(function (res) {
+      setFollowing(res.data.following);
+      setLoading(false)
+      return res
+    }).catch(function (error) {
+      alert(error);
+    });
 
-      return res;
-    }
+    return res;
+  }
 
+
+  if (loading) {
+    return (
+      <Spinner animation="border" role="status" className="loading">
+        <span className="visually-hidden">Loading...</span>
+      </Spinner>
+    )
+  }
 
   return (
     <div className="app">
