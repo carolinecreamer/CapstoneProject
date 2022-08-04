@@ -11,7 +11,6 @@ import {
   ZoomableGroup
 } from "react-simple-maps";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import FriendPopover from "../FriendPopover/FriendPopover";
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import './Map.css'
 //import FriendPopover from "../FriendPopover/FriendPopover";

@@ -10,7 +10,7 @@ export default function Home({ queryCityFromDB, following, setCities, isLoggedIn
     return (
         <Bootstrap.Container className="homepage">
             {(isLoggedIn && currentUser !== null)
-                ? <Load setCities={setCities} cities={cities} getCities={getCities} getFollowing={getFollowing} setLoading={setLoading}
+                ? <Load currentUser={currentUser} setCities={setCities} cities={cities} getCities={getCities} getFollowing={getFollowing} setLoading={setLoading}
                     setFollowing={setFollowing} following={following} queryCityFromDB={queryCityFromDB} friendFavorites={friendFavorites}/>
                 : <LoggedOutView handleLogin={handleLogin} />
             }

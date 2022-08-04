@@ -10,7 +10,7 @@ import { useState } from "react";
 import Spinner from 'react-bootstrap/Spinner';
 import "./Load.css"
 
-export default function Load({ friendFavorites, queryCityFromDB, setCities, cities, getCities, getFollowing, setFollowing, following }) {
+export default function Load({ currentUser, friendFavorites, queryCityFromDB, setCities, cities, getCities, getFollowing, setFollowing, following }) {
   React.useEffect(() => {
     async function onLoad() {
       const citiesRes = await getCities();
@@ -25,14 +25,16 @@ export default function Load({ friendFavorites, queryCityFromDB, setCities, citi
 
   following?.map((friend) => {
     friend?.cities?.map((cityArr) => {
-      let city = cityArr.join(',')
-      if (friendFavorites.has(city.jo)) {
-        let currentFriends = friendFavorites.get(city);
-        currentFriends.push(friend);
-        friendFavorites.set(city, currentFriends);
-      }
-      else {
-        friendFavorites.set(city, [friend]);
+      if (friend.username != currentUser.username) {
+        let city = cityArr.join(',')
+        if (friendFavorites.has(city)) {
+          let currentFriends = friendFavorites.get(city);
+          currentFriends.push(friend);
+          friendFavorites.set(city, currentFriends);
+        }
+        else {
+          friendFavorites.set(city, [friend]);
+        }
       }
     })
   })
