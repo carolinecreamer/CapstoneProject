@@ -1,9 +1,7 @@
 import React from "react";
 import { geoCentroid } from "d3-geo";
 import PopoverTrigger from "../PopoverTrigger/PopoverTrigger";
-import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Popover from 'react-bootstrap/Popover';
-import { ImMan } from "react-icons/im";
 import {
   ComposableMap,
   Geographies,
@@ -13,9 +11,8 @@ import {
   ZoomableGroup
 } from "react-simple-maps";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import FriendPopover from "../FriendPopover/FriendPopover";
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import './Map.css'
-//import FriendPopover from "../FriendPopover/FriendPopover";
 import allStates from "../../../public/allstates.json";
 import states from "../../../public/cityData.json";
 import statesJSON from "../../../public/states.json";
@@ -109,12 +106,50 @@ const Map = ({ cities, following, friendFavorites, queryCityFromDB }) => {
                   saved = true;
                 }
               })
-
+              // Upload a marker for each city and, if the city is saved by a user that the current user is following, add a popover
+              // containing the names of users that have that city saved
               return (
                 <Marker coordinates={coordinates}>
                   <PopoverTrigger friendFavorites={friendFavorites} city={name} state={state.abbreviation} saved={saved} queryCityFromDB={queryCityFromDB} />
+                  {
+                    friendFavorites.has([name, state.abbreviation].join(',')) ?
+                      <OverlayTrigger rootClose trigger="click" placement="right" overlay={
+                        <Popover className="popover" id="popover-basic" >
+                          <Popover.Header >
+                            <h4 className="popover-title">{name}, {state.abbreviation}</h4>
+                          </Popover.Header>
+
+                          <Popover.Body>
+                            {
+                              friendFavorites.get([name, state.abbreviation].join(',')).map((friend) => {
+                                return (
+                                  <p>{friend.username}</p>
+                                )
+                              })
+                            }
+                          </Popover.Body>
+                        </Popover>
+                      }>
+                        <g
+                          fill="#1266F1"
+
+                          strokeWidth="1"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          transform="translate(-12, -24)"
+                        >
+
+                          <text>🤗</text>
+                        </g>
+
+
+
+                      </OverlayTrigger> : null
+
+                  }
                 </Marker>
               )
+
 
             })
           )

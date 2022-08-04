@@ -37,7 +37,7 @@ export default function Feed({ setUsers, setFollowing, currentUser, getUsers, us
 
                                         user?.cities?.map((city) => {
                                             return (
-                                                <p key={city[0]} className="feedCity"> <BsPinFill key={city[0]} className="pin"/> {city[0]}, {city[1]}</p>
+                                                <p key={city.join(',')} className="feedCity"> <BsPinFill key={city.join(',')} className="pin"/> {city[0]}, {city[1]}</p>
                                             )
                                         })
 

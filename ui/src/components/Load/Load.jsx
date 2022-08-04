@@ -11,7 +11,6 @@ import Spinner from 'react-bootstrap/Spinner';
 import "./Load.css"
 
 export default function Load({ currentUser, friendFavorites, queryCityFromDB, setCities, cities, getCities, getFollowing, setFollowing, following }) {
-
   React.useEffect(() => {
     async function onLoad() {
       const citiesRes = await getCities();

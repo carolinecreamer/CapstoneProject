@@ -10,10 +10,10 @@ export default function UserProfile({ user, setCities, setFollowing, getCities ,
     React.useEffect(() => {
         async function onLoad() {
             const citiesRes = await getCities();
-            setCities(citiesRes.cities);
+            setCities(citiesRes.data.cities);
 
             const followingRes = await getFollowing();
-            setFollowing(followingRes.following)
+            setFollowing(followingRes.data.following)
         }
 
         onLoad()
@@ -35,7 +35,7 @@ export default function UserProfile({ user, setCities, setFollowing, getCities ,
                     <Bootstrap.Card.Text className="favorites">Favorites</Bootstrap.Card.Text>
                     {
                     cities?.map((city)=>{
-                        return(<Bootstrap.Card.Text key={city}>{city}</Bootstrap.Card.Text>)
+                        return(<Bootstrap.Card.Text key={city.join(',')}>{city[0]}, {city[1]}</Bootstrap.Card.Text>)
 
                     })}
                     <Bootstrap.Card.Text className="following">Following</Bootstrap.Card.Text>
