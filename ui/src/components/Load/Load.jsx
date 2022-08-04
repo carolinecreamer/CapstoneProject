@@ -52,13 +52,9 @@ export default function Load({ setCities, cities, getCities, getFollowing, setFo
   // if cities or following haven't loaded yet, show spinner
   if (cities == null || following == null) {
     return (
-<<<<<<< HEAD
-        <Map cities={cities} friendFavorites={friendFavorites} following={following} queryCityFromDB={queryCityFromDB}/>
-=======
       <Spinner animation="border" role="status" className="loading">
         <span className="visually-hidden">Loading...</span>
       </Spinner>
->>>>>>> 37a1f54 (Loading spinner)
     )
   }
 
