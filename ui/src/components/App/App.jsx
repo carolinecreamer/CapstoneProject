@@ -26,7 +26,6 @@ export default function App() {
   const [cities, setCities] = useState(null);
   const [following, setFollowing] = useState(null);
 
-
   // For every network request, add a custom header for the logged in user
   // The backend API can check the header for the user id
   //
@@ -108,23 +107,23 @@ export default function App() {
     return res;
   }
 
-    // Call get-cities route in users.js and return the result
-    const getFollowing = () => {
-      const options = {
-        method: 'GET',
-        url: `http://localhost:3001/users/get-following`,
-      };
+  // Call get-following route in users.js and return the result
+  const getFollowing = () => {
+    const options = {
+      method: 'GET',
+      url: `http://localhost:3001/users/get-following`,
+    };
 
-      const res = axios.request(options).then(function (res) {
-        setFollowing(res.data.cities);
-        return res
-      }).catch(function (error) {
-        alert(error);
-      });
+    const res = axios.request(options).then(function (res) {
+      setFollowing(res.data.following);
+      setLoading(false)
+      return res
+    }).catch(function (error) {
+      alert(error);
+    });
 
-      return res;
-    }
-
+    return res;
+  }
 
   return (
     <div className="app">
