@@ -11,6 +11,7 @@ import {
 } from "react-simple-maps";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './Map.css'
+//import FriendPopover from "../FriendPopover/FriendPopover";
 import allStates from "../../../public/allstates.json";
 import states from "../../../public/cityData.json";
 
@@ -37,7 +38,7 @@ const offsets = {
 const MIN_US_LONGITUDE = -160;
 const MAX_US_LONGITUDE = -67;
 
-const Map = ({cities}) => {
+const Map = ({ cities, following, queryCityFromDB }) => {
   return (
     <ComposableMap projection="geoAlbers">
       <ZoomableGroup>
@@ -96,11 +97,11 @@ const Map = ({cities}) => {
           // popup window appears with info about the city, when the marker is clicked on
           states?.map((state) => (
             state?.cities?.map(({ name, coordinates }) => {
-                return (
-                  <Marker  coordinates={coordinates}>
-                    <PopoverTrigger city={name} state={state} saved={cities?.includes(name)}/>
-                  </Marker>
-                )
+              return (
+                <Marker coordinates={coordinates}>
+                  <PopoverTrigger city={name} state={state} saved={cities?.includes(name)} queryCityFromDB={queryCityFromDB} />
+                </Marker>
+              )
 
             })
           )
