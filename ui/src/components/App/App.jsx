@@ -9,105 +9,23 @@ import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom"
 import UserProfile from '../UserProfile/UserProfile'
 import Feed from '../Feed/Feed'
 import Spinner from 'react-bootstrap/Spinner';
-
+import * as config from "../../config"
+import states from "../../../public/states.json";
 
 
 export default function App() {
   // Boolean for if the user is logged in or not
   const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem("current_user_id") !== null)
-  // City that the user has selected
-  const [city, setCity] = useState("");
   // All users in the DB
   const [users, setUsers] = useState([]);
-  // State that the user has selected
-  const [state, setState] = useState("");
   // All listings in the given city
-  const [listings, setListings] = useState([]);
-  // Array of properties within the user's price range
-  const [properties, setProperties] = useState([]);
-  // Average rent in a city
-  const [average, setAverage] = useState(0);
-  // Minimum rent price that the user is willing to pay
-  const [minPrice, setMinPrice] = useState(0);
-  // Maximum rent price that the user is willing to pay
-  const [maxPrice, setMaxPrice] = useState(0);
-  // Number of properties within the user's price rance
-  const [numProperties, setNumProperties] = useState(0);
+  const [listings, setListings] = useState(null);
   // If the user has selected to view their profile
   const [viewProfile, setViewProfile] = useState(false);
   // Updates who the current user is based on if a user is logged in
   const [currentUser, setCurrentUser] = useState(null);
-  const [cities, setCities] = useState([]);
-  const [following, setFollowing] = useState([]);
-  const [loading, setLoading] = useState(false);
-
-  React.useEffect(() => {
-    // Call functions in Utils.jsx to parse data
-    setAverage(Utils.calculateAverage(listings));
-    setProperties(Utils.getProperties(listings, minPrice, maxPrice));
-    // will this work because setting state is asynchronous?
-    setNumProperties(properties.length);
-  }, [listings, minPrice, maxPrice]);
-
-
-  // This is intentionally commented out but will be used later. The API only allows
-  // 50 calls per month, so I created test data to test parsing functionality and will
-  // only call the API when necessary for testing
-
-  /* const getListingsByCity = () => {
-     const options = {
-       method: 'GET',
-       url: 'https://realty-mole-property-api.p.rapidapi.com/rentalListings',
-       params: {city: city, state: state},
-       headers: {
-         'X-RapidAPI-Key': config.RAPID_API_KEY,
-         'X-RapidAPI-Host': config.RAPID_API_HOST
-       }
-     };
-
-     axios.request(options).then(function (response) {
-       setListings(response.data);
-       parseResults();
-     }).catch(function (error) {
-       console.error(error);
-     });
-   }*/
-
-  const client = axios.create({
-    //baseURL: constants.api.url -> going to uncomment when making real API requests!
-    baseURL: null
-  });
-
-
-  const request = async function (options) {
-    const onSuccess = function (response) {
-      console.debug('Request Successful!', response);
-      return response.data;
-    }
-
-    const onError = function (error) {
-      console.error('Request Failed:', error.config);
-
-      if (error.response) {
-        // Request was made but server responded with something
-        // other than 2xx
-        console.error('Status:', error.response.status);
-        console.error('Data:', error.response.data);
-        console.error('Headers:', error.response.headers);
-
-      } else {
-        // Something else happened while setting up the request
-        // triggered the error
-        console.error('Error Message:', error.message);
-      }
-
-      return Promise.reject(error.response || error.message);
-    }
-
-    return client(options)
-      .then(onSuccess)
-      .catch(onError);
-  }
+  const [cities, setCities] = useState(null);
+  const [following, setFollowing] = useState(null);
 
 
   // For every network request, add a custom header for the logged in user
@@ -142,32 +60,9 @@ export default function App() {
   const handleLogin = (user) => {
     localStorage.setItem("current_user_id", user["objectId"])
     localStorage.setItem("user", user)
-    setCurrentUser(user)
+    setCurrentUser(user);
     addAuthenticationHeader()
     setIsLoggedIn(true)
-  }
-
-  // Make GET request to RealtyMole when city is change (city will be changed on click)
-  // Commented out intentionally (see comment above)
-  /*
-  React.useEffect(() =>{
-    getListingsByCity();
-  }, [city])
-  */
-
-
-  // Gets info from test json file (JSON file containing real data that I copy
-  // & pasted from the API)
-  function clickState() {
-    return request({
-      method: 'get',
-      url: "./testData.json"
-    }).then((res) => {
-      setListings(res.data);
-      setMinPrice(1000);
-      setMaxPrice(2500);
-    })
-      .catch(err => console.error(err));
 
   }
 
@@ -180,47 +75,57 @@ export default function App() {
   }
 
 
-  async function getCities() {
-    const response = await axios.get(`http://localhost:3001/cities/get-cities`).catch((err)=>{
-      alert(err)
-    })
-    setCities(response.data.cities);
+  // Call get-cities route in users.js and return the result
+  const getCities = () => {
+    const options = {
+      method: 'GET',
+      url: `http://localhost:3001/users/get-cities`,
+    };
+
+    const res = axios.request(options).then(function (res) {
+      setCities(res.data.cities);
+      return res
+    }).catch(function (error) {
+      alert(error);
+    });
+
+    return res;
   }
 
-  async function getUsers() {
-    const response = await axios.get(`http://localhost:3001/users/get-users`).catch((err)=>{
-      alert(err)
-    })
-    setUsers(response.data.users);
+  // Call get-cities route in users.js and return the result
+  const getUsers = () => {
+    const options = {
+      method: 'GET',
+      url: `http://localhost:3001/users/get-users`,
+    };
+
+    const res = axios.request(options).then(function (res) {
+      setUsers(res.data.users);
+      return res
+    }).catch(function (error) {
+      alert(error);
+    });
+
+    return res;
   }
 
-  async function getFollowing() {
-    const response = await axios.get(`http://localhost:3001/users/get-following`).catch((err)=>{
-      alert(err)
-    })
+    // Call get-cities route in users.js and return the result
+    const getFollowing = () => {
+      const options = {
+        method: 'GET',
+        url: `http://localhost:3001/users/get-following`,
+      };
 
-    setFollowing(response.data.following);
-  }
+      const res = axios.request(options).then(function (res) {
+        setFollowing(res.data.cities);
+        return res
+      }).catch(function (error) {
+        alert(error);
+      });
 
+      return res;
+    }
 
-
-  if (loading) {
-    return (
-      <Spinner animation="border" role="status" className="loading">
-        <span className="visually-hidden">Loading...</span>
-      </Spinner>
-    )
-  }
-
-  async function getFollowing() {
-    setLoading(true)
-    const response = await axios.get(`http://localhost:3001/users/get-following`).catch((err)=>{
-      alert(err)
-    })
-
-    setFollowing(response.data.following);
-    setLoading(false)
-  }
 
   return (
     <div className="app">
@@ -230,16 +135,16 @@ export default function App() {
             <div>
               <NavBar isLoggedIn={isLoggedIn} handleLogout={handleLogout}
                 viewProfile={viewProfile} toggleViewProfile={toggleViewProfile} className="NavBar" currentUser={currentUser}/>
-              <Home isLoggedIn={isLoggedIn} handleLogout={handleLogout} handleLogin={handleLogin} setLoading={setLoading}
-              cities={cities} getCities={getCities} currentUser={currentUser} getFollowing={getFollowing}/>
+              <Home isLoggedIn={isLoggedIn} handleLogout={handleLogout} handleLogin={handleLogin} cities={cities} getCities={getCities}
+              currentUser={currentUser} getFollowing={getFollowing} setCities={setCities} setFollowing={setFollowing}
+              friendFavorites={friendFavorites} following={following} queryCityFromDB={queryCityFromDB}/>
             </div>
           } />
           <Route path="/profile" element={
             <div>
               <NavBar isLoggedIn={isLoggedIn} handleLogout={handleLogout}
-                viewProfile={viewProfile} toggleViewProfile={toggleViewProfile} className="NavBar" currentUser={currentUser}/>
-              <UserProfile user={currentUser} getCities={getCities} cities={cities} setLoading={setLoading} following={following}
-              getFollowing={getFollowing}/>
+                viewProfile={viewProfile} toggleViewProfile={toggleViewProfile} className="NavBar" currentUser={currentUser} />
+              <UserProfile user={currentUser} setCities={setCities} setFollowing={setFollowing} getCities={getCities} cities={cities} following={following} getFollowing={getFollowing} />
             </div>
           } />
 
@@ -247,9 +152,9 @@ export default function App() {
             <div>
 
               <NavBar isLoggedIn={isLoggedIn} handleLogout={handleLogout}
+
                 viewProfile={viewProfile} toggleViewProfile={toggleViewProfile} className="NavBar" currentUser={currentUser}/>
-              <Feed currentUser={currentUser} getUsers={getUsers} users={users} setLoading={setLoading} following={following}
-              getFollowing={getFollowing}/>
+              <Feed setUsers={setUsers} setFollowing={setFollowing} currentUser={currentUser} getUsers={getUsers} users={users} following={following} getFollowing={getFollowing}/>
             </div>
           } />
         </Routes>
