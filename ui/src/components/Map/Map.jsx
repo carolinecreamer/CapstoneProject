@@ -1,6 +1,9 @@
 import React from "react";
 import { geoCentroid } from "d3-geo";
 import PopoverTrigger from "../PopoverTrigger/PopoverTrigger";
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import Popover from 'react-bootstrap/Popover';
+import { ImMan } from "react-icons/im";
 import {
   ComposableMap,
   Geographies,
@@ -10,10 +13,13 @@ import {
   ZoomableGroup
 } from "react-simple-maps";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import FriendPopover from "../FriendPopover/FriendPopover";
 import './Map.css'
 //import FriendPopover from "../FriendPopover/FriendPopover";
 import allStates from "../../../public/allstates.json";
 import states from "../../../public/cityData.json";
+import statesJSON from "../../../public/states.json";
+import FriendOverlay from "../FriendOverlay/FriendOverlay";
 
 const geoUrl = "https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json";
 
@@ -38,7 +44,7 @@ const offsets = {
 const MIN_US_LONGITUDE = -160;
 const MAX_US_LONGITUDE = -67;
 
-const Map = ({ cities, following, queryCityFromDB }) => {
+const Map = ({ cities, following, friendFavorites, queryCityFromDB }) => {
   return (
     <ComposableMap projection="geoAlbers">
       <ZoomableGroup>
@@ -97,9 +103,16 @@ const Map = ({ cities, following, queryCityFromDB }) => {
           // popup window appears with info about the city, when the marker is clicked on
           states?.map((state) => (
             state?.cities?.map(({ name, coordinates }) => {
+              let saved = false;
+              cities?.map((city) => {
+                if (city.includes(name) && city.includes(state.abbreviation)) {
+                  saved = true;
+                }
+              })
+
               return (
                 <Marker coordinates={coordinates}>
-                  <PopoverTrigger city={name} state={state} saved={cities?.includes(name)} queryCityFromDB={queryCityFromDB} />
+                  <PopoverTrigger friendFavorites={friendFavorites} city={name} state={state.abbreviation} saved={saved} queryCityFromDB={queryCityFromDB} />
                 </Marker>
               )
 
@@ -107,7 +120,6 @@ const Map = ({ cities, following, queryCityFromDB }) => {
           )
           )
         }
-
       </ZoomableGroup>
     </ComposableMap>
   );

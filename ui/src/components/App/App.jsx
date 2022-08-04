@@ -28,9 +28,12 @@ export default function App() {
   const [viewProfile, setViewProfile] = useState(false);
   // Updates who the current user is based on if a user is logged in
   const [currentUser, setCurrentUser] = useState(null);
+  // Array of cities that the user has saved
   const [cities, setCities] = useState(null);
+  // Array of users that the current user follows
   const [following, setFollowing] = useState(null);
-  const [loading, setLoading] = useState(false);
+  // Map of friends that have saved each city
+  const friendFavorites = new Map();
 
   // Delete information from the listings that isn't needed and call function to add the city to the DB
   function handleNewListings(state, city, listings) {
@@ -176,7 +179,7 @@ export default function App() {
   async function queryCityFromDB(city, state) {
     return request({
       method: 'get',
-      url: `http://localhost:3001/cities/get-city?city=${city}&state=${state.abbreviation}`,
+      url: `http://localhost:3001/cities/get-city?city=${city}&state=${state}`,
     }).then((res) => {
       if ((res.city).length > 0) {
         return JSON.parse(res.city[0].listings)
@@ -191,13 +194,13 @@ export default function App() {
   }
 
   // Call get-cities route in users.js and return the result
-  const getCities = () => {
+  const getCities = async() => {
     const options = {
       method: 'GET',
       url: `http://localhost:3001/users/get-cities`,
     };
 
-    const res = axios.request(options).then(function (res) {
+    const res = await axios.request(options).then(function (res) {
       setCities(res.data.cities);
       return res
     }).catch(function (error) {
@@ -208,38 +211,34 @@ export default function App() {
   }
 
   // Call get-users route in users.js and return the result
-  const getUsers = () => {
+  const getUsers = async() => {
     const options = {
       method: 'GET',
       url: `http://localhost:3001/users/get-users`,
     };
 
-    const res = axios.request(options).then(function (res) {
+    const res = await axios.request(options).then(function (res) {
       setUsers(res.data.users);
-      setLoading(false)
       return res
     }).catch(function (error) {
       alert(error);
     });
-
     return res;
   }
 
   // Call get-following route in users.js and return the result
-  const getFollowing = () => {
+  const getFollowing = async() => {
     const options = {
       method: 'GET',
       url: `http://localhost:3001/users/get-following`,
     };
 
-    const res = axios.request(options).then(function (res) {
+    const res = await axios.request(options).then(function (res) {
       setFollowing(res.data.following);
-      setLoading(false)
       return res
     }).catch(function (error) {
       alert(error);
     });
-
     return res;
   }
 
@@ -253,7 +252,7 @@ export default function App() {
                 viewProfile={viewProfile} toggleViewProfile={toggleViewProfile} className="NavBar" currentUser={currentUser} />
               <Home isLoggedIn={isLoggedIn} handleLogout={handleLogout} handleLogin={handleLogin} cities={cities} getCities={getCities}
                 currentUser={currentUser} getFollowing={getFollowing} setLoading={setLoading} setCities={setCities} setFollowing={setFollowing}
-                following={following} queryCityFromDB={queryCityFromDB} />
+                following={following} queryCityFromDB={queryCityFromDB} friendFavorites={friendFavorites} />
             </div>
           } />
           <Route path="/profile" element={

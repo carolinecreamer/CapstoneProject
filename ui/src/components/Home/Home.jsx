@@ -6,14 +6,14 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import "./Home.css"
 import Load from "../Load/Load";
 
-export default function Home({ queryCityFromDB, following, setCities, isLoggedIn, handleLogin, cities, getCities, currentUser, getFollowing, setLoading, setFollowing }) {
+export default function Home({ queryCityFromDB, friendFavorites, following, setCities, isLoggedIn, handleLogin, cities, getCities, currentUser, getFollowing, setLoading, setFollowing}) {
     return (
         <Bootstrap.Container className="homepage">
-            {(isLoggedIn && currentUser !== null)
-                ? <Load setCities={setCities} cities={cities} getCities={getCities} getFollowing={getFollowing} setLoading={setLoading}
-                    setFollowing={setFollowing} following={following} queryCityFromDB={queryCityFromDB} />
-                : <LoggedOutView handleLogin={handleLogin} />
-            }
+            {(isLoggedIn && currentUser!==null)
+                ? <Load currentUser={currentUser} setCities={setCities} cities={cities} getCities={getCities} getFollowing={getFollowing} setLoading={setLoading}
+                queryCityFromDB={queryCityFromDB} setFollowing={setFollowing} following={following} friendFavorites={friendFavorites}/>
+                : <LoggedOutView handleLogin={handleLogin}/>
+              }
         </Bootstrap.Container>
     )
 }

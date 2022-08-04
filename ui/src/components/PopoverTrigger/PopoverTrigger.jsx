@@ -13,13 +13,14 @@ export default function PopoverTrigger({ city, state, setLoading, saved, queryCi
     const [starred, setStarred] = useState(saved);
     const [cityData, setCityData] = useState(null);
     const MARKER_SVG_OUTLINE = "M12 21.7C17.3 17 20 13 20 10a8 8 0 1 0-16 0c0 3 2.7 6.9 8 11.7z" // Coordinate path drawing out marker shape in SVG format
-
+    const cityJoined = [city, state].join(',')
     function handleStar() {
         // Makes POST request to add city to DB and changes "starred" state variable to be true, causes page to re-render
         const addCity = async () => {
             try {
                 const res = await axios.post(`${config.API_BASE_URL}/users/add-city`, {
-                    city: city
+                    city: city,
+                    state: state
                 })
             } catch (err) {
                 alert(err)
@@ -35,7 +36,8 @@ export default function PopoverTrigger({ city, state, setLoading, saved, queryCi
         const removeCity = async () => {
             try {
                 const res = await axios.post(`${config.API_BASE_URL}/users/remove-city`, {
-                    city: city
+                    city: city,
+                    state: state
                 })
             } catch (err) {
                 alert(err)
