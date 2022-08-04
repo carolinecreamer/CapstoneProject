@@ -13,9 +13,10 @@ import {
 import 'bootstrap/dist/css/bootstrap.min.css';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import './Map.css'
-//import FriendPopover from "../FriendPopover/FriendPopover";
 import allStates from "../../../public/allstates.json";
 import states from "../../../public/cityData.json";
+import statesJSON from "../../../public/states.json";
+import FriendOverlay from "../FriendOverlay/FriendOverlay";
 
 const geoUrl = "https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json";
 
@@ -154,7 +155,6 @@ const Map = ({ cities, following, friendFavorites, queryCityFromDB }) => {
           )
           )
         }
-
       </ZoomableGroup>
     </ComposableMap>
   );
