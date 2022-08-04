@@ -90,7 +90,7 @@ export default function App() {
     return res;
   }
 
-  // Call get-cities route in users.js and return the result
+  // Call get-users route in users.js and return the result
   const getUsers = () => {
     const options = {
       method: 'GET',
@@ -99,6 +99,7 @@ export default function App() {
 
     const res = axios.request(options).then(function (res) {
       setUsers(res.data.users);
+      setLoading(false)
       return res
     }).catch(function (error) {
       alert(error);
@@ -149,10 +150,10 @@ export default function App() {
           <Route path="/feed" element={
             <div>
 
-              <NavBar isLoggedIn={isLoggedIn} handleLogout={handleLogout}
-
+              <NavBar isLoggedIn={isLoggedIn} handleLogout={handleLogout
                 viewProfile={viewProfile} toggleViewProfile={toggleViewProfile} className="NavBar" currentUser={currentUser}/>
               <Feed setUsers={setUsers} setFollowing={setFollowing} currentUser={currentUser} getUsers={getUsers} users={users} following={following} getFollowing={getFollowing}/>
+
             </div>
           } />
         </Routes>
