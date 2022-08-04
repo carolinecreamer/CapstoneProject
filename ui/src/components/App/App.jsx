@@ -10,7 +10,6 @@ import UserProfile from '../UserProfile/UserProfile'
 import Feed from '../Feed/Feed'
 import Spinner from 'react-bootstrap/Spinner';
 import * as config from "../../config"
-import states from "../../../public/states.json";
 
 
 export default function App() {
@@ -134,10 +133,10 @@ export default function App() {
           <Route path="/" element={
             <div>
               <NavBar isLoggedIn={isLoggedIn} handleLogout={handleLogout}
-                viewProfile={viewProfile} toggleViewProfile={toggleViewProfile} className="NavBar" currentUser={currentUser}/>
+                viewProfile={viewProfile} toggleViewProfile={toggleViewProfile} className="NavBar" currentUser={currentUser} />
               <Home isLoggedIn={isLoggedIn} handleLogout={handleLogout} handleLogin={handleLogin} cities={cities} getCities={getCities}
-              currentUser={currentUser} getFollowing={getFollowing} setCities={setCities} setFollowing={setFollowing}
-              friendFavorites={friendFavorites} following={following} queryCityFromDB={queryCityFromDB}/>
+                currentUser={currentUser} getFollowing={getFollowing} setLoading={setLoading} setCities={setCities} setFollowing={setFollowing}
+                following={following} />
             </div>
           } />
           <Route path="/profile" element={
