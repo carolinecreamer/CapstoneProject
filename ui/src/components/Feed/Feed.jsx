@@ -10,10 +10,10 @@ export default function Feed({ setUsers, setFollowing, currentUser, getUsers, us
     React.useEffect(() => {
         async function onLoad() {
             const usersRes = await getUsers();
-            setUsers(usersRes.users);
+            setUsers(usersRes.data.users);
 
             const followingRes = await getFollowing();
-            setFollowing(followingRes.following)
+            setFollowing(followingRes.data.following)
         }
 
         onLoad()
@@ -35,7 +35,7 @@ export default function Feed({ setUsers, setFollowing, currentUser, getUsers, us
 
                                         user?.cities?.map((city) => {
                                             return (
-                                                <p key={city} className="feedCity"> <BsPinFill key={city} className="pin"/> {city}</p>
+                                                <p key={city.join(',')} className="feedCity"> <BsPinFill key={city.join(',')} className="pin"/> {city[0]}, {city[1]}</p>
                                             )
                                         })
 
