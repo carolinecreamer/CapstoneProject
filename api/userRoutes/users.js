@@ -1,8 +1,7 @@
 const express = require("express");
 const router  = express.Router();
 const User  = require("../citiesModels/cities")
-const Parse = require('parse/node')
-
+const Parse = require('parse/node');
 
 // Get list of favorited cities
 router.get("/get-cities", async (req, res, next) => {
@@ -14,8 +13,6 @@ router.get("/get-cities", async (req, res, next) => {
         next(err);
     }
 })
-
-
 
 // Get list of favorited users
 router.get("/get-users", async (req, res, next) => {
@@ -30,7 +27,6 @@ router.get("/get-users", async (req, res, next) => {
 
 router.get("/get-friends-cities", async (req, res, next) => {
     const friend = await User.userQueryByUsername(req.body.user);
-    console.log(friend.cities)
     const cities = friend.cities;
     res.status(200).json({ cities });
 })
@@ -39,7 +35,10 @@ router.get("/get-following", async (req, res, next) => {
     try {
         const currentUser = await User.getUser();
         let followingPointers = currentUser.get("friends");
-        let following = await User.dereferencePointers(followingPointers)
+        let following = [];
+        if (typeof followingPointers != 'undefined') {
+            following = await User.dereferencePointers(followingPointers);
+        }
         res.status(200).json({  following })
     } catch (err) {
         next(err);
@@ -104,8 +103,7 @@ router.post('/add-city', async (req, res, next) => {
         if (user == null) {
             res.sendStatus(400)
         }
-        user.addUnique("cities", req.body.city)
-        console.log(req.body.city)
+        user.addUnique("cities", [req.body.city, req.body.state])
         await user.save()
         res.sendStatus(200)
     } catch(err) {
@@ -122,7 +120,7 @@ router.post('/remove-city', async (req, res, next) => {
         if (user == null) {
             res.sendStatus(400)
         }
-        user.remove("cities", req.body.city)
+        user.remove("cities", [req.body.city, req.body.state])
         await user.save()
         res.sendStatus(200)
     } catch(err) {
