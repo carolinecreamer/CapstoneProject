@@ -25,8 +25,6 @@ export default function App() {
   const [currentUser, setCurrentUser] = useState(null);
   const [cities, setCities] = useState(null);
   const [following, setFollowing] = useState(null);
-  const [loading, setLoading] = useState(false);
-
 
   // For every network request, add a custom header for the logged in user
   // The backend API can check the header for the user id
@@ -84,7 +82,6 @@ export default function App() {
 
     const res = axios.request(options).then(function (res) {
       setCities(res.data.cities);
-      setLoading(false)
       return res
     }).catch(function (error) {
       alert(error);
@@ -129,15 +126,6 @@ export default function App() {
     return res;
   }
 
-
-  if (loading) {
-    return (
-      <Spinner animation="border" role="status" className="loading">
-        <span className="visually-hidden">Loading...</span>
-      </Spinner>
-    )
-  }
-
   return (
     <div className="app">
       <BrowserRouter>
@@ -162,9 +150,10 @@ export default function App() {
           <Route path="/feed" element={
             <div>
 
-              <NavBar isLoggedIn={isLoggedIn} handleLogout={handleLogout}
-                viewProfile={viewProfile} toggleViewProfile={toggleViewProfile} className="NavBar" currentUser={currentUser} />
-              <Feed setUsers={setUsers} setFollowing={setFollowing} currentUser={currentUser} getUsers={getUsers} users={users} following={following} getFollowing={getFollowing} />
+              <NavBar isLoggedIn={isLoggedIn} handleLogout={handleLogout
+                viewProfile={viewProfile} toggleViewProfile={toggleViewProfile} className="NavBar" currentUser={currentUser}/>
+              <Feed setUsers={setUsers} setFollowing={setFollowing} currentUser={currentUser} getUsers={getUsers} users={users} following={following} getFollowing={getFollowing}/>
+
             </div>
           } />
         </Routes>
