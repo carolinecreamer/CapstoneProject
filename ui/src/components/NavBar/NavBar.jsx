@@ -21,7 +21,7 @@ export default function NavBar({ isLoggedIn, handleLogout, viewProfile, toggleVi
             {
                 (isLoggedIn && currentUser!== null) ?
                 <section className="navBarSection">
-                    <Link to={`/`}><Navbar.Brand className="title">Capstone Project</Navbar.Brand></Link>
+                    <Link to={`/`}><Navbar.Brand className="title">MoveMate</Navbar.Brand></Link>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="me-auto">
