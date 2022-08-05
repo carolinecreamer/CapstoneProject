@@ -3,7 +3,7 @@ const morgan = require('morgan')
 const cors = require('cors')
 const Parse = require('parse/node')
 const authRoute = require('./authentication/authentication')
-
+const citiesRoute = require('./citiesRoutes/cities')
 const usersRoute = require('./userRoutes/users')
 const {PARSE_APP_ID, PARSE_JAVASCRIPT_KEY} = require('./config')
 
@@ -14,7 +14,7 @@ app.use(express.json())
 app.use(morgan("tiny"))
 app.use(cors())
 app.use('/auth', authRoute)
-
+app.use('/cities', citiesRoute)
 app.use('/users', usersRoute)
 
 // initalize Parse

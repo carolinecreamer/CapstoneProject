@@ -25,7 +25,6 @@ router.get("/get-city", async (req, res, next) => {
         // queries for a city object that fills both query requirements (city name and state name matches search params)
         const query = Parse.Query.and(cityQuery, stateQuery);
         const city = await query.find();
-
         res.status(200).json({ city })
     } catch (err) {
         next(err);
@@ -54,4 +53,4 @@ router.post("/add-city", async (req, res, next) => {
     res.sendStatus(200);
 })
 
-  module.exports = router;
+module.exports = router;

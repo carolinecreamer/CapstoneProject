@@ -6,8 +6,7 @@ import { useState } from "react";
 import axios from "axios"
 import * as config from "../../config"
 
-export default function Friends({ user, friends}) {
-    const [friended, setFriended] = useState(friends);
+export default function Friends({ user, following}) {
 
     async function handleFriend() {
         // Makes POST request to add friend to DB and changes "starred" state variable to be true, causes page to re-render
@@ -43,6 +42,12 @@ export default function Friends({ user, friends}) {
         removeFriend();
     }
 
+    let friended = false;
+    following.map((friend) => {
+        if (friend.username == user.username) {
+            friended = true;
+        }
+    })
     // if the user is followed by the current user, display  the icon that shows a check mark; otherwise, display the icon that shows an addition sign
     if (friended) {
         return (

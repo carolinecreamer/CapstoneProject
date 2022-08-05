@@ -6,12 +6,14 @@ import Popover from 'react-bootstrap/Popover';
 import "./PopoverTrigger.css"
 import * as config from "../../config";
 import { Spinner } from "react-bootstrap";
+import * as Utils from "../../Utils"
 import axios from "axios"
 
 
-export default function PopoverTrigger({ city, state, setLoading, saved, queryCityFromDB }) {
+export default function PopoverTrigger({ city, state, saved, queryCityFromDB }) {
     const [starred, setStarred] = useState(saved);
     const [cityData, setCityData] = useState(null);
+    const [average, setAverage] = useState(null)
     const MARKER_SVG_OUTLINE = "M12 21.7C17.3 17 20 13 20 10a8 8 0 1 0-16 0c0 3 2.7 6.9 8 11.7z" // Coordinate path drawing out marker shape in SVG format
     const cityJoined = [city, state].join(',')
     function handleStar() {
@@ -52,6 +54,7 @@ export default function PopoverTrigger({ city, state, setLoading, saved, queryCi
     async function handleQueryCity() {
         const data = await queryCityFromDB(city, state);
         setCityData(data)
+        setAverage(Utils.calculateAverage(data))
     }
 
     return (
@@ -69,8 +72,9 @@ export default function PopoverTrigger({ city, state, setLoading, saved, queryCi
                         <span className="visually-hidden">Loading...</span>
                     </Spinner>
                 </Popover.Body>
-                    : <><Popover.Body><h6><strong>Average Rent Price:</strong> ${cityData.average_rent}</h6></Popover.Body>
+                    : <><Popover.Body><h6><strong>Average Rent Price:</strong> ${average}</h6></Popover.Body>
                         <Popover.Body> <h6><strong>Listings:</strong></h6> {
+
                             (cityData).map((listing) => {
                                 return (
                                     <>

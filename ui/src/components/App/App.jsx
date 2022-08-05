@@ -11,6 +11,7 @@ import Feed from '../Feed/Feed'
 import Spinner from 'react-bootstrap/Spinner';
 import * as config from "../../config"
 import states from "../../../public/states.json";
+import Roadtrip from '../Roadtrip/Roadtrip';
 
 
 export default function App() {
@@ -66,7 +67,7 @@ export default function App() {
     const options = {
       method: 'GET',
       url: 'https://realty-mole-property-api.p.rapidapi.com/rentalListings',
-      params: { city: city, state: state.abbreviation, limit: '9' },
+      params: { city: city, state: state.abbreviation, limit: '7' },
       headers: {
         'X-RapidAPI-Key': config.RAPID_API_KEY,
         'X-RapidAPI-Host': config.RAPID_API_HOST
@@ -251,7 +252,7 @@ export default function App() {
               <NavBar isLoggedIn={isLoggedIn} handleLogout={handleLogout}
                 viewProfile={viewProfile} toggleViewProfile={toggleViewProfile} className="NavBar" currentUser={currentUser} />
               <Home isLoggedIn={isLoggedIn} handleLogout={handleLogout} handleLogin={handleLogin} cities={cities} getCities={getCities}
-                currentUser={currentUser} getFollowing={getFollowing} setLoading={setLoading} setCities={setCities} setFollowing={setFollowing}
+                currentUser={currentUser} getFollowing={getFollowing} setCities={setCities} setFollowing={setFollowing}
                 following={following} queryCityFromDB={queryCityFromDB} friendFavorites={friendFavorites} />
             </div>
           } />
@@ -272,6 +273,13 @@ export default function App() {
 
             </div>
           } />
+          <Route path="/roadtrip" element={
+            <div>
+              <NavBar isLoggedIn={isLoggedIn} handleLogout={handleLogout}
+                viewProfile={viewProfile} toggleViewProfile={toggleViewProfile} className="NavBar" currentUser={currentUser}/>
+              <Roadtrip following={following} cities={cities} friendFavorites={friendFavorites} following={following} queryCityFromDB={queryCityFromDB} currentUser={currentUser} />
+            </div>
+          }/>
         </Routes>
       </BrowserRouter>
     </div>

@@ -19,6 +19,7 @@ export default function Feed({ setUsers, setFollowing, currentUser, getUsers, us
         onLoad()
     }, [])
 
+
     // Display other users that use the web page
     // Iterate over users, if the user is not the current user, display the user in the feed, if the user is in the array of "followed" users, change the user's icon
     // Iterate over each saved city for the user being displayed and display the city next to the user's name
@@ -31,7 +32,7 @@ export default function Feed({ setUsers, setFollowing, currentUser, getUsers, us
                         return (
                             <Bootstrap.ListGroupItem key={user.objectId} className="list-group-item">
                                 <h6 key={user.objectId}>{user?.username}</h6>
-                                <Friends className="friend" user={user} key={user?.username} friends={following?.includes(user?.username)}/>
+                                <Friends className="friend" user={user} key={user?.username} following={following}/>
                                 <div className="userCities" key={user.password}>
                                     {
 

@@ -27,6 +27,7 @@ export default function NavBar({ isLoggedIn, handleLogout, viewProfile, toggleVi
                         <Nav className="me-auto">
                             <NavBarIcon  viewProfile={viewProfile} toggleViewProfile={toggleViewProfile}/>
                             <Link className="feed" to={`/feed`}>Feed</Link>
+                            <Link className="feed" to={`/roadtrip`}>Roadtrip!</Link>
                             <Link to={`/`} onClick={onLogoutClick}>Logout</Link>
                         </Nav>
                     </Navbar.Collapse>

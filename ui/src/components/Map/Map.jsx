@@ -16,7 +16,6 @@ import './Map.css'
 import allStates from "../../../public/allstates.json";
 import states from "../../../public/cityData.json";
 import statesJSON from "../../../public/states.json";
-import FriendOverlay from "../FriendOverlay/FriendOverlay";
 
 const geoUrl = "https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json";
 
@@ -136,7 +135,7 @@ const Map = ({ cities, following, friendFavorites, queryCityFromDB }) => {
                           strokeWidth="1"
                           strokeLinecap="round"
                           strokeLinejoin="round"
-                          transform="translate(-12, -24)"
+
                         >
 
                           <text>🤗</text>
