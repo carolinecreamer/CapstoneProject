@@ -19,7 +19,7 @@ export default function RegisterForm({ handleLogin, setLoading }) {
         event.preventDefault();
 
         const register = async () => {
-          setLoading(true)
+
             try {
                 const res = await axios.post(`${config.API_BASE_URL}/auth/register`, {
                     "username" : username.current.value,
@@ -29,7 +29,7 @@ export default function RegisterForm({ handleLogin, setLoading }) {
             } catch (err) {
                 alert(err)
             }
-          setLoading(false)
+
         }
         register()
     }

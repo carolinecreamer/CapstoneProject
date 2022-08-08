@@ -43,7 +43,7 @@ export default function Friends({ user, following}) {
     }
 
     let friended = false;
-    following.map((friend) => {
+    following?.map((friend) => {
         if (friend.username == user.username) {
             friended = true;
         }

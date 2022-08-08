@@ -11,7 +11,7 @@ export default function FilteredUser({ user, currentUser, following }) {
     // Map over user's cities, if the city matches any city in the current user's saved cities, set boolean to true
     user?.cities?.map((city)=> {
         currentUser?.cities?.map((match) => {
-            if ((city["city"] == match["city"]) && (city["state"] == match["state"])) {
+            if ((city[0] == match[0]) && (city[1] == match[1])) {
                 cityMatch = true;
             }
         })

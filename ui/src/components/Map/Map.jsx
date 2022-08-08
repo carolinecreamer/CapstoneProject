@@ -100,11 +100,13 @@ const Map = ({ cities, following, friendFavorites, queryCityFromDB }) => {
           states?.map((state) => (
             state?.cities?.map(({ name, coordinates }) => {
               let saved = false;
-              cities?.map((city) => {
-                if (city.includes(name) && city.includes(state.abbreviation)) {
-                  saved = true;
-                }
-              })
+              if (cities.length > 0) {
+                cities?.map((city) => {
+                  if (city.includes(name) && city.includes(state.abbreviation)) {
+                    saved = true;
+                  }
+                })
+              }
               // Upload a marker for each city and, if the city is saved by a user that the current user is following, add a popover
               // containing the names of users that have that city saved
               return (

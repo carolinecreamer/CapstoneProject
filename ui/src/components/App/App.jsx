@@ -12,7 +12,7 @@ import Spinner from 'react-bootstrap/Spinner';
 import * as config from "../../config"
 import states from "../../../public/states.json";
 import Roadtrip from '../Roadtrip/Roadtrip';
-
+import Recommend from '../../collaborative-filter';
 
 export default function App() {
   // Boolean for if the user is logged in or not
@@ -202,7 +202,9 @@ export default function App() {
     };
 
     const res = await axios.request(options).then(function (res) {
-      setCities(res.data.cities);
+      if (typeof res != 'undefined') {
+        setCities(res.data.cities);
+      }
       return res
     }).catch(function (error) {
       alert(error);
@@ -219,7 +221,9 @@ export default function App() {
     };
 
     const res = await axios.request(options).then(function (res) {
-      setUsers(res.data.users);
+      if (typeof res != 'undefined') {
+        setUsers(res.data.users);
+      }
       return res
     }).catch(function (error) {
       alert(error);
@@ -235,7 +239,10 @@ export default function App() {
     };
 
     const res = await axios.request(options).then(function (res) {
-      setFollowing(res.data.following);
+      if (typeof res != 'undefined') {
+        setFollowing(res.data.following);
+      }
+
       return res
     }).catch(function (error) {
       alert(error);

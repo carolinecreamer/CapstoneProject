@@ -13,10 +13,20 @@ export default function Feed({ setUsers, setFollowing, currentUser, getUsers, us
     React.useEffect(() => {
         async function onLoad() {
             const usersRes = await getUsers();
-            setUsers(usersRes.data.users);
+            if (typeof usersRes.data.users != 'undefined') {
+                setUsers(usersRes.data.users);
+            }
+            else {
+                setUsers(usersRes.data);
+            }
 
             const followingRes = await getFollowing();
-            setFollowing(followingRes.data.following)
+            if (typeof followingRes.data.following != 'undefined') {
+                setFollowing(followingRes.data.following)
+            }
+            else {
+                setUsers(usersRes.data)
+            }
         }
 
         onLoad()
