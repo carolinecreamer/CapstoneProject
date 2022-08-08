@@ -3,10 +3,13 @@ import * as Bootstrap from "react-bootstrap"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BsPinFill } from "react-icons/bs"
 import Friends from "../Friends/Friends";
+import FilteredFeed from "../FilteredFeed/FilteredFeed";
+import UnfilteredFeed from "../UnfilteredFeed/UnfilteredFeed";
 import "./Feed.css"
+import { useState } from "react";
 
 export default function Feed({ setUsers, setFollowing, currentUser, getUsers, users, getFollowing, following }) {
-
+    const [filtered, setFiltered] = useState(false);
     React.useEffect(() => {
         async function onLoad() {
             const usersRes = await getUsers();
@@ -24,31 +27,10 @@ export default function Feed({ setUsers, setFollowing, currentUser, getUsers, us
     // Iterate over users, if the user is not the current user, display the user in the feed, if the user is in the array of "followed" users, change the user's icon
     // Iterate over each saved city for the user being displayed and display the city next to the user's name
     return (
-        <Bootstrap.Container className="homepage">
-            <Bootstrap.ListGroup >
-
-                {users.map((user) => {
-                    if (user?.username != currentUser?.username) {
-                        return (
-                            <Bootstrap.ListGroupItem key={user.objectId} className="list-group-item">
-                                <h6 key={user.objectId}>{user?.username}</h6>
-                                <Friends className="friend" user={user} key={user?.username} following={following}/>
-                                <div className="userCities" key={user.password}>
-                                    {
-
-                                        user?.cities?.map((city) => {
-                                            return (
-                                                <p key={city.join(',')} className="feedCity"> <BsPinFill key={city.join(',')} className="pin"/> {city[0]}, {city[1]}</p>
-                                            )
-                                        })
-
-                                    }
-                                </div>
-                            </Bootstrap.ListGroupItem>
-                        )
-                    }
-                })}
-            </Bootstrap.ListGroup>
-        </Bootstrap.Container>
+        <div>
+            <Bootstrap.Button onClick={()=>setFiltered(true)}>Filter by Cities!</Bootstrap.Button>
+            { filtered ? <FilteredFeed currentUser={currentUser} users={users} following={following}/> :
+            <UnfilteredFeed currentUser={currentUser} users={users} following={following}/>}
+       </div>
     )
 }
