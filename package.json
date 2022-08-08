@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "collaborative-filter": "^1.0.0-beta.3",
+    "cookie-parser": "^1.4.6",
     "react-simple-maps": "^2.3.0"
   }
 }
