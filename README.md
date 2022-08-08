@@ -27,6 +27,7 @@ Core Features
 Stretch Features
 - [ ] Persistent user authentication
 - [x] Filtering feed
+- [x] Cache API info
 - [ ] API call to RealtyMole to view sale prices
 - [ ] "See more..." on popover
 - [ ] More cities
