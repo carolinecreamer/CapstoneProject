@@ -5,6 +5,7 @@ import "./Friends.css"
 import { useState } from "react";
 import axios from "axios"
 import * as config from "../../config"
+import FriendIcon from "../FriendIcon/FriendIcon";
 
 export default function Friends({ user, following}) {
 
@@ -21,7 +22,6 @@ export default function Friends({ user, following}) {
                 alert(err)
                 return Promise.reject(err.response)
             }
-            setFriended(true);
         }
         addFriend();
     }
@@ -37,7 +37,6 @@ export default function Friends({ user, following}) {
                 alert(err)
                 return Promise.reject(err.response)
             }
-            setFriended(false);
         }
         removeFriend();
     }
@@ -49,14 +48,7 @@ export default function Friends({ user, following}) {
         }
     })
     // if the user is followed by the current user, display  the icon that shows a check mark; otherwise, display the icon that shows an addition sign
-    if (friended) {
-        return (
-            <BsFillPersonCheckFill key={user} className="friend-icon" onClick={() => handleUnfriend()}/>
-        )
-    }
-    else {
-        return (
-            <BsFillPersonPlusFill key={user} className="friend-icon" onClick={() => handleFriend()}/>
-        )
-    }
+    return(
+        <FriendIcon friended={friended} user={user} handleFriend={handleFriend} handleUnfriend={handleUnfriend}/>
+    )
 }

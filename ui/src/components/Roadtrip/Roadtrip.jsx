@@ -19,7 +19,47 @@ import {
   import Map from "../Map/Map";
 const geoUrl = "https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json";
 
-export default function Roadtrip({currentUser, friendFavorites, cities, following, queryCityFromDB}) {
+export default function Roadtrip({currentUser, friendFavorites, getCities, setCities, cities, getFollowing, setFollowing, following, queryCityFromDB}) {
+  console.log("roadtrip friends", following)
+  console.log("roadtrip map", friendFavorites)
+
+  React.useEffect(() => {
+    async function onLoad() {
+      const citiesRes = await getCities();
+      if (typeof citiesRes.data?.cities != 'undefined') {
+        setCities(citiesRes.data.cities);
+      }
+      else {
+        setCities(citiesRes.data);
+      }
+
+      const followingRes = await getFollowing();
+      if (typeof followingRes.data?.following != 'undefined') {
+        setFollowing(followingRes.data.following);
+      }
+      else {
+        setFollowing(followingRes.data);
+      }
+    }
+
+    onLoad()
+  }, [])
+
+  following?.map((friend) => {
+    if (friend.username != currentUser.username) {
+      friend?.cities?.map((cityArr) => {
+        let city = cityArr.join(',')
+        if (typeof friendFavorites != 'undefined' && friendFavorites.has(city)) {
+          let currentFriends = friendFavorites.get(city);
+          currentFriends.push(friend);
+          friendFavorites.set(city, currentFriends);
+        }
+        else {
+          friendFavorites.set(city, [friend]);
+        }
+      })
+    }
+  })
 
  if (friendFavorites.size > 0) {
     let currPath= [];
@@ -52,11 +92,11 @@ export default function Roadtrip({currentUser, friendFavorites, cities, followin
             let distance2 = distance(currPath[permLength - 1], currPath[i]);
 
             if (distance1 < connectingArmDistance1) {
-                connectingArmDistance1 = dist1;
+                connectingArmDistance1 = distance1;
             }
 
             if (distance2 < connectingArmDistance2) {
-                connectingArmDistance2 = dist2;
+                connectingArmDistance2 = distance2;
             }
         }
 
@@ -69,7 +109,7 @@ export default function Roadtrip({currentUser, friendFavorites, cities, followin
         for (let i = permLength; i < currPath.length; ++i) {
             let currCoordinate = currPath[i];
             vertices[currCoordinate].visited = false;
-            vertices[currCoordinate].distance = infinity;
+            vertices[currCoordinate].distance = Infinity;
         }
 
         vertices[currPath[permLength]].distance = 0;
@@ -305,6 +345,13 @@ export default function Roadtrip({currentUser, friendFavorites, cities, followin
     const MIN_US_LONGITUDE = -160;
     const MAX_US_LONGITUDE = -67;
 
+    if (cities == null || following == null) {
+        return (
+          <Spinner animation="border" role="status" className="loading">
+            <span className="visually-hidden">Loading...</span>
+          </Spinner>
+        )
+      }
 
     return (
         <div className="map-container">
