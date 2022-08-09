@@ -27,16 +27,16 @@ Core Features
 Stretch Features
 - [ ] Persistent user authentication
 - [x] Filtering feed
-- [x] Cache API info
+- [x] Caching API information
 - [ ] API call to RealtyMole to view sale prices
 - [ ] "See more..." on popover
 - [ ] More cities
-- [ ] Zoom in on states on click
+- [x] Zoom in on states
 - [ ] API call to Zomato
 - [ ] API call to BandsInTown
 - [ ] API call to Walkscore
 - [ ] Share information with friends
-- [ ] Recommend ideal neighborhood to live in
+- [x] Recommend ideal neighborhood to live in
 
 
 User Roles
