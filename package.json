@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "collaborative-filter": "^1.0.0-beta.3",
     "react-simple-maps": "^2.3.0"
   }
 }
