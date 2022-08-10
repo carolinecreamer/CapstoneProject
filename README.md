@@ -30,7 +30,7 @@ Stretch Features
 - [x] Caching API information
 - [ ] API call to RealtyMole to view sale prices
 - [ ] "See more..." on popover
-- [ ] More cities
+- [x] More cities
 - [x] Zoom in on states
 - [ ] API call to Zomato
 - [ ] API call to BandsInTown
