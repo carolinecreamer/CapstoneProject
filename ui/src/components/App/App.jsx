@@ -12,7 +12,7 @@ import Spinner from 'react-bootstrap/Spinner';
 import * as config from "../../config"
 import states from "../../../public/states.json";
 import Roadtrip from '../Roadtrip/Roadtrip';
-import Recommend from '../../collaborative-filter';
+import Recommend from 'collaborative-filter';
 
 export default function App() {
   // Boolean for if the user is logged in or not
@@ -20,7 +20,7 @@ export default function App() {
   // City that the user has selected
   const [city, setCity] = useState("");
   // All users in the DB
-  const [users, setUsers] = useState([]);
+  const [users, setUsers] = useState(null);
   // State that the user has selected
   const [state, setState] = useState("");
   // All listings in the given city
@@ -276,7 +276,7 @@ export default function App() {
 
               <NavBar isLoggedIn={isLoggedIn} handleLogout={handleLogout}
                 viewProfile={viewProfile} toggleViewProfile={toggleViewProfile} className="NavBar" currentUser={currentUser}/>
-              <Feed setUsers={setUsers} setFollowing={setFollowing} currentUser={currentUser} getUsers={getUsers} users={users} following={following} getFollowing={getFollowing}/>
+              <Feed cities={cities} setUsers={setUsers} setFollowing={setFollowing} currentUser={currentUser} getUsers={getUsers} users={users} following={following} getFollowing={getFollowing}/>
 
             </div>
           } />
@@ -284,7 +284,7 @@ export default function App() {
             <div>
               <NavBar isLoggedIn={isLoggedIn} handleLogout={handleLogout}
                 viewProfile={viewProfile} toggleViewProfile={toggleViewProfile} className="NavBar" currentUser={currentUser}/>
-              <Roadtrip following={following} cities={cities} friendFavorites={friendFavorites} following={following} queryCityFromDB={queryCityFromDB} currentUser={currentUser} />
+              <Roadtrip following={following} cities={cities} getCities={getCities} setCities={setCities} friendFavorites={friendFavorites} following={following} getFollowing={getFollowing} setFollowing={setFollowing} queryCityFromDB={queryCityFromDB} currentUser={currentUser} />
             </div>
           }/>
         </Routes>
