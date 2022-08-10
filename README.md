@@ -29,7 +29,7 @@ Stretch Features
 - [x] Filtering feed
 - [x] Caching API information
 - [ ] API call to RealtyMole to view sale prices
-- [ ] "See more..." on popover
+- [x] "See more..." on popover
 - [x] More cities
 - [x] Zoom in on states
 - [ ] API call to Zomato
