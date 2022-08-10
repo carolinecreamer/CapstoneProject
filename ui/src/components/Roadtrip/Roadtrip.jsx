@@ -20,9 +20,6 @@ import {
 const geoUrl = "https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json";
 
 export default function Roadtrip({currentUser, friendFavorites, getCities, setCities, cities, getFollowing, setFollowing, following, queryCityFromDB}) {
-  console.log("roadtrip friends", following)
-  console.log("roadtrip map", friendFavorites)
-
   React.useEffect(() => {
     async function onLoad() {
       const citiesRes = await getCities();

@@ -100,7 +100,7 @@ const Map = ({ cities, following, friendFavorites, queryCityFromDB }) => {
           states?.map((state) => (
             state?.cities?.map(({ name, coordinates }) => {
               let saved = false;
-              if (cities.length > 0) {
+              if (cities?.length > 0) {
                 cities?.map((city) => {
                   if (city.includes(name) && city.includes(state.abbreviation)) {
                     saved = true;

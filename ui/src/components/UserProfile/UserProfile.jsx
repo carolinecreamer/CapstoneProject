@@ -30,7 +30,6 @@ export default function UserProfile({ user, setCities, setFollowing, getCities ,
 
         onLoad()
     }, [])
-    console.log(following)
 
     if (cities == null || following == null) {
         return (

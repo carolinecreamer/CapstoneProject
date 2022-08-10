@@ -14,19 +14,19 @@ export default function Load({ currentUser, friendFavorites, queryCityFromDB, se
   React.useEffect(() => {
     async function onLoad() {
       const citiesRes = await getCities();
-      if (typeof citiesRes.data?.cities != 'undefined') {
+      if (typeof citiesRes?.data?.cities != 'undefined') {
         setCities(citiesRes.data.cities);
       }
       else {
-        setCities(citiesRes.data);
+        setCities(citiesRes?.data);
       }
 
       const followingRes = await getFollowing();
-      if (typeof followingRes.data?.following != 'undefined') {
+      if (typeof followingRes?.data?.following != 'undefined') {
         setFollowing(followingRes.data.following);
       }
       else {
-        setFollowing(followingRes.data);
+        setFollowing(followingRes?.data);
       }
     }
 
