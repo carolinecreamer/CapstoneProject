@@ -18,6 +18,22 @@
                     -86.80503845214844,
                     33.52136149810032
                 ]
+            },
+            {
+                "name": "Montgomery",
+                "markerOffset": 0,
+                "coordinates": [
+                    -86.30516052246094,
+                    32.365463235972015
+                ]
+            },
+            {
+                "name": "Mobile",
+                "markerOffset": 0,
+                "coordinates": [
+                    -88.08219909667969,
+                    30.685163937659564
+                ]
             }
         ]
     },
@@ -48,11 +64,75 @@
         "abbreviation": "AZ",
         "cities": [
             {
+                "name": "Chandler",
+                "markerOffset": 0,
+                "coordinates": [
+                    -111.84356689453125,
+                    33.305281685899445
+                ]
+            },
+            {
+                "name": "Gilbert",
+                "markerOffset": 0,
+                "coordinates": [
+                    -111.78794860839842,
+                    33.35347332342168
+                ]
+            },
+            {
+                "name": "Glendale",
+                "markerOffset": 0,
+                "coordinates": [
+                    -112.1865463256836,
+                    33.53910539867444
+                ]
+            },
+            {
+                "name": "Mesa",
+                "markerOffset": 0,
+                "coordinates": [
+                    -111.83052062988281,
+                    33.412529053733444
+                ]
+            },
+            {
+                "name": "Peoria",
+                "markerOffset": 0,
+                "coordinates": [
+                    -112.23770141601562,
+                    33.580875035705084
+                ]
+            },
+            {
                 "name": "Phoenix",
                 "markerOffset": 0,
                 "coordinates": [
                     -112.07565307617186,
                     33.44977658311846
+                ]
+            },
+            {
+                "name": "Scottsdale",
+                "markerOffset": 0,
+                "coordinates": [
+                    -111.9287109375,
+                    33.49387988861095
+                ]
+            },
+            {
+                "name": "Surprise",
+                "markerOffset": 0,
+                "coordinates": [
+                    -112.36679077148438,
+                    33.62891372306964
+                ]
+            },
+            {
+                "name": "Tempe",
+                "markerOffset": 0,
+                "coordinates": [
+                    -111.94038391113281,
+                    33.42513769937646
                 ]
             },
             {
@@ -92,11 +172,259 @@
         "abbreviation": "CA",
         "cities": [
             {
+                "name": "Anaheim",
+                "markerOffset": 0,
+                "coordinates": [
+                    -117.90973663330077,
+                    33.83563103307716
+                ]
+            },
+            {
+                "name": "Bakersfield",
+                "markerOffset": 0,
+                "coordinates": [
+                    -119.01626586914062,
+                    35.37449437781793
+                ]
+            },
+            {
+                "name": "Chula Vista",
+                "markerOffset": 0,
+                "coordinates": [
+                    -117.08164215087889,
+                    32.63966397903134
+                ]
+            },
+            {
+                "name": "Corona",
+                "markerOffset": 0,
+                "coordinates": [
+                    -117.56641387939452,
+                    33.87554649361947
+                ]
+            },
+            {
+                "name": "Elk Grove",
+                "markerOffset": 0,
+                "coordinates": [
+                    -121.3714599609375,
+                    38.40840605494758
+                ]
+            },
+            {
+                "name": "Escondido",
+                "markerOffset": 0,
+                "coordinates": [
+                    -117.07992553710938,
+                    33.119725315316735
+                ]
+            },
+            {
+                "name": "Fontana",
+                "markerOffset": 0,
+                "coordinates": [
+                    -117.43595123291016,
+                    34.091620235447365
+                ]
+            },
+            {
+                "name": "Fremont",
+                "markerOffset": 0,
+                "coordinates": [
+                    -121.98772430419922,
+                    37.54757160991822
+                ]
+            },
+            {
+                "name": "Fresno",
+                "markerOffset": 0,
+                "coordinates": [
+                    -119.78462219238281,
+                    36.739984630558446
+                ]
+            },
+            {
+                "name": "Fullerton",
+                "markerOffset": 0,
+                "coordinates": [
+                    -117.92947769165038,
+                    33.87070061140469
+                ]
+            },
+            {
+                "name": "Garden Grove",
+                "markerOffset": 0,
+                "coordinates": [
+                    -117.9463005065918,
+                    33.77429598266308
+                ]
+            },
+            {
+                "name": "Glendale",
+                "markerOffset": 0,
+                "coordinates": [
+                    -118.24825286865234,
+                    34.146476225377484
+                ]
+            },
+            {
+                "name": "Hayward",
+                "markerOffset": 0,
+                "coordinates": [
+                    -122.0804214477539,
+                    37.66860332433055
+                ]
+            },
+            {
+                "name": "Huntington Beach",
+                "markerOffset": 0,
+                "coordinates": [
+                    -118.00037384033203,
+                    33.677068488547015
+                ]
+            },
+            {
+                "name": "Irvine",
+                "markerOffset": 0,
+                "coordinates": [
+                    -117.82527923583984,
+                    33.68578204940791
+                ]
+            },
+            {
+                "name": "Lancaster",
+                "markerOffset": 0,
+                "coordinates": [
+                    -118.13735961914061,
+                    34.697590256330386
+                ]
+            },
+            {
+                "name": "Long Beach",
+                "markerOffset": 0,
+                "coordinates": [
+                    -118.18988800048827,
+                    33.7694443593021
+                ]
+            },
+            {
                 "name": "Los Angeles",
                 "markerOffset": 0,
                 "coordinates": [
                     -118.2465362548828,
                     34.05379721731628
+                ]
+            },
+            {
+                "name": "Modesto",
+                "markerOffset": 0,
+                "coordinates": [
+                    -120.99723815917969,
+                    37.639247435988196
+                ]
+            },
+            {
+                "name": "Moreno Valley",
+                "markerOffset": 0,
+                "coordinates": [
+                    -117.23167419433592,
+                    33.937093739554385
+                ]
+            },
+            {
+                "name": "Oakland",
+                "markerOffset": 0,
+                "coordinates": [
+                    -122.27302551269531,
+                    37.80463017025873
+                ]
+            },
+            {
+                "name": "Oceanside",
+                "markerOffset": 0,
+                "coordinates": [
+                    -117.37689971923827,
+                    33.19589122972613
+                ]
+            },
+            {
+                "name": "Ontario",
+                "markerOffset": 0,
+                "coordinates": [
+                    -117.64743804931642,
+                    34.06616976206305
+                ]
+            },
+            {
+                "name": "Oxnard",
+                "markerOffset": 0,
+                "coordinates": [
+                    -119.18243408203124,
+                    34.2004447595411
+                ]
+            },
+            {
+                "name": "Palmdale",
+                "markerOffset": 0,
+                "coordinates": [
+                    -118.11264038085938,
+                    34.58008309484698
+                ]
+            },
+            {
+                "name": "Pomona",
+                "markerOffset": 0,
+                "coordinates": [
+                    -117.75094985961914,
+                    34.055219440766784
+                ]
+            },
+            {
+                "name": "Rancho Cucamonga",
+                "markerOffset": 0,
+                "coordinates": [
+                    -117.57293701171874,
+                    34.10611931869012
+                ]
+            },
+            {
+                "name": "Riverside",
+                "markerOffset": 0,
+                "coordinates": [
+                    -117.3954391479492,
+                    33.95332796171439
+                ]
+            },
+            {
+                "name": "Roseville",
+                "markerOffset": 0,
+                "coordinates": [
+                    -121.28768920898436,
+                    38.7519413494709
+                ]
+            },
+            {
+                "name": "Sacramento",
+                "markerOffset": 0,
+                "coordinates": [
+                    -121.49711608886719,
+                    38.58037909468592
+                ]
+            },
+            {
+                "name": "Salinas",
+                "markerOffset": 0,
+                "coordinates": [
+                    -121.65367126464844,
+                    36.6739263393281
+                ]
+            },
+            {
+                "name": "San Bernardino",
+                "markerOffset": 0,
+                "coordinates": [
+                    -117.28935241699219,
+                    34.10867772256663
                 ]
             },
             {
@@ -106,6 +434,78 @@
                     -117.15270996093749,
                     32.71797709835758
                 ]
+            },
+            {
+                "name": "San Francisco",
+                "markerOffset": 0,
+                "coordinates": [
+                    -122.44041681289673,
+                    37.80172253215222
+                ]
+            },
+            {
+                "name": "San Jose",
+                "markerOffset": 0,
+                "coordinates": [
+                    -84.078369140625,
+                    9.932329524023626
+                ]
+            },
+            {
+                "name": "Santa Ana",
+                "markerOffset": 0,
+                "coordinates": [
+                    -117.87368774414064,
+                    33.74946419232578
+                ]
+            },
+            {
+                "name": "Santa Clarita",
+                "markerOffset": 0,
+                "coordinates": [
+                    -118.54385375976564,
+                    34.39104576945997
+                ]
+            },
+            {
+                "name": "Santa Rosa",
+                "markerOffset": 0,
+                "coordinates": [
+                    -122.71522521972656,
+                    38.44014444555175
+                ]
+            },
+            {
+                "name": "Stockton",
+                "markerOffset": 0,
+                "coordinates": [
+                    -121.28631591796874,
+                    37.95827503526034
+                ]
+            },
+            {
+                "name": "Sunnyvale",
+                "markerOffset": 0,
+                "coordinates": [
+                    -122.03561782836914,
+                    37.368383643358435
+                ]
+            },
+            {
+                "name": "Torrance",
+                "markerOffset": 0,
+                "coordinates": [
+                    -118.33974838256835,
+                    33.835773621482865
+                ]
+            },
+            {
+                "name": "Visalia",
+                "markerOffset": 0,
+                "coordinates": [
+                    -119.2902374267578,
+                    36.328402729422656
+                ]
             }
         ]
     },
@@ -113,6 +513,14 @@
         "name": "Colorado",
         "abbreviation": "CO",
         "cities": [
+            {
+                "name": "Aurora",
+                "markerOffset": 0,
+                "coordinates": [
+                    -104.82879638671875,
+                    39.740986355883564
+                ]
+            },
             {
                 "name": "Denver",
                 "markerOffset": 0,
@@ -127,6 +535,22 @@
                 "coordinates": [
                     -104.82742309570312,
                     38.83649855755879
+                ]
+            },
+            {
+                "name": "Lakewood",
+                "markerOffset": 0,
+                "coordinates": [
+                    -105.0845718383789,
+                    39.70824314819603
+                ]
+            },
+            {
+                "name": "Thornton",
+                "markerOffset": 0,
+                "coordinates": [
+                    -104.98226165771484,
+                    39.86943216825583
                 ]
             }
         ]
@@ -149,6 +573,20 @@
                 "coordinates": [
                     -72.92604446411133,
                     41.30798710333936
+                ]
+            }
+        ]
+    },
+    {
+        "name": "District of Columbia",
+        "abbreviation": "DC",
+        "cities": [
+            {
+                "name": "Washington",
+                "markerOffset": 0,
+                "coordinates": [
+                    -77.03407287597656,
+                    38.89584266537804
                 ]
             }
         ]
@@ -180,6 +618,38 @@
         "abbreviation": "FL",
         "cities": [
             {
+                "name": "Cape Coral",
+                "markerOffset": 0,
+                "coordinates": [
+                    -81.98101043701172,
+                    26.604797747035107
+                ]
+            },
+            {
+                "name": "Hialeah",
+                "markerOffset": 0,
+                "coordinates": [
+                    -80.277099609375,
+                    25.856134061364603
+                  ]
+            },
+            {
+                "name": "Hollywood",
+                "markerOffset": 0,
+                "coordinates": [
+                    -80.14766693115234,
+                    26.011435328553013
+                  ]
+            },
+            {
+                "name": "Fort Lauderdale",
+                "markerOffset": 0,
+                "coordinates": [
+                    -80.14423370361328,
+                    26.12153467424552
+                ]
+            },
+            {
                 "name": "Jacksonville",
                 "markerOffset": 0,
                 "coordinates": [
@@ -193,6 +663,54 @@
                 "coordinates": [
                     -80.13479232788086,
                     25.79247254505204
+                ]
+            },
+            {
+                "name": "Orlando",
+                "markerOffset": 0,
+                "coordinates": [
+                    -81.375732421875,
+                    28.541100228636036
+                ]
+            },
+            {
+                "name": "Pembroke Pines",
+                "markerOffset": 0,
+                "coordinates": [
+                    -80.22388458251953,
+                    26.002795711454173
+                ]
+            },
+            {
+                "name": "Port St. Lucie",
+                "markerOffset": 0,
+                "coordinates": [
+                    -80.35057067871094,
+                    27.294909617575406
+                ]
+            },
+            {
+                "name": "Tallahassee",
+                "markerOffset": 0,
+                "coordinates": [
+                    -84.287109375,
+                    30.433281874927655
+                ]
+            },
+            {
+                "name": "Tampa",
+                "markerOffset": 0,
+                "coordinates": [
+                    -82.45925903320312,
+                    27.947099367319762
+                ]
+            },
+            {
+                "name": "St. Petersburg",
+                "markerOffset": 0,
+                "coordinates": [
+                    -82.67005920410156,
+                    27.771354970387424
                 ]
             }
         ]
@@ -210,11 +728,27 @@
                 ]
             },
             {
+                "name": "Augusta",
+                "markerOffset": 0,
+                "coordinates": [
+                    -81.97586059570312,
+                    33.47039910425851
+                ]
+            },
+            {
                 "name": "Columbus",
                 "markerOffset": 0,
                 "coordinates": [
                     -84.98783111572266,
                     32.46110854261062
+                ]
+            },
+            {
+                "name": "Savannah",
+                "markerOffset": 0,
+                "coordinates": [
+                    -81.09283447265625,
+                    32.05755444988184
                 ]
             }
         ]
@@ -282,6 +816,30 @@
                     -88.31325531005858,
                     41.757227195758944
                 ]
+            },
+            {
+                "name": "Joliet",
+                "markerOffset": 0,
+                "coordinates": [
+                    -88.07945251464842,
+                    41.52502957323801
+                  ]
+            },
+            {
+                "name": "Naperville",
+                "markerOffset": 0,
+                "coordinates": [
+                    -88.14811706542969,
+                    41.772591934090194
+                ]
+            },
+            {
+                "name": "Rockford",
+                "markerOffset": 0,
+                "coordinates": [
+                    -89.09568786621094,
+                    42.270195710001786
+                ]
             }
         ]
     },
@@ -348,6 +906,14 @@
                     -94.68360900878906,
                     38.973289606929875
                 ]
+            },
+            {
+                "name": "Kansas City",
+                "markerOffset": 0,
+                "coordinates": [
+                    -94.64069366455078,
+                    39.115144700901475
+                  ]
             }
         ]
     },
@@ -392,6 +958,14 @@
                     -91.14669799804688,
                     30.452225289045764
                 ]
+            },
+            {
+                "name": "Shreveport",
+                "markerOffset": 0,
+                "coordinates": [
+                    -93.76419067382812,
+                    32.47153644120325
+                  ]
             }
         ]
     },
@@ -450,6 +1024,14 @@
                     -71.05802536010742,
                     42.360192919586375
                 ]
+            },
+            {
+                "name": "Springfield",
+                "markerOffset": 0,
+                "coordinates": [
+                    -72.58684158325195,
+                    42.10191609639531
+                  ]
             },
             {
                 "name": "Worcester",
@@ -606,11 +1188,59 @@
                 ]
             },
             {
+                "name": "Enterprise",
+                "markerOffset": 0,
+                "coordinates": [
+                    -115.23078918457031,
+                    36.0454903245235
+                  ]
+            },
+            {
                 "name": "Henderson",
                 "markerOffset": 0,
                 "coordinates": [
                     -114.99114990234375,
                     36.033552893400376
+                ]
+            },
+            {
+                "name": "North Las Vegas",
+                "markerOffset": 0,
+                "coordinates": [
+                    -115.11714935302733,
+                    36.200789198872094
+                  ]
+            },
+            {
+                "name": "Paradise",
+                "markerOffset": 0,
+                "coordinates": [
+                    -115.17345428466797,
+                    36.11555150757745
+                  ]
+            },
+            {
+                "name": "Spring Valley",
+                "markerOffset": 0,
+                "coordinates": [
+                    -115.24332046508789,
+                    36.110697795643894
+                  ]
+            },
+            {
+                "name": "Sunrise Manor",
+                "markerOffset": 0,
+                "coordinates": [
+                    -115.05912780761719,
+                    36.21131620260199
+                  ]
+            },
+            {
+                "name": "Reno",
+                "markerOffset": 0,
+                "coordinates": [
+                    -119.79766845703125,
+                    39.52946653645165
                 ]
             }
         ]
@@ -656,6 +1286,14 @@
                     -74.04510498046875,
                     40.721632175452626
                 ]
+            },
+            {
+                "name": "Paterson",
+                "markerOffset": 0,
+                "coordinates": [
+                    -74.17144775390625,
+                    40.916755605004596
+                  ]
             }
         ]
     },
@@ -686,6 +1324,14 @@
         "abbreviation": "NY",
         "cities": [
             {
+                "name": "Buffalo",
+                "markerOffset": 0,
+                "coordinates": [
+                    -78.87977600097656,
+                    42.886530257542255
+                ]
+            },
+            {
                 "name": "New York",
                 "markerOffset": 0,
                 "coordinates": [
@@ -700,6 +1346,22 @@
                     -73.61886978149414,
                     40.70634365699408
                 ]
+            },
+            {
+                "name": "Rochester",
+                "markerOffset": 0,
+                "coordinates": [
+                    -77.61394500732422,
+                    43.157359287821116
+                ]
+            },
+            {
+                "name": "Yonkers",
+                "markerOffset": 0,
+                "coordinates": [
+                    -73.90005111694336,
+                    40.93115273187039
+                  ]
             }
         ]
     },
@@ -707,6 +1369,14 @@
         "name": "North Carolina",
         "abbreviation": "NC",
         "cities": [
+            {
+                "name": "Cary",
+                "markerOffset": 0,
+                "coordinates": [
+                    -78.78055572509766,
+                    35.787740890986576
+                  ]
+            },
             {
                 "name": "Charlotte",
                 "markerOffset": 0,
@@ -716,11 +1386,43 @@
                 ]
             },
             {
+                "name": "Durham",
+                "markerOffset": 0,
+                "coordinates": [
+                    -78.89694213867188,
+                    35.99522984689209
+                  ]
+            },
+            {
+                "name": "Fayetteville",
+                "markerOffset": 0,
+                "coordinates": [
+                    -78.88114929199219,
+                    35.05192159862087
+                  ]
+            },
+            {
+                "name": "Greensboro",
+                "markerOffset": 0,
+                "coordinates": [
+                    -79.793701171875,
+                    36.07241230197147
+                ]
+            },
+            {
                 "name": "Raleigh",
                 "markerOffset": 0,
                 "coordinates": [
                     -78.64013671875,
                     35.7804995708344
+                ]
+            },
+            {
+                "name": "Winston-Salem",
+                "markerOffset": 0,
+                "coordinates": [
+                    -80.24070739746094,
+                    36.10071207357713
                 ]
             }
         ]
@@ -752,6 +1454,14 @@
         "abbreviation": "OH",
         "cities": [
             {
+                "name": "Akron",
+                "markerOffset": 0,
+                "coordinates": [
+                    -81.51786804199219,
+                    41.08245663745461
+                  ]
+            },
+            {
                 "name": "Columbus",
                 "markerOffset": 0,
                 "coordinates": [
@@ -766,6 +1476,22 @@
                     -81.69158935546875,
                     41.50034959128928
                 ]
+            },
+            {
+                "name": "Cincinnati",
+                "markerOffset": 0,
+                "coordinates": [
+                    -84.51438903808594,
+                    39.099693132668584
+                  ]
+            },
+            {
+                "name": "Toledo",
+                "markerOffset": 0,
+                "coordinates": [
+                    -83.53935241699219,
+                    41.65239288426814
+                  ]
             }
         ]
     },
@@ -810,6 +1536,14 @@
                     -123.03451538085939,
                     44.939043166353606
                 ]
+            },
+            {
+                "name": "Eugene",
+                "markerOffset": 0,
+                "coordinates": [
+                    -123.09768676757814,
+                    44.047128661183756
+                  ]
             }
         ]
     },
@@ -906,6 +1640,38 @@
         "abbreviation": "TN",
         "cities": [
             {
+                "name": "Chattanooga",
+                "markerOffset": 0,
+                "coordinates": [
+                    -85.31158447265624,
+                    35.04461384251413
+                  ]
+            },
+            {
+                "name": "Clarksville",
+                "markerOffset": 0,
+                "coordinates": [
+                    -87.36122131347655,
+                    36.5267430425095
+                  ]
+            },
+            {
+                "name": "Knoxville",
+                "markerOffset": 0,
+                "coordinates": [
+                    -83.924560546875,
+                    35.95911138558121
+                  ]
+            },
+            {
+                "name": "Murfreesboro",
+                "markerOffset": 0,
+                "coordinates": [
+                    -86.38961791992188,
+                    35.846204289521964
+                  ]
+            },
+            {
                 "name": "Nashville",
                 "markerOffset": 0,
                 "coordinates": [
@@ -928,12 +1694,180 @@
         "abbreviation": "TX",
         "cities": [
             {
+                "name": "Amarillo",
+                "markerOffset": 0,
+                "coordinates": [
+                    -101.83502197265625,
+                    35.20411123432418
+                  ]
+            },
+            {
+                "name": "Arlington",
+                "markerOffset": 0,
+                "coordinates": [
+                    -97.10918426513672,
+                    32.73501771373043
+                  ]
+            },
+            {
+                "name": "Austin",
+                "markerOffset": 0,
+                "coordinates": [
+                    -97.74398803710938,
+                    30.270335343049847
+                  ]
+            },
+            {
+                "name": "Brownsville",
+                "markerOffset": 0,
+                "coordinates": [
+                    -97.48374938964844,
+                    25.9117325831107
+                  ]
+            },
+            {
+                "name": "Corpus Christi",
+                "markerOffset": 0,
+                "coordinates": [
+                    -97.41989135742188,
+                    27.763760285581967
+                  ]
+            },
+            {
+                "name": "Dallas",
+                "markerOffset": 0,
+                "coordinates": [
+                    -96.79641723632812,
+                    32.77572870013365
+                  ]
+            },
+            {
+                "name": "Denton",
+                "markerOffset": 0,
+                "coordinates": [
+                    -97.13218688964844,
+                    33.21456332952902
+                  ]
+            },
+            {
+                "name": "El Paso",
+                "markerOffset": 0,
+                "coordinates": [
+                    -106.44172668457031,
+                    31.785384226419538
+                  ]
+            },
+            {
+                "name": "Fort Worth",
+                "markerOffset": 0,
+                "coordinates": [
+                    -97.33200073242188,
+                    32.7537875018279
+                  ]
+            },
+            {
+                "name": "Frisco",
+                "markerOffset": 0,
+                "coordinates": [
+                    -96.82491302490234,
+                    33.149624729885815
+                  ]
+            },
+            {
+                "name": "Garland",
+                "markerOffset": 0,
+                "coordinates": [
+                    -96.63677215576172,
+                    32.91245035823873
+                  ]
+            },
+            {
+                "name": "Grand Prairie",
+                "markerOffset": 0,
+                "coordinates": [
+                    -96.99623107910156,
+                    32.74570253945518
+                  ]
+            },
+            {
                 "name": "Houston",
                 "markerOffset": 0,
                 "coordinates": [
                     -95.3668212890625,
                     29.756032197482973
                 ]
+            },
+            {
+                "name": "Irving",
+                "markerOffset": 0,
+                "coordinates": [
+                    -96.94438934326172,
+                    32.82825010814964
+                  ]
+            },
+            {
+                "name": "Killeen",
+                "markerOffset": 0,
+                "coordinates": [
+                    -97.72750854492188,
+                    31.11761871756099
+                  ]
+            },
+            {
+                "name": "Laredo",
+                "markerOffset": 0,
+                "coordinates": [
+                    -99.49905395507812,
+                    27.526540383462788
+                  ]
+            },
+            {
+                "name": "Lubbock",
+                "markerOffset": 0,
+                "coordinates": [
+                    -101.88034057617188,
+                    33.563711876515185
+                  ]
+            },
+            {
+                "name": "McAllen",
+                "markerOffset": 0,
+                "coordinates": [
+                    -98.2294464111328,
+                    26.20381015337393
+                  ]
+            },
+            {
+                "name": "McKinney",
+                "markerOffset": 0,
+                "coordinates": [
+                    -96.60861968994139,
+                    33.19675310661128
+                  ]
+            },
+            {
+                "name": "Mesquite",
+                "markerOffset": 0,
+                "coordinates": [
+                    -96.5976333618164,
+                    32.765913569355895
+                  ]
+            },
+            {
+                "name": "Pasadena",
+                "markerOffset": 0,
+                "coordinates": [
+                    -95.2078628540039,
+                    29.690737021847788
+                  ]
+            },
+            {
+                "name": "Plano",
+                "markerOffset": 0,
+                "coordinates": [
+                    -96.68998718261719,
+                    33.01240619851677
+                  ]
             },
             {
                 "name": "San Antonio",
@@ -994,6 +1928,46 @@
         "abbreviation": "VA",
         "cities": [
             {
+                "name": "Alexandria",
+                "markerOffset": 0,
+                "coordinates": [
+                    -77.04780578613281,
+                    38.80466758690792
+                  ]
+            },
+            {
+                "name": "Arlington",
+                "markerOffset": 0,
+                "coordinates": [
+                    -77.08385467529297,
+                    38.89023115500578
+                  ]
+            },
+            {
+                "name": "Newport News",
+                "markerOffset": 0,
+                "coordinates": [
+                    -76.42227172851562,
+                    36.97677533356129
+                  ]
+            },
+            {
+                "name": "Norfolk",
+                "markerOffset": 0,
+                "coordinates": [
+                    -76.25885009765625,
+                    36.89691990936389
+                  ]
+            },
+            {
+                "name": "Richmond",
+                "markerOffset": 0,
+                "coordinates": [
+                    -77.43507385253906,
+                    37.538316145992944
+                  ]
+            },
+            {
                 "name": "Virginia Beach",
                 "markerOffset": 0,
                 "coordinates": [
@@ -1016,6 +1990,22 @@
         "abbreviation": "WA",
         "cities": [
             {
+                "name": "Bellevue",
+                "markerOffset": 0,
+                "coordinates": [
+                    -122.19097137451172,
+                    47.61403263852783
+                  ]
+            },
+            {
+                "name": "Kent",
+                "markerOffset": 0,
+                "coordinates": [
+                    -122.22633361816406,
+                    47.38254402467962
+                  ]
+            },
+            {
                 "name": "Seattle",
                 "markerOffset": 0,
                 "coordinates": [
@@ -1030,6 +2020,22 @@
                     -117.41981506347655,
                     47.65660048985082
                 ]
+            },
+            {
+                "name": "Tacoma",
+                "markerOffset": 0,
+                "coordinates": [
+                    -122.43919372558592,
+                    47.24894085513601
+                  ]
+            },
+            {
+                "name": "Vancouver",
+                "markerOffset": 0,
+                "coordinates": [
+                    -122.67059326171874,
+                    45.63180571347551
+                  ]
             }
         ]
     },
